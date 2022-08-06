@@ -1,7 +1,7 @@
 import { AppBar } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React from 'react';
-import MobileDrawer from '../Ui/MobileDrawer';
+import MobileDrawer from './MobileDrawer';
 
 const useStyles= makeStyles((theme)=>({
     mobileView: {

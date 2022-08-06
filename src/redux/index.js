@@ -1,13 +1,13 @@
 import {configureStore, createSlice, getDefaultMiddleware} from "@reduxjs/toolkit";
-import cartSlice from "./reducers/cartSlice";
+import cartSlice from "../pages/cart/Reducers/cartSlice";
 import customerSlice from "./reducers/customerSlice";
-import filterSlice from "./reducers/filterSlice";
-import imgUploadSlice from "./reducers/imageUpload";
-import loginSlice from "./reducers/loginSlice";
-import searchSlice from "./reducers/searchSlice";
-import signupSlice from "./reducers/signupslice";
+import loginSlice from "../pages/login/Reducers/loginSlice";
+import searchSlice from "../pages/products/Reducers/searchSlice";
+import signupSlice from "../pages/signup/Reducers/signupslice";
 import transportSlice from "./reducers/transportSlice";
-import uploadSlice from "./reducers/uploadSlice";
+import uploadSlice from "../pages/addNewProduct/Reducer/uploadSlice";
+import imgUploadSlice from "../pages/addNewProduct/Reducer/imageUpload";
+import filterSlice from "../pages/products/Reducers/filterSlice";
 
 const counterSlice = createSlice({
     name: "counter",
