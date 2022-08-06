@@ -8,7 +8,7 @@ import {
   Paper,
   Typography,
   Tabs,
-  Tab
+  Tab,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useEffect, useState } from "react";
@@ -57,14 +57,14 @@ const Filterpage = () => {
 
   const dispatch = useDispatch();
   const products = useSelector((state) => state.filter.products);
-  const loading = useSelector((state)=> state.filter.loading)
+  const loading = useSelector((state) => state.filter.loading);
   const filters = useSelector((state) => state.filter.searchData);
   const category = categories?.find((d) => d.id === filters.category);
 
   useEffect(() => {
     getColors();
     getCategories();
-    dispatch(filterActions.setSearch({name: "ordering", value: "price"}))
+    dispatch(filterActions.setSearch({ name: "ordering", value: "price" }));
   }, []);
 
   useEffect(() => {
@@ -72,19 +72,17 @@ const Filterpage = () => {
   }, [filters]);
 
   const getColors = () => {
-    axios.get(`colors/`)
-    .then((response) => {
+    axios.get(`colors/`).then((response) => {
       setColors(response.data);
     });
   };
   const getCategories = () => {
-    axios.get(`categories/`)
-    .then((response) => {
-      setCategories(response.data)
+    axios.get(`categories/`).then((response) => {
+      setCategories(response.data);
     });
   };
 
-  console.log(categories)
+  console.log(categories);
 
   const colorFilters = [];
   colors?.forEach((e1) =>
@@ -111,11 +109,10 @@ const Filterpage = () => {
     // dispatch(getFilter("nothing"));
   };
 
-  const handleOrdering = (value)=> {
-    dispatch(filterActions.setSearch({name: "ordering", value: value}))
+  const handleOrdering = (value) => {
+    dispatch(filterActions.setSearch({ name: "ordering", value: value }));
     // dispatch(getFilter("nothing"));
-  }
-
+  };
 
   // const LogIn =() => {
   //   if (isLoggedIn){
@@ -156,7 +153,7 @@ const Filterpage = () => {
           </Grid>
 
           <Grid item xs={12} md={9} lg={9} marginTop={1}>
-            <BreadCrumbs data={[{name: "Products", link: "/products"}]}/>
+            <BreadCrumbs data={[{ name: "Products", link: "/products" }]} />
             {/* <Box display="flex" gap={1} marginTop={1}  padding={1}>
             {filters.category?<Chip label={category.name} variant="outlined" onDelete={handleDelete({name:'category'})}  />:""}
             {filters.color?colorFilters.map(d=> <Chip label={d.name} variant="outlined" onDelete={handleDelete({name: "color", value:d.id})} />):""}
@@ -164,14 +161,30 @@ const Filterpage = () => {
             {filters.price_max? <Chip label={`${filters.price_min} ₹ -- ${filters.price_max} ₹`} variant="outlined" onDelete={handleDelete({name: 'price'})}  />:""   }
             
             </Box> */}
-            <Box display="flex" gap={1} alignItems="center" marginTop={1} sx={{  bgcolor: "background.paper", borderBottom: 1, borderColor: 'divider' }}>
+            <Box
+              display="flex"
+              gap={1}
+              alignItems="center"
+              marginTop={1}
+              sx={{
+                bgcolor: "background.paper",
+                borderBottom: 1,
+                borderColor: "divider",
+              }}
+            >
               <Typography variant="body1">Sort By</Typography>
               {/* <Chip  label="Price -- low to high" clickable={true} clickableColorPrimary  onClick={()=>console.log("clicked")}/>
                 <Chip  label="Price -- low to high" onClick={()=>console.log("clicked")}/> */}
-              <Box >
+              <Box>
                 <Tabs value={tabValue} onChange={handleTabChange} centered>
-                  <Tab label="Price -- low to high" onClick={()=>handleOrdering("price")} />
-                  <Tab label="Price -- high to low" onClick={()=>handleOrdering("-price")}/>
+                  <Tab
+                    label="Price -- low to high"
+                    onClick={() => handleOrdering("price")}
+                  />
+                  <Tab
+                    label="Price -- high to low"
+                    onClick={() => handleOrdering("-price")}
+                  />
                   {/* <Tab label="Item Three" /> */}
                 </Tabs>
               </Box>
@@ -186,46 +199,45 @@ const Filterpage = () => {
                 <MobileCategory />
               </Box> */}
               <Box className={classes.hideD}>
-                <MobileFilter className={classes.hideD} 
-                    handleDelete={handleDelete}
-                    colorFilters={colorFilters}
-                    colors={colors}
+                <MobileFilter
+                  className={classes.hideD}
+                  handleDelete={handleDelete}
+                  colorFilters={colorFilters}
+                  colors={colors}
                 />
               </Box>
             </Grid>
             Number Of Products = {products?.length}
             <Grid container spacing={2} marginTop={0}>
-              
               {/* {loading? } */}
-              {!loading? 
-                products?.map((d, index) => (
-                  <Grid
-                    item
-                    key={index}
-                    xs={6}
-                    lg={4}
-                    sm={4}
-                    md={5}
-                    padding={0}
-                  >
-                    <Product d={d} loading={loading} />
-                  </Grid>
-                )) :
-                  Arr.map((d, index) => (
-                  <Grid
-                    item
-                    key={index}
-                    xs={6}
-                    lg={4}
-                    sm={4}
-                    md={5}
-                    padding={0}
-                  >
-                    {" "}
-                    <SkeletonProduct />{" "}
-                  </Grid>
-                ))}
-                
+              {!loading
+                ? products?.map((d, index) => (
+                    <Grid
+                      item
+                      key={index}
+                      xs={6}
+                      lg={4}
+                      sm={4}
+                      md={5}
+                      padding={0}
+                    >
+                      <Product d={d} loading={loading} />
+                    </Grid>
+                  ))
+                : Arr.map((d, index) => (
+                    <Grid
+                      item
+                      key={index}
+                      xs={6}
+                      lg={4}
+                      sm={4}
+                      md={5}
+                      padding={0}
+                    >
+                      {" "}
+                      <SkeletonProduct />{" "}
+                    </Grid>
+                  ))}
 
               {/* {products.map((d, index) => (
                 <Grid item key={index} xs={6} lg={4} sm={4} md={5} padding={0}>

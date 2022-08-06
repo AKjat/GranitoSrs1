@@ -100,7 +100,7 @@ function App(props) {
         {/* <Route exact path="/login*" element={<SignInPage/>} /> */}
           
           <Route exact path="*" element={<Home />} />
-          
+          {/* <Route exact path="/about" element={<About />} /> */}
           <Route exact path="/product/:id" element={<ProductPage />} />
           
           <Route exact path="/products/" element={<Filterpage />} />

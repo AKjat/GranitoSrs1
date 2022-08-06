@@ -1,4 +1,12 @@
-import { AppBar, Box, Button, createTheme, Divider, Grid, Toolbar } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  createTheme,
+  Divider,
+  Grid,
+  Toolbar,
+} from "@mui/material";
 import { lightGreen, orange } from "@mui/material/colors";
 import { makeStyles, ThemeProvider } from "@mui/styles";
 import React from "react";
@@ -44,9 +52,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.75",
     letterSpacing: "0.02857em",
     color: "white",
-    "& a":{
-        
-    }
+    "& a": {},
   },
 }));
 const HomeMenu = () => {
@@ -70,13 +76,13 @@ const HomeMenu = () => {
           <Grid item>
             <HoverMenu />
           </Grid>
-          <Grid item >
-              <Button sx={{ color: "white" }} component={Link} to="/contact">
+          <Grid item>
+            <Button sx={{ color: "white" }} component={Link} to="/contact">
               Contact
             </Button>
           </Grid>
           <Grid item className={classes.scrollBtn}>
-          <LinkScroll
+            <LinkScroll
               activeClass="active"
               to="section1"
               spy={true}

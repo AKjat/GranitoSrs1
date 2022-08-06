@@ -152,11 +152,6 @@ const ProductPage = (props) => {
     dispatch(cartActions.addCart({id, price:product?.price, quantity:product?.quantity}))
   }
 
-  
-
-
-  
-
   return (
     <>
     <Box sx={{ marginLeft: "10px", marginRight: "10px",}} >
