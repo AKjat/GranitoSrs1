@@ -23,7 +23,7 @@ import NewSearch from "./search/NewSearch";
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { useDispatch, useSelector } from "react-redux";
 import PhoneIcon from '@mui/icons-material/Phone';
-import { loginActions, logOut } from "../../redux/reducers/loginSlice";
+import { loginActions, logOut } from "../../pages/login/Reducers/loginSlice";
 import ProfileMenu from './profileMenu/Menu'
 
 

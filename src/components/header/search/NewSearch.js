@@ -32,10 +32,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { orange, red } from "@mui/material/colors";
 import './NewSearch.css'
-import { Warning } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
-import { filterActions, getFilter } from "../../../redux/reducers/filterSlice";
 import { useNavigate } from 'react-router-dom'
+import { filterActions } from "../../../pages/products/Reducers/filterSlice";
 
 
 const PopperStyle = styled(Popper, { shouldForwardProp })(({ theme }) => ({
@@ -57,11 +56,9 @@ const SearchBar = ({ popupState, handleSearch }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState("")
   const handleChange = (event, value) => {
-      console.log({event:event.target.value, value:value})
       setValue(event.target.value)
     }
   // bindToggle(popupState)
-  console.log({bindTog: bindToggle, popupstate: popupState})
   return (
     <Box display="flex" alignItems="center" justifyContent="center" sx={{backgroundColor: "white", height: "70px", width: "100vw"}}>
     <Box

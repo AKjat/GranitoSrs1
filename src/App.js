@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import {  Box, createTheme, ThemeProvider} from "@mui/material";
-import Home from './pages/home/Home';
+// import Home from './pages/home/Home';
 import Header from './components/header/Header';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { orange, red } from '@mui/material/colors';
-import ProductPage from './pages/product/ProductPage';
-import Filterpage from './pages/home/filter/Filterpage';
-import HomeCateg from './components/categlist/HomeCateg';
+// import ProductPage from './pages/product/ProductPage';
+// import Filterpage from './pages/home/filter/Filterpage';
+import HomeCateg from './components/NavigationBar/HomeCateg';
 import productDetails from "./data/Details"
 import Footer from './components/main/Footer';
 import NewArrival from "./data/NewArrival";
 import MostDemanding from "./data/MostDemanding"
 import CartPage from './pages/cart/CartPage';
 import ScrollToTop from './ScrollToTop';
-import SignIn from './pages/login/SignIn';
-import NewProduct from './pages/addNewProduct/NewProduct';
 import { makeStyles } from '@mui/styles';
-import TransportEstimate from './pages/transportEstimate/TransportEstimate';
+import TransportEstimate from './pages/TransportFee/screens/TransportEstimate';
 import axios from 'axios';
-import SignUp from './pages/signup/SignUp';
 import { useDispatch } from 'react-redux';
 import { loginActions } from './redux';
 import Cookies from 'js-cookie'
+import Home from './pages/home/Screens/Home';
+import Products from './pages/products/Screens/Products';
+import ProductPage from './pages/ProductDetail/Screens/ProductPage';
+import SignIn from './pages/login/Screens/SignIn';
+import SignUp from './pages/signup/Screens/SignUp';
+import NewProduct from './pages/addNewProduct/Screens/NewProduct';
 
 
 const theme = createTheme({
@@ -103,7 +106,7 @@ function App(props) {
           
           <Route exact path="/product/:id" element={<ProductPage />} />
           
-          <Route exact path="/products/" element={<Filterpage />} />
+          <Route exact path="/products/" element={<Products />} />
             <Route exact path="/login" element={<SignIn/>} />
             <Route exact path="/signup" element={<SignUp/>} />
           {/* <Route exact path="/cart" element={isLoggedIn? <CartPage />:<SignIn/>} /> */}
