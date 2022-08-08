@@ -8,10 +8,7 @@ import { orange, red } from '@mui/material/colors';
 // import ProductPage from './pages/product/ProductPage';
 // import Filterpage from './pages/home/filter/Filterpage';
 import HomeCateg from './components/NavigationBar/HomeCateg';
-import productDetails from "./data/Details"
 import Footer from './components/main/Footer';
-import NewArrival from "./data/NewArrival";
-import MostDemanding from "./data/MostDemanding"
 import CartPage from './pages/cart/CartPage';
 import ScrollToTop from './ScrollToTop';
 import { makeStyles } from '@mui/styles';
@@ -71,10 +68,6 @@ function App(props) {
   const classes = useStyles()
   // const {cart,product, addToCartAction, updateCartUnits, RenderProduct} = props;
   
-  const AllItems = [...productDetails, ...NewArrival, ...MostDemanding ];
-  // const AllItems = [...AllIte, ...MostDemanding]
-  const [items, setItems] = useState(AllItems);
-
 
   let csrftoken = Cookies.get('csrftoken')
   axios.defaults.baseURL = 'http://localhost:8000/api/'
