@@ -1,8 +1,11 @@
-import { Box } from "@mui/material";
+import { Box, Button, Card, Divider, Grid, Stack, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import ImgSlider from "../components/ImgSlider";
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "400px",
@@ -28,18 +31,56 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: theme.spacing(1),
     },
   },
+  hover: {
+    "&:hover": {
+      backgroundColor: "rgb(7, 177, 77, 0.42)",
+    },
+  },
+  
 }));
+
+
 
 function Home(props) {
   const [mostDemanding, setMostDemanding] = React.useState([]);
   const [newArrival, setNewArrival] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-  
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const getProducts = () => {
+    axios.get(`products/`).then((response) => {
+      const allproducts = response.data.results;
+      console.log(allproducts);
+      setMostDemanding(
+        allproducts.filter((d) => d.tag.name === "Most Demanding")
+      );
+      setNewArrival(allproducts.filter((d) => d.tag.name === "Newly Arrival"));
+      setLoading(false);
+    });
+  };
   const classes = useStyles();
+
   return (
     <Box marginTop={0.05}>
-      {/* <Slide/> ---> landing Page Slider with play and pause */}
       <ImgSlider />
+      <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
+        <Button
+          component={Link}
+          to="/about"
+          variant="outlined"
+          sx={{ width: "60vw" }}
+        >
+          <Typography> View Our Collections</Typography>
+        </Button>
+      </Stack>
+      <Grid>
+      <div >
+        <h1><u>Latest Stone Collections</u></h1>
+      </div>
+      
+      </Grid>
     </Box>
   );
 }

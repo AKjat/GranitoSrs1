@@ -89,7 +89,6 @@ function App(props) {
       <ThemeProvider theme={ theme } >
         <ScrollToTop/>
       <Header />
-      <HomeCateg />
         <Routes>
           
         {/* <Route exact path="/login*" element={<SignInPage/>} /> */}

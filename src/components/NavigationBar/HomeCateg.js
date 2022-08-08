@@ -67,39 +67,9 @@ const HomeCateg = (props) => {
         About
       </Button>
       <Box sx={{ width: "20vw" }}></Box>
-      {/* <Tabs className={classes.Tabs} value={value} onChange={handleChange} indicatorColor='secondary' textColor='secondary' selectionFollowsFocus={true} centered>
-        
-        <Tab component={Link} to='/'  label="Home" />
-        <Tab component={Link} to='/products'  label={<HoverMenu filterItem={filterItem} filterIte={filterIte}/>} />
-        <Tab component={Link} to='/about'  label="About" />
-        <Tab component={Link} to='/contact'  label="Contact" />
-      </Tabs> */}
+      
     </Box>
-    //   <Box sx={{ width: '100%', bgcolor: '#e59b0e' }}>
-    //   <Tabs value={value} onChange={handleChange} indicatorColor='secondary' textColor='secondary' selectionFollowsFocus={true} centered>
-
-    //     <Tab component={Link} to='/'  label="Home" />
-
-    //     {/* <HoverMenu/> */}
-    //     <Tab  component={Link} to='/products'  label="Products" />
-    //     <Tab component={Link} to='/'  label="Contact" />
-
-    //     <LinkScroll
-    //           component={Tab}
-    //           activeClass="active"
-    //           to="section1"
-    //           spy={true}
-    //           smooth={true}
-    //           offset={0}
-    //           duration={400}
-    //           label="About Us"
-    //         >
-    //           {/* <Tab label="About Us" ></Tab> */}
-
-    //         </LinkScroll>
-
-    //   </Tabs>
-    // </Box>
+    
   );
 };
 
