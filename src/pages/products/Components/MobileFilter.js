@@ -20,7 +20,7 @@ import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import { Country } from "country-state-city";
-import { filterActions } from "../Reducers/filterSlice";
+import { productSearchActions } from "../Reducers/productReducer";
 
 const useStyles = makeStyles((theme) => ({
   checkForm: {
@@ -58,24 +58,24 @@ export default function MobileFilter({handleDelete, colorFilters, colors}) {
   };
 
   const dispatch = useDispatch()
-  const filters = useSelector(state=>state.filter.searchData)
+  const filters = useSelector(state=>state.productSearch)
   const handleColorCheck = (id) => (event, value) => {
-    value? dispatch(filterActions.setSearch({name: "color", value: id}) ) :
-            dispatch(filterActions.remSearch({name: "color", value: id}))
+    value? dispatch(productSearchActions.setSearch({name: "color", value: id}) ) :
+            dispatch(productSearchActions.removeSearch({name: "color", value: id}))
   };
 
   
   const [countryVal, setCountryVal] = React.useState(null)
   const countries = Country.getAllCountries()
-  React.useEffect(() => {
-    if(filters.hasOwnProperty('origin') == false){
-      setCountryVal(null)
-    } 
-  }, [!filters.hasOwnProperty('origin')]);
+  // React.useEffect(() => {
+  //   if(filters.hasOwnProperty('origin') == false){
+  //     setCountryVal(null)
+  //   } 
+  // }, [!filters.hasOwnProperty('origin')]);
 
   const handleCountryChange = (event, value)=>{
-    value? dispatch(filterActions.setSearch({name: "origin", value: value?.name})):
-            dispatch(filterActions.remSearch({name: "origin"}))
+    value? dispatch(productSearchActions.setSearch({name: "origin", value: value?.name})):
+            dispatch(productSearchActions.removeSearch({name: "origin"}))
           setCountryVal(value)
   }
 

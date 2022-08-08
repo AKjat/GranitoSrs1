@@ -34,7 +34,7 @@ import { orange, red } from "@mui/material/colors";
 import './NewSearch.css'
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
-import { filterActions } from "../../../pages/products/Reducers/filterSlice";
+import { productSearchActions } from "../../../pages/products/Reducers/productReducer";
 
 
 const PopperStyle = styled(Popper, { shouldForwardProp })(({ theme }) => ({
@@ -158,7 +158,7 @@ const NewSearch = ({ classes }) => {
   const navigate = useNavigate()
   const handleSearch = (value) => {
     if (value !== ""){
-        dispatch(filterActions.setSearchField(value))
+        dispatch(productSearchActions.setSearch({name:'search', value:value}))
         navigate("/products")
       }
   }

@@ -6,7 +6,7 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import axios from "axios";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { useDispatch } from "react-redux";
-import { filterActions } from "../../pages/products/Reducers/filterSlice";
+import { productSearchActions } from "../../pages/products/Reducers/productReducer";
 
 const useStyles = makeStyles(theme => ({
   popover: {
@@ -34,22 +34,22 @@ const HoverMenu = ({ loading, login, wrong, clearWrongLogin }) => {
 
   const [categories, setCategories] = useState()
   
-  React.useEffect(() => { 
-    getCategories()
-  }, []);
+  // React.useEffect(() => { 
+  //   getCategories()
+  // }, []);
   
-  const getCategories = () => {
-    axios.get(`categories/`)
-    .then((response)=>{
-      setCategories(response.data)
-    })
-  }
+  // const getCategories = () => {
+  //   axios.get(`categories/`)
+  //   .then((response)=>{
+  //     setCategories(response.data)
+  //   })
+  // }
 
   const handleProductsClick=()=>{
-    dispatch(filterActions.remAllSearches())
+    dispatch(productSearchActions.clearSearch())
   }
   const handleFilterCateg=(id)=>{
-      dispatch(filterActions.setSearch({name:"category", value:id}))
+      dispatch(productSearchActions.setSearch({name:"category", value:id}))
   }
 
   return (

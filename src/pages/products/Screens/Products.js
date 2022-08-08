@@ -8,7 +8,11 @@ import {
     Paper,
     Typography,
     Tabs,
-    Tab
+    Tab,
+    Pagination,
+    Stack,
+    PaginationItem,
+    Alert
   } from "@mui/material";
   import { makeStyles } from "@mui/styles";
   import React, { useEffect, useState } from "react";
@@ -19,7 +23,8 @@ import MobileFilter from "../Components/MobileFilter";
 import SkeletonProduct from '../../../components/product/SkeletonProduct';
 import Filter from "../Components/Filter";
 import Product from "../../../components/product/Product";
-import { filterActions, getFilter } from "../Reducers/filterSlice";
+import {  getProducts, productSearchActions } from "../Reducers/productReducer";
+import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
   
   const useStyles = makeStyles((theme) => ({
     hideM: {
@@ -48,64 +53,40 @@ import { filterActions, getFilter } from "../Reducers/filterSlice";
     const [categories, setCategories] = useState();
   
     const dispatch = useDispatch();
-    const products = useSelector((state) => state.filter.products);
-    const loading = useSelector((state)=> state.filter.loading)
-    const filters = useSelector((state) => state.filter.searchData);
+    const products = useSelector((state) => state.product);
+    const refreshing = useSelector((state) => state.refreshing);
+    const loading = useSelector((state)=> state.productSearch)
+    const filters = useSelector((state) => state.productSearch);
     const category = categories?.find((d) => d.id === filters.category);
   
     useEffect(() => {
-      getColors();
-      getCategories();
-      dispatch(filterActions.setSearch({name: "ordering", value: "price"}))
+      // getColors();
+      // getCategories();
+      dispatch(productSearchActions.setSearch({name: "ordering", value: "price"}))
     }, []);
   
     useEffect(() => {
-      dispatch(getFilter("nothing"));
-    }, [filters]);
-  
-    const getColors = () => {
-      axios.get(`colors/`)
-      .then((response) => {
-        setColors(response.data);
-      });
-    };
-    const getCategories = () => {
-      axios.get(`categories/`)
-      .then((response) => {
-        setCategories(response.data)
-      });
-    };
-  
-    console.log(categories)
-  
-    const colorFilters = [];
-    colors?.forEach((e1) =>
-      filters.color?.forEach((e2) => {
-        if (e1.id === e2) {
-          colorFilters.push(e1);
-        }
-      })
-    );
-    // const categoryFilters = [];
-    categories?.forEach((e1) => {
-      if (filters.category === e1.id) {
-        return e1.name;
-      }
-    });
+      dispatch(refreshingActions.setRefreshing(true))
+      dispatch(getProducts())
+    }, []);
+    const handlePrev = () => {
+      dispatch(getProducts(null, true))
+    }
+    const handleNext = () => {
+      dispatch(getProducts(true))
+    }
   
     const handleDelete = (name) => (e, v) => {
-      if (name?.name === "price") {
-        dispatch(filterActions.remSearch({ name: name.name + "_min" }));
-        dispatch(filterActions.remSearch({ name: name.name + "_max" }));
-      } else {
-        dispatch(filterActions.remSearch({ name: name.name, value: name.value }));
-      }
-      // dispatch(getFilter("nothing"));
+      // if (name?.name === "price") {
+      //   dispatch(filterActions.remSearch({ name: name.name + "_min" }));
+      //   dispatch(filterActions.remSearch({ name: name.name + "_max" }));
+      // } else {
+      //   dispatch(filterActions.remSearch({ name: name.name, value: name.value }));
+      // }
     };
   
     const handleOrdering = (value)=> {
-      dispatch(filterActions.setSearch({name: "ordering", value: value}))
-      // dispatch(getFilter("nothing"));
+      dispatch(productSearchActions.setSearch({name: "ordering", value: value}))
     }
   
   
@@ -141,9 +122,9 @@ import { filterActions, getFilter } from "../Reducers/filterSlice";
               <Filter
                 category={category}
                 handleDelete={handleDelete}
-                colorFilters={colorFilters}
-                colors={colors}
-                categories={categories}
+                // colorFilters={colorFilters}
+                // colors={colors}
+                // categories={categories}
               />
             </Grid>
   
@@ -171,8 +152,8 @@ import { filterActions, getFilter } from "../Reducers/filterSlice";
                 <Box className={classes.hideD}>
                   <MobileFilter className={classes.hideD} 
                       handleDelete={handleDelete}
-                      colorFilters={colorFilters}
-                      colors={colors}
+                      // colorFilters={colorFilters}
+                      // colors={colors}
                   />
                 </Box>
               </Grid>
@@ -180,7 +161,7 @@ import { filterActions, getFilter } from "../Reducers/filterSlice";
               <Grid container spacing={2} marginTop={0}>
                 
                 {/* {loading? } */}
-                {!loading? 
+                {!refreshing? 
                   products?.map((d, index) => (
                     <Grid
                       item
@@ -215,13 +196,25 @@ import { filterActions, getFilter } from "../Reducers/filterSlice";
                     <Product
                       d={d}
                       index={index}
-                      handleClickOpen={props.handleClickOpen} 
                     />
                   </Grid>
                 ))} */}
               </Grid>
+              <Grid container  flexDirection={'row'} spacing={2} marginTop={2}>
+                <Grid item xs={2} >
+                  <Button onClick={()=>handlePrev()}>Previous</Button>
+                </Grid>
+                <Grid item xs={7}>
+
+                </Grid>
+                <Grid item xs={2}>
+                  <Button onClick={()=>handleNext()}>Next</Button>
+                </Grid>
+
+              </Grid>
             </Grid>
           </Grid>
+          
         </Container>
       </>
     );

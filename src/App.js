@@ -9,7 +9,6 @@ import { orange, red } from '@mui/material/colors';
 // import Filterpage from './pages/home/filter/Filterpage';
 import HomeCateg from './components/NavigationBar/HomeCateg';
 import Footer from './components/main/Footer';
-import CartPage from './pages/cart/CartPage';
 import ScrollToTop from './ScrollToTop';
 import { makeStyles } from '@mui/styles';
 import TransportEstimate from './pages/TransportFee/screens/TransportEstimate';
@@ -23,6 +22,8 @@ import ProductPage from './pages/ProductDetail/Screens/ProductPage';
 import SignIn from './pages/login/Screens/SignIn';
 import SignUp from './pages/signup/Screens/SignUp';
 import NewProduct from './pages/addNewProduct/Screens/NewProduct';
+import CartPage from './pages/cart/Screens/CartPage';
+import About from './pages/About';
 
 
 const theme = createTheme({
@@ -66,23 +67,21 @@ const useStyles= makeStyles((theme)=>({
 
 function App(props) {
   const classes = useStyles()
-  // const {cart,product, addToCartAction, updateCartUnits, RenderProduct} = props;
-  
 
   let csrftoken = Cookies.get('csrftoken')
-  axios.defaults.baseURL = 'http://localhost:8000/api/'
+  axios.defaults.baseURL = 'http://192.168.1.25:8000/api/'
   axios.defaults.headers.common['X-CSRFToken'] = csrftoken
   axios.defaults.withCredentials = true
   const dispatch = useDispatch()
-  useEffect(() => {
-    axios.get('user/')
-    .then((res)=>{
-        dispatch(loginActions.setUser(res.data))
-        dispatch(loginActions.setLogin())
-        console.log(res.data,"looogogoog")
-    })
-    .catch(err=> console.log("ERRRRRRRRR",err.response.data))
-  }, [])
+  // useEffect(() => {
+  //   axios.get('user/')
+  //   .then((res)=>{
+  //       dispatch(loginActions.setUser(res.data))
+  //       dispatch(loginActions.setLogin())
+  //       console.log(res.data,"looogogoog")
+  //   })
+  //   .catch(err=> console.log("ERRRRRRRRR",err.response.data))
+  // }, [])
   
   return (
     <Router>
@@ -96,7 +95,7 @@ function App(props) {
         {/* <Route exact path="/login*" element={<SignInPage/>} /> */}
           
           <Route exact path="*" element={<Home />} />
-          
+          <Route exact path="/about" element={<About />} />
           <Route exact path="/product/:id" element={<ProductPage />} />
           
           <Route exact path="/products/" element={<Products />} />

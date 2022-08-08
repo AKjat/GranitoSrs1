@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import MenuIcon from '@mui/icons-material/Menu'
 import ProfileMenu from '../header/profileMenu/Menu';
-import { filterActions } from '../../pages/products/Reducers/filterSlice';
+import { productSearchActions } from '../../pages/products/Reducers/productReducer';
 
 const useStyles = makeStyles({
     // [theme.bre]
@@ -30,12 +30,12 @@ export default function MobileDrawer({loggedUser, handleLogout}) {
     right: false,
   });
 
-  useEffect(() => {
-    axios
-       .get(`categories/`)
-       .then((response)=>setCat(response.data))
-  }, []);
-    console.log(cat)
+  // useEffect(() => {
+  //   axios
+  //      .get(`categories/`)
+  //      .then((response)=>setCat(response.data))
+  // }, []);
+  //   console.log(cat)
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -49,12 +49,12 @@ export default function MobileDrawer({loggedUser, handleLogout}) {
   const dispatch = useDispatch()
   
   const handleProductsClick=()=>{
-    dispatch(filterActions.remAllSearches())
+    dispatch(productSearchActions.clearSearch())
     setState({...state, 'left': false})
   }
   const handleFilterCateg=(id)=>{
       console.log("Hover", id)
-      dispatch(filterActions.setSearch({name:"category", value:id}))
+      dispatch(productSearchActions.setSearch({name:"category", value:id}))
       setState({...state, 'left': false})
   }
 

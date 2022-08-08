@@ -34,21 +34,7 @@ function Home(props) {
   const [mostDemanding, setMostDemanding] = React.useState([]);
   const [newArrival, setNewArrival] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  const getProducts = () => {
-    axios.get(`products/`).then((response) => {
-      const allproducts = response.data.results;
-      console.log(allproducts);
-      setMostDemanding(
-        allproducts.filter((d) => d.tag.name === "Most Demanding")
-      );
-      setNewArrival(allproducts.filter((d) => d.tag.name === "Newly Arrival"));
-      setLoading(false);
-    });
-  };
+  
   const classes = useStyles();
   return (
     <Box marginTop={0.05}>

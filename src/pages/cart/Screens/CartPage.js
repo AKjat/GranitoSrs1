@@ -13,11 +13,11 @@ import {
 import { makeStyles } from "@mui/styles";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
-import SingleCart from "./components/SingleCart";
 import { useSelector } from "react-redux";
-import AddressChange from "./components/AddressChange";
+import AddressChange from "../components/AddressChange";
 import { DeleteForever } from "@mui/icons-material";
 import axios from "axios";
+import SingleCart from "../components/SingleCart";
 
 
 const useStyles = makeStyles((theme) => ({

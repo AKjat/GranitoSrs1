@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { useDispatch, useSelector } from "react-redux";
-import { filterActions } from '../../Reducers/filterSlice';
+import { productSearchActions } from '../../Reducers/productReducer';
 
 
 function valuetext(value) {
@@ -36,9 +36,9 @@ const marks=[
 export default function RangeSlider() {
  
   const [value, setValue] = React.useState([0,2000]);
-  const filters = useSelector(state=>state.filter.searchData)
+  const filters = useSelector(state=>state.productSearch)
   React.useEffect(() => {
-    if(filters.hasOwnProperty('price_min') == false){
+    if(filters.hasOwnProperty('price_min') === false){
       setValue([0,2000])
     }
     else{
@@ -51,12 +51,12 @@ export default function RangeSlider() {
     // props.getValue(newValue);
     const val = newValue
     if(val[0] === 0 && val[1] === 1000  ){
-      dispatch(filterActions.remSearch({name:'price_min'}))
-      dispatch(filterActions.remSearch({name:'price_max'}))
+      dispatch(productSearchActions.removeSearch({name:'price_min'}))
+      dispatch(productSearchActions.removeSearch({name:'price_max'}))
     }
     else{
-      dispatch(filterActions.setSearch({name:"price_min", value: val[0]}))
-      dispatch(filterActions.setSearch({name:"price_max", value: val[1]}))
+      dispatch(productSearchActions.setSearch({name:"price_min", value: val[0]}))
+      dispatch(productSearchActions.setSearch({name:"price_max", value: val[1]}))
     }
     // dispatch(getFilter("nothing") )
   };

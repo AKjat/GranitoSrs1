@@ -6,7 +6,7 @@ import TreeItem from "@mui/lab/TreeItem";
 import { TreeView } from "@mui/lab";
 import { Skeleton } from "@mui/material"
 import { useDispatch } from "react-redux";
-import { filterActions } from "../Reducers/filterSlice";
+import { productSearchActions } from "../Reducers/productReducer";
 
 export default function Categories({categories}) {
 
@@ -15,7 +15,7 @@ export default function Categories({categories}) {
   
 
   const filterByCategory = ({value}) =>{
-    dispatch(filterActions.setSearch({name:"category", value:value}))
+    dispatch(productSearchActions.setSearch({name:"category", value:value}))
     // dispatch(getFilter("nothing") )
   }
   return (
