@@ -33,7 +33,7 @@ const ImgSlider = () => {
   return (
     <Box className={classes.root}>
       <Carousel>
-        <Carousel.Item className={classes.imgB} interval={1000}>
+        <Carousel.Item className={classes.imgB} interval={1000 }>
           <img
             className="d-block w-100"
             src="img/product/NewGold/1.jpg"
@@ -152,3 +152,4 @@ const ImgSlider = () => {
 };
 
 export default ImgSlider;
+

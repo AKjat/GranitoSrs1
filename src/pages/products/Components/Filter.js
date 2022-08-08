@@ -18,19 +18,11 @@ import PublicIcon from "@mui/icons-material/Public";
 import FormatPaintIcon from "@mui/icons-material/FormatPaint";
 import Categories from "./Categories";
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD:src/pages/home/filter/Filter.js
-import { filterActions } from "../../../redux/reducers/filterSlice";
-import { makeStyles } from "@mui/styles";
-import { searchActions } from "../../../redux/reducers/searchSlice";
-import { Country } from "country-state-city";
-import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-=======
 import { makeStyles } from "@mui/styles";
 import {Country} from "country-state-city"
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { filterActions } from "../Reducers/filterSlice";
 
->>>>>>> main:src/pages/products/Components/Filter.js
 
 const useStyles = makeStyles((theme) => ({
   hideM: {
