@@ -55,7 +55,7 @@ const HoverMenu = ({ loading, login, wrong, clearWrongLogin }) => {
   return (
     <div style={{display: 'flex', alignItems:'center'}}>
         <Button
-        color="secondary"
+        color="primary"
         ref={popoverAnchor}
         aria-owns="mouse-over-popover"
         aria-haspopup="true"

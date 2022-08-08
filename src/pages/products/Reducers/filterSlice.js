@@ -93,7 +93,7 @@ export const getFilter= (name, value) => {
         
         const {filter} = getState()
         const searchData = filter.searchData
-        let url = new URL(`${axios.defaults.baseURL}enquiry_product/`)
+        let url = new URL(`${axios.defaults.baseURL}granito_product/`)
         url.search = new URLSearchParams(searchData);
         dispatch(filterActions.setLoading(true))
         axios
