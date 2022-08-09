@@ -95,6 +95,7 @@ const Footer = () => {
         </Box>
       </Grid>
     </Grid>
+    <Typography marginTop={2} align='center'> Shree Ram Stones & Company &copy;  2022</Typography>
     </Box>
   );
 };
