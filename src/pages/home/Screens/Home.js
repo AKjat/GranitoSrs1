@@ -89,7 +89,7 @@ function Home(props) {
       </Grid>
       <Container>
         <Grid container spacing={6}>
-          <Grid item xs={12} sm={12} lg={6}  >
+          <Grid item xs={12} sm={12} lg={6}>
             <ImgSlider />
             <h3> Indian Marble</h3>
           </Grid>
@@ -99,6 +99,30 @@ function Home(props) {
           </Grid>
         </Grid>
       </Container>
+      <Container>
+        <Grid container spacing={6}>
+          <Grid item xs={12} sm={12} lg={6}>
+            <ImgSlider />
+            <h3> Indian Marble</h3>
+          </Grid>
+          <Grid item xs={12} sm={12} lg={6}>
+            <ImgSlider />
+            <h3> Indian Marble</h3>
+          </Grid>
+        </Grid>
+      </Container>
+      <Box bac>
+        <Grid container Spacing={6}>
+          <Grid item xs={12} sm={12} lg={4}>
+            <ImgSlider />
+            <h3> Indian Marble</h3>
+          </Grid>
+          <Grid item xs={12} sm={12} lg={8}>
+            <ImgSlider />
+            <h3> Indian Marble</h3>
+          </Grid>
+        </Grid>
+      </Box>
     </Box>
   );
 }
