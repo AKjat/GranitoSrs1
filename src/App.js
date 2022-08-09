@@ -69,7 +69,7 @@ function App(props) {
   const classes = useStyles()
 
   let csrftoken = Cookies.get('csrftoken')
-  axios.defaults.baseURL = 'http://192.168.1.25:8000/api/'
+  axios.defaults.baseURL = 'http://192.168.1.23:8000/api/'
   axios.defaults.headers.common['X-CSRFToken'] = csrftoken
   axios.defaults.withCredentials = true
   const dispatch = useDispatch()
