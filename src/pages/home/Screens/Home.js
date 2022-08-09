@@ -13,6 +13,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ImgSlider from "../components/ImgSlider";
+// import homsestyle from "./Home.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,7 +81,7 @@ function Home(props) {
           <Typography> View Our Collections</Typography>
         </Button>
       </Stack>
-      <Grid>
+      <Grid padding={3}>
         <div>
           <h1>
             <u>Latest Stone Collections</u>
@@ -88,7 +89,16 @@ function Home(props) {
         </div>
       </Grid>
       <Container>
-        <Grid container spacing={6}>
+        <Grid container columnSpacing={6}>
+          <Grid item xs={12} sm={12} lg={6}>
+            <ImgSlider />
+            <h3> Indian Marble</h3>
+          </Grid>
+          <Grid item xs={12} sm={12} lg={6}>
+            <ImgSlider />
+            <h3> Indian Marble</h3>
+          </Grid>
+
           <Grid item xs={12} sm={12} lg={6}>
             <ImgSlider />
             <h3> Indian Marble</h3>
@@ -99,29 +109,86 @@ function Home(props) {
           </Grid>
         </Grid>
       </Container>
-      <Container>
-        <Grid container spacing={6}>
-          <Grid item xs={12} sm={12} lg={6}>
-            <ImgSlider />
-            <h3> Indian Marble</h3>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={6}>
-            <ImgSlider />
-            <h3> Indian Marble</h3>
-          </Grid>
+      <Box sx={{ backgroundColor: "#E9EBEA" }}>
+        <Grid container paddingLeft={3} paddingTop={3}>
+          <Box>
+            <h1 style={{ fontsize: "1000" }}>
+              High Quality Stones Perfect for Elegant Interiors
+            </h1>
+          </Box>
         </Grid>
-      </Container>
-      <Box bac>
-        <Grid container Spacing={6}>
-          <Grid item xs={12} sm={12} lg={4}>
-            <ImgSlider />
-            <h3> Indian Marble</h3>
+        <Divider />
+        <Box>
+          <Grid container spacing={3} padding={4}>
+            <Grid item xs={12} sm={12} lg={3}>
+              <Typography align="center">
+                <h5>
+                  <u>
+                    <b>Our Infrastructure</b>
+                  </u>
+                </h5>
+              </Typography>
+              <Typography>
+                <h6>
+                  Since the commencement of our corporation, we have strong and
+                  well-equipped infrastructure unit. This infrastructure unit is
+                  fully supported by our skilled and experienced professionals.
+                </h6>
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={12} lg={3}>
+              <Typography align="center">
+                <h5>
+                  <u>
+                    <b>Product Portfolio</b>
+                  </u>
+                </h5>
+              </Typography>
+              <Typography>
+                <h6>
+                  We are a renowned exporter and wholesaler of Natural stones.
+                  Our range includes Marble, Granite, Sandstone and Marble
+                  Handicrafts. These products are procured from reliable
+                  vendors, which design these in compliance.
+                </h6>
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={12} lg={3}>
+              <Typography align="center">
+                <h5>
+                  <u>
+                    <b>Our Team</b>
+                  </u>
+                </h5>
+              </Typography>
+              <Typography>
+                <h6>
+                  We are supported by dedicated and talented professionals,
+                  which have the vast knowledge of this domain. These are
+                  employed by our senior managers after testing them on their
+                  qualification and experience.
+                </h6>
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={12} lg={3}>
+              <Typography align="center">
+                <h5>
+                  <u>
+                    {" "}
+                    <b>Quality Standards</b>
+                  </u>
+                </h5>
+              </Typography>
+              <Typography>
+                <h6>
+                  Keeping all quality industrial recommended quality parameters
+                  and standards as our prime focus, we manufacture our entire
+                  range of products. For quality approved delivery of products.
+                </h6>
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={12} lg={8}>
-            <ImgSlider />
-            <h3> Indian Marble</h3>
-          </Grid>
-        </Grid>
+        </Box>
       </Box>
     </Box>
   );
