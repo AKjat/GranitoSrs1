@@ -1,10 +1,18 @@
-import { Box, Button, Card, Divider, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ImgSlider from "../components/ImgSlider";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,10 +44,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "rgb(7, 177, 77, 0.42)",
     },
   },
-  
 }));
-
-
 
 function Home(props) {
   const [mostDemanding, setMostDemanding] = React.useState([]);
@@ -76,11 +81,24 @@ function Home(props) {
         </Button>
       </Stack>
       <Grid>
-      <div >
-        <h1><u>Latest Stone Collections</u></h1>
-      </div>
-      
+        <div>
+          <h1>
+            <u>Latest Stone Collections</u>
+          </h1>
+        </div>
       </Grid>
+      <Container>
+        <Grid container spacing={6}>
+          <Grid item xs={12} sm={12} lg={6}  >
+            <ImgSlider />
+            <h3> Indian Marble</h3>
+          </Grid>
+          <Grid item xs={12} sm={12} lg={6}>
+            <ImgSlider />
+            <h3> Indian Marble</h3>
+          </Grid>
+        </Grid>
+      </Container>
     </Box>
   );
 }

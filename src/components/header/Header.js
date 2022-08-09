@@ -106,153 +106,73 @@ const Header = (props) => {
               />
             </Box>
           </Grid>
-          {/* <Grid item xs={3} sm={3} md={3} lg={4}>
-            <Box>
-             
-              <NewSearch />
-            </Box>
-          </Grid> 
-
-          <Grid className={classes.hide} item xs={1} lg={1}>
-            <Box>
-              {loggedUser ? (
-                <ProfileMenu
-                  loggedUser={loggedUser}
-                  handleLogout={handleLogout}
-                />
-              ) : (
+          <Grid
+            xs={9}
+            lg={6}
+            container
+            justifyContent="space-around"
+            alignItems="center"
+            item
+          >
+            <Grid className={classes.hide} item xs={1} lg={1}>
+              <Box>
                 <Button
-                  component={Link}
-                  to="/login"
-                  variant="contained"
+                  id="home"
                   color="primary"
-                  size="small"
-                  endIcon={<PersonIcon />}
-                >
-                  Login
-                </Button>
-              )}
-            </Box>
-          </Grid>
-          <Grid className={classes.hide} item xs={1} lg={1}>
-            <Box>
-              <Badge badgeContent={totalCartItems} color="primary">
-                <Button
                   component={Link}
-                  to="/cart"
-                  size="small"
-                  variant="outlined"
-                  endIcon={<LocalShippingIcon />}
+                  to="/"
+                  className={classes.items}
                 >
-                  Truck
+                  Home
                 </Button>
-              </Badge>
-            </Box>
+              </Box>
+            </Grid>
+            <Grid className={classes.hide} item xs={1} lg={1}>
+              <Box>
+                <HoverMenu filterItem={filterItem} filterIte={filterIte} />
+              </Box>
+            </Grid>
+            <Grid className={classes.hide} item xs={1} lg={1}>
+              <Box>
+                <Button
+                  id="about"
+                  color="primary"
+                  className={classes.items}
+                  component={Link}
+                  to="/about"
+                >
+                  About
+                </Button>
+              </Box>
+            </Grid>
+            <Grid className={classes.hide} item xs={1} lg={1}>
+              <Box>
+                <Button
+                  id="home"
+                  color="primary"
+                  component={Link}
+                  to="/"
+                  className={classes.items}
+                >
+                  Blog
+                </Button>
+              </Box>
+            </Grid>
+            <Grid className={classes.hide} item xs={1} lg={2}>
+              <Box>
+                <Button
+                  id="home"
+                  color="primary"
+                  component={Link}
+                  to="/"
+                  className={classes.items}
+                >
+                  Contact-Us
+                </Button>
+              </Box>
+            </Grid>
           </Grid>
-
-          <Grid item xs={2} marginRight={1}>
-            <Box className={classes.hide}>
-              <Button variant="outlined" startIcon={<PhoneIcon />} size="small">
-                Call Now
-              </Button>
-            </Box>
-            <Box className={classes.hideD}>
-              <IconButton color="primary">
-                <PhoneIcon />
-              </IconButton>
-            </Box>
-          </Grid>*/}
-          <Grid className={classes.hide} item xs={1} lg={1}>
-            <Box>
-              
-            <Button
-                id="home"
-                color="primary"
-                component={Link}
-                to="/"
-                className={classes.items}
-              >
-                Home
-              </Button>
-            </Box>
-          </Grid>
-          <Grid className={classes.hide} item xs={1} lg={1}>
-            <Box>
-              
-            <HoverMenu filterItem={filterItem} filterIte={filterIte} />
-            </Box>
-          </Grid>
-          <Grid className={classes.hide} item xs={1} lg={1}>
-            <Box>
-              
-            <Button
-                id="about"
-                color="primary"
-                className={classes.items}
-                component={Link}
-                to="/about"
-              >
-                About
-              </Button>
-            </Box>
-          </Grid>
-          <Grid className={classes.hide} item xs={1} lg={1}>
-            <Box>
-              
-            <Button
-                id="home"
-                color="primary"
-                component={Link}
-                to="/"
-                className={classes.items}
-              >
-                Blog
-              </Button>
-            </Box>
-          </Grid>
-          <Grid className={classes.hide} item xs={1} lg={1}>
-            <Box>
-              
-            <Button
-                id="home"
-                color="primary"
-                component={Link}
-                to="/"
-                className={classes.items}
-              >
-                Contact Us
-              </Button>
-            </Box>
-          </Grid>
-          
-          
-            {/* <Box
-              className={classes.hideM}
-              sx={{ width: "100%", bgcolor: "#e59b0e", padding: "0" }}
-            >
-              <Grid className={classes.hide} item xs={1} lg={1}>
-              <Button
-                id="home"
-                color="secondary"
-                component={Link}
-                to="/"
-                className={classes.items}
-              >
-                Home
-              </Button>
-              </Grid>
-              <HoverMenu filterItem={filterItem} filterIte={filterIte} />
-              <Button
-                id="about"
-                color="secondary"
-                className={classes.items}
-                component={Link}
-                to="/about"
-              >
-                About
-              </Button>
-            </Box> */}
-          </Grid>
+        </Grid>
       </Toolbar>
     </AppBar>
   );

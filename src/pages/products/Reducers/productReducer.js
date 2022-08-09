@@ -96,7 +96,7 @@ export const getProducts= ( next, prev) => {
           }
         }
         else{
-          link = `${axios.defaults.baseURL}enquiry_product/`
+          link = `${axios.defaults.baseURL}granito_product/`
         }
         let url = new URL(link)
         if (!next && !prev ) {
