@@ -33,118 +33,57 @@ const ImgSlider = () => {
   return (
     <Box className={classes.root}>
       <Carousel>
-        <Carousel.Item className={classes.imgB} interval={1000 }>
+        <Carousel.Item className={classes.imgB} interval={1000}>
           <img
             className="d-block w-100"
-            src="img/product/NewGold/1.jpg"
+            src="img/SliderHome/01.jpg"
             alt="First slide"
-            height={400}
+            height={500}
           />
-          <Carousel.Caption className={classes.textBox}>
-            <Grid
-              container
-              alignItems="center"
-              justifyContent="space-between"
-              spacing={1}
-            >
-              <Grid item>
-                <p className={classes.capitalize}>
-                  An Excellence that realizes dreams
-                </p>
-                <h1 className={classes.capitalize}>
-                  {" "}
-                  Always in the pursuit of the Impossible{" "}
-                </h1>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="contained"
-                  LinkComponent={Link}
-                  to="/products"
-                  onClick={handleProductsClick}
-                >
-                  {" "}
-                  See Our Products{" "}
-                </Button>
-              </Grid>
-            </Grid>
-          </Carousel.Caption>
         </Carousel.Item>
 
         <Carousel.Item className={classes.imgB} interval={1000}>
           <img
             className="d-block w-100"
-            src="img/product/alaskagold/1.jpg"
+            src="img/SliderHome/02.jpg"
             alt="Second slide"
-            height={400}
+            height={500}
           />
-          <Carousel.Caption className={classes.textBox}>
-            <Grid
-              container
-              alignItems="center"
-              justifyContent="space-between"
-              spacing={1}
-            >
-              <Grid item>
-                <p className={classes.capitalize}>
-                  The most astonishing materials in unusual colours & designs{" "}
-                </p>
-                <h1 className={classes.capitalize}>
-                  {" "}
-                  Witness Mother nature's finest creations{" "}
-                </h1>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="contained"
-                  LinkComponent={Link}
-                  to="/products"
-                  onClick={handleProductsClick}
-                >
-                  {" "}
-                  See Our Products{" "}
-                </Button>
-              </Grid>
-            </Grid>
-          </Carousel.Caption>
         </Carousel.Item>
 
         <Carousel.Item className={classes.imgB} interval={1000}>
           <img
             className="d-block w-100"
-            src="img/product/red/1.jpg"
+            src="img/SliderHome/03.jpg"
             alt="Third slide"
-            height={400}
+            height={500}
           />
-          <Carousel.Caption className={classes.textBox}>
-            <Grid
-              container
-              alignItems="center"
-              justifyContent="space-between"
-              spacing={1}
-            >
-              <Grid item>
-                <p className={classes.capitalize}>
-                  Celebrate the luxury of nature and timeless legacy with our
-                  natural stone collection
-                </p>
-                <h1 className={classes.capitalize}>
-                  The Bliss of nature with a dash of splendor
-                </h1>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="contained"
-                  LinkComponent={Link}
-                  to="/products"
-                  onClick={handleProductsClick}
-                >
-                  {" "}
-                  See Our Products{" "}
-                </Button>
-              </Grid>
-            </Grid>
-          </Carousel.Caption>
+        </Carousel.Item>
+                <Carousel.Item className={classes.imgB} interval={1000}>
+          <img
+            className="d-block w-100"
+            src="img/SliderHome/04.jpg"
+            alt="First slide"
+            height={500}
+          />
+        </Carousel.Item>
+
+        <Carousel.Item className={classes.imgB} interval={1000}>
+          <img
+            className="d-block w-100"
+            src="img/SliderHome/05.jpg"
+            alt="Second slide"
+            height={500}
+          />
+        </Carousel.Item>
+
+        <Carousel.Item className={classes.imgB} interval={1000}>
+          <img
+            className="d-block w-100"
+            src="img/SliderHome/02.jpg"
+            alt="Third slide"
+            height={500}
+          />
         </Carousel.Item>
       </Carousel>
     </Box>
@@ -152,4 +91,3 @@ const ImgSlider = () => {
 };
 
 export default ImgSlider;
-
