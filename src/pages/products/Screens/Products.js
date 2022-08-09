@@ -54,6 +54,7 @@ import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
   
     const dispatch = useDispatch();
     const products = useSelector((state) => state.product);
+    const productsLink = useSelector((state) => state.productLinks);
     const refreshing = useSelector((state) => state.refreshing);
     const loading = useSelector((state)=> state.productSearch)
     const filters = useSelector((state) => state.productSearch);
@@ -202,7 +203,7 @@ import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
               </Grid>
               <Grid container  flexDirection={'row'} spacing={2} marginTop={2}>
                 <Grid item xs={2} >
-                  <Button onClick={()=>handlePrev()}>Previous</Button>
+                  <Button onClick={()=>handlePrev()} disabled={productsLink.has}>Previous</Button>
                 </Grid>
                 <Grid item xs={7}>
 

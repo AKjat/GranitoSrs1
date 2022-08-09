@@ -9,7 +9,7 @@ import { productSearchActions } from "../../products/Reducers/productReducer";
 
 const useStyles = makeStyles((theme) => ({
   imgB: {
-    objectFit: "cover",
+    objectFit: "contain",
   },
   capitalize: {
     textTransform: "uppercase",
@@ -38,7 +38,7 @@ const ImgSlider = () => {
             className="d-block w-100"
             src="img/SliderHome/01.jpg"
             alt="First slide"
-            height={500}
+            // height={500}
           />
         </Carousel.Item>
 
@@ -47,7 +47,7 @@ const ImgSlider = () => {
             className="d-block w-100"
             src="img/SliderHome/02.jpg"
             alt="Second slide"
-            height={500}
+            // height={500}
           />
         </Carousel.Item>
 
@@ -56,7 +56,7 @@ const ImgSlider = () => {
             className="d-block w-100"
             src="img/SliderHome/03.jpg"
             alt="Third slide"
-            height={500}
+            // height={500}
           />
         </Carousel.Item>
                 <Carousel.Item className={classes.imgB} interval={1000}>
@@ -64,7 +64,7 @@ const ImgSlider = () => {
             className="d-block w-100"
             src="img/SliderHome/04.jpg"
             alt="First slide"
-            height={500}
+            // height={500}
           />
         </Carousel.Item>
 
@@ -73,7 +73,7 @@ const ImgSlider = () => {
             className="d-block w-100"
             src="img/SliderHome/05.jpg"
             alt="Second slide"
-            height={500}
+            // height={500}
           />
         </Carousel.Item>
 
@@ -82,7 +82,7 @@ const ImgSlider = () => {
             className="d-block w-100"
             src="img/SliderHome/02.jpg"
             alt="Third slide"
-            height={500}
+            // height={500}
           />
         </Carousel.Item>
       </Carousel>
