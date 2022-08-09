@@ -32,13 +32,18 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
   const classes = useStyles();
   return (
-    <Grid
-      container
+    <Box
+      
       component="footer"
       className={classes.root}
+      >
+    <Grid
+      container
+      // component="footer"
+      // className={classes.root}
       justifyContent="space-around"
     >
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} md={3}>
         <Box sx={{ marginBottom: 1 }} className={classes.logo}>
           <img
             src="img/logo/logo1.png"
@@ -52,7 +57,7 @@ const Footer = () => {
           exporters of premium quality Granite, Marbles, and All Natural Stones.
         </Typography>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} md={3}>
         <Box display="flex" flexDirection="column">
           <Typography variant="h6" fontStyle="revert">
             Contact Us <ContactSupportIcon />
@@ -75,7 +80,7 @@ const Footer = () => {
         </Box>
       </Grid>
 
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} md={3}>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <ArrowRightIcon />
           <Link
@@ -90,6 +95,7 @@ const Footer = () => {
         </Box>
       </Grid>
     </Grid>
+    </Box>
   );
 };
 
