@@ -12,7 +12,8 @@ import { makeStyles } from "@mui/styles";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import ImgSlider from "../components/ImgSlider";
+import ImgSlider from "../components/HomeImgSlider";
+import HomeImgCollections from "../components/HomeImgCollections";
 // import homsestyle from "./Home.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -74,7 +75,7 @@ function Home(props) {
       <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
         <Button
           component={Link}
-          to="/about"
+          to="/products"
           variant="outlined"
           sx={{ width: "60vw" }}
         >
@@ -89,25 +90,7 @@ function Home(props) {
         </div>
       </Grid>
       <Container>
-        <Grid container columnSpacing={6}>
-          <Grid item xs={12} sm={12} lg={6}>
-            <ImgSlider />
-            <h3> Indian Marble</h3>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={6}>
-            <ImgSlider />
-            <h3> Indian Marble</h3>
-          </Grid>
-
-          <Grid item xs={12} sm={12} lg={6}>
-            <ImgSlider />
-            <h3> Indian Marble</h3>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={6}>
-            <ImgSlider />
-            <h3> Indian Marble</h3>
-          </Grid>
-        </Grid>
+        <HomeImgCollections />
       </Container>
       <Box sx={{ backgroundColor: "#E9EBEA" }}>
         <Grid container paddingLeft={3} paddingTop={3}>
