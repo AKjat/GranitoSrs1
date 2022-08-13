@@ -23,7 +23,7 @@ import SignUp from './pages/signup/Screens/SignUp';
 import NewProduct from './pages/addNewProduct/Screens/NewProduct';
 import CartPage from './pages/cart/Screens/CartPage';
 import About from './pages/About';
-import Product from './components/product/Product';
+import Product from './pages/products/Screens/Product';
 
 
 const theme = createTheme({
