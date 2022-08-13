@@ -60,7 +60,7 @@ const HoverMenu = ({ loading, login, wrong, clearWrongLogin }) => {
         aria-owns="mouse-over-popover"
         aria-haspopup="true"
         component={Link}
-        to="/products"
+        to="/product"
         // onClick={openedPopover? popoverLeave : popoverEnter}
         onMouseEnter={popoverEnter}
         // onClick={popoverEnter}

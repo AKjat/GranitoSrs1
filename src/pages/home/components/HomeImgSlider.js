@@ -43,7 +43,7 @@ const ImgSlider = () => {
   return (
     <Box className={classes.root}>
       <Carousel>
-        {homeslider?.map((d, index) => (
+        {homeslider?.slice(0,6).map((d, index) => (
           <Carousel.Item className={classes.imgB} key={d.id} interval={1000}>
             <img
               className="d-block w-100"

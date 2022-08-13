@@ -13,7 +13,9 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ImgSlider from "../components/HomeImgSlider";
+
 import HomeImgCollections from "../components/HomeImgCollections";
+import VideoURL from "../components/VideoURL";
 // import homsestyle from "./Home.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -173,6 +175,49 @@ function Home(props) {
           </Grid>
         </Box>
       </Box>
+      <Box marginTop={2}>
+        <Typography align="center">
+          <h2>Watch Videos</h2>
+        </Typography>
+        <VideoURL />
+      </Box>
+      <Grid container>
+        <Grid item xs={12} sm={12} lg={12}>
+          <img
+            className="d-block w-100"
+            src="img\SliderHome\home.jpg"
+            // width={700}
+            //   src={d.image}
+            //   alt={d.name}
+          />
+        </Grid>
+      </Grid>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={12} lg={6}>
+          <img
+            className="d-block w-100"
+            src="img\SliderHome\world.png"
+           
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} lg={6}>
+          <Typography marginTop={2} align="center">
+            <h1>
+              Our Marbles are exported over 150+ Countries all over the world
+            </h1>
+          </Typography>
+          <Typography align="justify">
+            <h5>
+              List of 150+ Countries includes Russia, Iran, Saudi Arabia,
+              Taiwan, Peru, UAE, China, USA, France, Italy, Philippines,
+              Malaysia, Singapore, Pakistan, Ethiopia, Tanzania, South Africa,
+              Egypt, Algeria, Morocco, Spain, Poland, Turkey, Argentina, Brazil,
+              Guatemala, Mexico, etc.
+            </h5>
+          </Typography>
+          <img className="d-block w-100" src="img\SliderHome\multistone.jpg" />
+        </Grid>
+      </Grid>
     </Box>
   );
 }

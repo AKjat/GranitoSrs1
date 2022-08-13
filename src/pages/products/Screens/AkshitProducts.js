@@ -45,7 +45,7 @@ import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
     },
   }));
   
-  const Products = () => {
+  const AkshitProducts = () => {
     const classes = useStyles();
     const [items, setItems] = useState([]);
     // const [loading, setLoading] = useState(true);
@@ -221,5 +221,5 @@ import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
     );
   };
   
-  export default Products;
+  export default AkshitProducts;
   
