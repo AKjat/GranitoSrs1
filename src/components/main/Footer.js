@@ -10,6 +10,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(5),
     },
     marginTop: theme.spacing(1),
+    backgroundImage:`url('/img/SliderHome/backGranite.jpg')`
   },
   logo: {
     [theme.breakpoints.down("sm")]: {
@@ -100,20 +102,35 @@ const Footer = () => {
           </Link>
         </Box>
         <Box display='flex'>
-        <IconButton>
+        <IconButton sx={{color:'blue'}}  >
+          <a target='_blank' href='https://www.facebook.com/companyofstone/'>
           <FacebookIcon/>
+          </a>
         </IconButton>
-        <IconButton>
+        <IconButton sx={{color:'#E4405F'}}>
+        <a target='_blank' href='https://instagram.com/shreeramstone_?igshid=YmMyMTA2M2Y='>
           <InstagramIcon/>
+        </a>
         </IconButton>
-        <IconButton>
+        <IconButton sx={{color:'#1DA1F2'}}>
+        <a target='_blank' href='https://twitter.com/AnkitSinghalSRS'>
           <TwitterIcon/>
+          </a>
         </IconButton>
-        <IconButton>
+        <IconButton sx={{color:'#0077b5'}} >
+          <a target='_blank'  href='https://www.linkedin.com/in/ankitsinghal90/'>
           <LinkedInIcon/>
+          </a>
         </IconButton>
-        <IconButton>
+        <IconButton sx={{color:'#4FCE5D'}}>
+        <a target='_blank'>
           <WhatsAppIcon/>
+          </a>
+        </IconButton>
+        <IconButton sx={{color:'red'}} fontSize='large'>
+        <a target='_blank' href='https://www.youtube.com/channel/UCXiRBTD8MD11u-iY2hBE4Wg'>
+          <YouTubeIcon/>
+          </a>
         </IconButton>
         </Box>
         </Box>
