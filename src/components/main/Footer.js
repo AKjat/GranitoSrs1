@@ -1,10 +1,15 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, IconButton, Typography } from "@mui/material";
 import React from "react";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import { makeStyles } from "@mui/styles";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -81,6 +86,7 @@ const Footer = () => {
       </Grid>
 
       <Grid item xs={12} sm={6} md={3}>
+        <Box display='flex' flexDirection='column'>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <ArrowRightIcon />
           <Link
@@ -92,6 +98,24 @@ const Footer = () => {
           >
             <Typography variant="body1">Transport Estimate</Typography>
           </Link>
+        </Box>
+        <Box display='flex'>
+        <IconButton>
+          <FacebookIcon/>
+        </IconButton>
+        <IconButton>
+          <InstagramIcon/>
+        </IconButton>
+        <IconButton>
+          <TwitterIcon/>
+        </IconButton>
+        <IconButton>
+          <LinkedInIcon/>
+        </IconButton>
+        <IconButton>
+          <WhatsAppIcon/>
+        </IconButton>
+        </Box>
         </Box>
       </Grid>
     </Grid>
