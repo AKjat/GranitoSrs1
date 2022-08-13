@@ -17,13 +17,13 @@ import { useDispatch } from 'react-redux';
 import { loginActions } from './redux';
 import Cookies from 'js-cookie'
 import Home from './pages/home/Screens/Home';
-import Products from './pages/products/Screens/Products';
 import ProductPage from './pages/ProductDetail/Screens/ProductPage';
 import SignIn from './pages/login/Screens/SignIn';
 import SignUp from './pages/signup/Screens/SignUp';
 import NewProduct from './pages/addNewProduct/Screens/NewProduct';
 import CartPage from './pages/cart/Screens/CartPage';
 import About from './pages/About';
+import Product from './components/product/Product';
 
 
 const theme = createTheme({
@@ -97,7 +97,7 @@ function App(props) {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/product/:id" element={<ProductPage />} />
           
-          <Route exact path="/products/" element={<Products />} />
+          <Route exact path="/product/" element={<Product />} />
             <Route exact path="/login" element={<SignIn/>} />
             <Route exact path="/signup" element={<SignUp/>} />
           {/* <Route exact path="/cart" element={isLoggedIn? <CartPage />:<SignIn/>} /> */}
