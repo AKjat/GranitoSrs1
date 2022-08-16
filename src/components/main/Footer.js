@@ -123,7 +123,7 @@ const Footer = () => {
           </a>
         </IconButton>
         <IconButton sx={{color:'#4FCE5D'}}>
-        <a target='_blank'>
+        <a target='_blank' href="https://wa.me/919571510000">
           <WhatsAppIcon/>
           </a>
         </IconButton>
