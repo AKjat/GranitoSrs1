@@ -77,7 +77,7 @@ function Home(props) {
       <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
         <Button
           component={Link}
-          to="/products"
+          to="/product"
           variant="outlined"
           sx={{ width: "60vw" }}
         >
