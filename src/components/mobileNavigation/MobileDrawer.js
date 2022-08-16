@@ -17,7 +17,6 @@ import ProfileMenu from "../header/profileMenu/Menu";
 import { filterActions } from "../../pages/products/Reducers/filterSlice";
 
 const useStyles = makeStyles({
-  // [theme.bre]
 });
 export default function MobileDrawer({ loggedUser, handleLogout }) {
   const [cat, setCat] = React.useState([]);
@@ -33,7 +32,6 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
   useEffect(() => {
     axios.get(`categories/`).then((response) => setCat(response.data));
   }, []);
-  console.log(cat);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -44,7 +42,6 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
     }
 
     setState({ ...state, [anchor]: open });
-    console.log("ANCHHOOOOOR CLOOOSEd");
   };
 
   const dispatch = useDispatch();
@@ -54,7 +51,6 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
     setState({ ...state, left: false });
   };
   const handleFilterCateg = (id) => {
-    console.log("Hover", id);
     dispatch(filterActions.setSearch({ name: "category", value: id }));
     setState({ ...state, left: false });
   };
@@ -67,7 +63,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : "60vw" }}
-      role="presentation"
+      role="presentation" margin={2}
     >
       <Grid container justifyContent="space-between">
         <Grid component={Link} to="/" item lg={1} marginTop={3} marginLeft={3}>
@@ -107,25 +103,16 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
           </Button>
         </Grid>
         <Grid item display="flex" flexDirection="column">
-          {/* <Button>
-              Products
-            </Button> */}
-
-          {/* <TreeView
-      aria-label="file system navigator"
-      defaultCollapseIcon={<ExpandMoreIcon />}
-      defaultExpandIcon={<ChevronRightIcon />}
-      sx={{ flexGrow: 1, overflowY: "auto" }}
-      //   sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
-    >       
-            <Button >
-            <TreeItem sx={{marginBottom:2}} nodeId={`120`} label="Products" >
-                    <TreeItem sx={{marginBottom:1, textDecoration: "none"}}  label="ccsd" nodeId="4"/>
-            </TreeItem>
-            </Button>
-            </TreeView> */}
-
-          <ButtonGroup
+        <Button
+            onClick={toggleDrawer(anchor, false)}
+            component={Link}
+            to="/products"
+            variant="outlined"
+            sx={{ width: "60vw" }}
+          >
+            Products
+          </Button>
+          {/* <ButtonGroup
             sx={{ justifyContent: "center" }}
             aria-label="split button"
           >
@@ -161,7 +148,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
                 </Button>
               ))}
             </Box>
-          </Collapse>
+          </Collapse> */}
         </Grid>
 
         <Grid item>

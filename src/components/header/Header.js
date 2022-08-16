@@ -128,8 +128,16 @@ const Header = (props) => {
               </Box>
             </Grid>
             <Grid className={classes.hide} item xs={1} lg={1}>
-              <Box>
-                <HoverMenu filterItem={filterItem} filterIte={filterIte} />
+              <Box color='primary'>
+                {/* <HoverMenu filterItem={filterItem} filterIte={filterIte} /> */}
+                <Button
+                  id="about"
+                  className={classes.items}
+                  component={Link}
+                  to="/products"
+                >
+                  Products
+                </Button>
               </Box>
             </Grid>
             <Grid className={classes.hide} item xs={1} lg={1}>
