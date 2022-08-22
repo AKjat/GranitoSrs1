@@ -24,6 +24,7 @@ import NewProduct from './pages/addNewProduct/Screens/NewProduct';
 import CartPage from './pages/cart/Screens/CartPage';
 import About from './pages/About';
 import Product from './pages/products/Screens/Product';
+import ProductBlockPage from './pages/products/Screens/ProductBlockPage';
 
 
 const theme = createTheme({
@@ -69,7 +70,7 @@ function App(props) {
   const classes = useStyles()
 
   let csrftoken = Cookies.get('csrftoken')
-  axios.defaults.baseURL = 'http://192.168.1.23:8000/api/'
+  axios.defaults.baseURL = 'http://192.168.43.117:8000/api/'
   axios.defaults.headers.common['X-CSRFToken'] = csrftoken
   axios.defaults.withCredentials = true
   const dispatch = useDispatch()
@@ -96,7 +97,7 @@ function App(props) {
           <Route exact path="*" element={<Home />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/product/:id" element={<ProductPage />} />
-          
+          <Route exact path="/product_block_page/:id" element={<ProductBlockPage />} />
           <Route exact path="/product/" element={<Product />} />
             <Route exact path="/login" element={<SignIn/>} />
             <Route exact path="/signup" element={<SignUp/>} />

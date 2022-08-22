@@ -134,7 +134,7 @@ const Header = (props) => {
                   id="about"
                   className={classes.items}
                   component={Link}
-                  to="/products"
+                  to="/product"
                 >
                   Products
                 </Button>
@@ -159,7 +159,7 @@ const Header = (props) => {
                   id="home"
                   color="primary"
                   component={Link}
-                  to="/"
+                  to="/blog"
                   className={classes.items}
                 >
                   Blog
@@ -172,7 +172,7 @@ const Header = (props) => {
                   id="home"
                   color="primary"
                   component={Link}
-                  to="/"
+                  to="/contact"
                   className={classes.items}
                 >
                   Contact-Us

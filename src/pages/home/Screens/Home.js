@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-
+ 
     "& .tag_heading": {
       display: "flex",
       justifyContent: "space-between",

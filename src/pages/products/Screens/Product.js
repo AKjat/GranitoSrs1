@@ -12,48 +12,60 @@ import {
   Grid,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
+import { getproduct } from "../Reducers/ProductR";
+import BlockPhotos from "./BlockPhotos";
 
 const Product = () => {
+  const dispatch = useDispatch();
+
+  const product = useSelector((state) => state.products);
+  // const link = `${d.blocks.block_photos.media_id}`
+  React.useEffect(() => {
+    dispatch(refreshingActions.setRefreshing(true));
+    dispatch(getproduct());
+  }, []);
+
   return (
-    <Grid padding={5}>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
-          <img
-            className="d-block w-100"
-            src="https://easystone.in/api/whatsapp_media/62ef5682e8fc537f048760fa/5ECB7816E37C22486AD3.jpeg"
-            //   src={d.image}
-            //   alt={d.name}
-          />
-          <CardContent>
-            <Typography  variant="h6" component="div">
-              Name
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <Divider />
-        <CardActions>
-          <Button
-            size="small"
-            color="primary"
-            component={Link}
-            to="/product"
-            variant="outlined"
-            sx={{ width: "60vw" }}
-          >
-            Share
-          </Button>
-          <Button
-            size="small"
-            color="primary"
-            component={Link}
-            to="/product"
-            variant="outlined"
-            sx={{ width: "60vw" }}
-          >
-            Details
-          </Button>
-        </CardActions>
-      </Card>
+    <Grid container>
+      {product?.map((product, index) => (
+        <Grid item padding={5} xs={12} sm={12} lg={4}>
+          <Card>
+            <CardActionArea component={Link} to={`/product_block_page/${product.id}`}>
+              <BlockPhotos product={product}/>
+              <CardContent>
+                <Typography variant="h6" component="div" align="center">
+                  <b>{product.product_name}</b>
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <Divider />
+            <CardActions>
+              <Button
+                size="small"
+                color="primary"
+                component={Link}
+                to="/product/hye"
+                variant="outlined"
+                sx={{ width: "60vw" }}
+              >
+                Share
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                component={Link}
+                to="/product/hye"
+                variant="outlined"
+                sx={{ width: "60vw" }}
+              >
+                Details
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
+      ))}
     </Grid>
   );
 };
