@@ -1,5 +1,7 @@
-import { productSlice } from "./ProductR";
-import { productLinksSlice, productSearchSlice } from "./productReducer";
+import { productBlockSlice } from "./productBlockReducer";
+import { productSlice } from "./ProductReducer";
+import { productLinksSlice, productSearchSlice } from "./productAkshitReducer";
+import { productBlockDetailSlice } from "./productBlockDetailReducer";
 
 
 export const productReducers = {
@@ -10,4 +12,7 @@ export const productReducers = {
 
 
     products:productSlice.reducer,
+    productBlock:productBlockSlice.reducer,
+    productBlockDetail:productBlockDetailSlice.reducer,
+
 }

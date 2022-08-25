@@ -14,7 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
-import { getproduct } from "../Reducers/ProductR";
+import { getproduct } from "../Reducers/ProductReducer";
 import BlockPhotos from "./BlockPhotos";
 
 const Product = () => {

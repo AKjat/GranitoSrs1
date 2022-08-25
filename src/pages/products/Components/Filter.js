@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import {Country} from "country-state-city"
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
-import { productSearchActions } from "../Reducers/productReducer";
+import { productSearchActions } from "../Reducers/productAkshitReducer";
 
 
 const useStyles = makeStyles((theme) => ({

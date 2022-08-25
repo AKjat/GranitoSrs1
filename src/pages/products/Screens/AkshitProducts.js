@@ -23,7 +23,7 @@ import MobileFilter from "../Components/MobileFilter";
 import SkeletonProduct from '../../../components/product/SkeletonProduct';
 import Filter from "../Components/Filter";
 import Product from "../../../components/product/Product";
-import {  getProducts, productSearchActions } from "../Reducers/productReducer";
+import {  getProducts, productSearchActions } from "../Reducers/productAkshitReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
   
   const useStyles = makeStyles((theme) => ({

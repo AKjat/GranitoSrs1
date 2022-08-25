@@ -20,7 +20,7 @@ import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import { Country } from "country-state-city";
-import { productSearchActions } from "../Reducers/productReducer";
+import { productSearchActions } from "../Reducers/productAkshitReducer";
 
 const useStyles = makeStyles((theme) => ({
   checkForm: {

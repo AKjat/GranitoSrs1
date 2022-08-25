@@ -32,7 +32,7 @@ const BlockPhotos = ({ product }) => {
           <Carousel.Item className={classes.imgB} key={index} interval={1000}>
             <img
               className="d-block w-100"
-              src={`https://easystone.in/api/whatsapp_media/${block.block_photos[0].media_id}/${block.block_photos[0].fileName}`}
+              src={`https://easystone.in/api/whatsapp_media/${block?.block_photos[0]?.media_id}/${block?.block_photos[0]?.fileName}`}
               height={250}
             />
           </Carousel.Item>

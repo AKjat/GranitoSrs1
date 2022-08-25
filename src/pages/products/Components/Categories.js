@@ -6,7 +6,7 @@ import TreeItem from "@mui/lab/TreeItem";
 import { TreeView } from "@mui/lab";
 import { Skeleton } from "@mui/material"
 import { useDispatch } from "react-redux";
-import { productSearchActions } from "../Reducers/productReducer";
+import { productSearchActions } from "../Reducers/productAkshitReducer";
 
 export default function Categories({categories}) {
 

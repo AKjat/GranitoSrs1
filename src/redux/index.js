@@ -7,7 +7,7 @@ import signupSlice from "../pages/signup/Reducers/signupslice";
 import transportSlice from "./reducers/transportSlice";
 import uploadSlice from "../pages/addNewProduct/Reducer/uploadSlice";
 import imgUploadSlice from "../pages/addNewProduct/Reducer/imageUpload";
-import filterSlice from "../pages/products/Reducers/productReducer";
+import filterSlice from "../pages/products/Reducers/productAkshitReducer";
 import { productReducers } from "../pages/products/Reducers";
 import { reducers } from "./reducers";
 

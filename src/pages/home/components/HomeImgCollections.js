@@ -14,26 +14,27 @@ import {
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import BlockPhotos from "../../products/Screens/BlockPhotos";
-import { getproduct } from "../../products/Reducers/ProductR";
+import { getproduct } from "../../products/Reducers/ProductReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
+import { getProductBlockDetail } from "../../products/Reducers/productBlockReducer";
 
 const HomeImgCollections = () => {
   const dispatch = useDispatch();
 
   const product = useSelector((state) => state.products);
-  // const link = `${d.blocks.block_photos.media_id}`
   React.useEffect(() => {
     dispatch(refreshingActions.setRefreshing(true));
     dispatch(getproduct());
   }, []);
+
   return (
     <div>
       <Grid container columnSpacing={6}>
         {product?.slice(0, 6).map((product, index) => (
           <Grid item xs={12} sm={12} lg={4}>
-            <a href="/product">
+            <Link to={`/product_block_page/${product.id}`}>
               <BlockPhotos product={product} />
-            </a>
+            </Link>
             <Typography align="center">
               <b> {product.product_name} </b>
             </Typography>

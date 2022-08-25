@@ -34,7 +34,7 @@ import { orange, red } from "@mui/material/colors";
 import './NewSearch.css'
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
-import { productSearchActions } from "../../../pages/products/Reducers/productReducer";
+import { productSearchActions } from "../../../pages/products/Reducers/productAkshitReducer";
 
 
 const PopperStyle = styled(Popper, { shouldForwardProp })(({ theme }) => ({

@@ -6,7 +6,7 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import axios from "axios";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { useDispatch } from "react-redux";
-import { productSearchActions } from "../../pages/products/Reducers/productReducer";
+import { productSearchActions } from "../../pages/products/Reducers/productAkshitReducer";
 
 const useStyles = makeStyles(theme => ({
   popover: {

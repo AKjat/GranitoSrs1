@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { makeStyles } from "@mui/styles";
 import { Box, Grid, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { productSearchActions } from "../../products/Reducers/productReducer";
+import { productSearchActions } from "../../products/Reducers/productAkshitReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 import { getHomeSlider } from "../Reducers/HomeSliderReducer";
 
@@ -42,15 +42,16 @@ const ImgSlider = () => {
 
   return (
     <Box className={classes.root}>
-      <Carousel>
+      <Carousel >
         {homeslider?.slice(0,6).map((d, index) => (
-          <Carousel.Item className={classes.imgB} key={d.id} interval={1000}>
+          <Carousel.Item  className={classes.imgB} key={d.id} interval={1000}>
             <img
               className="d-block w-100"
               // src="https://easystone.in/api/whatsapp_media/62ef5682e8fc537f048760fa/5ECB7816E37C22486AD3.jpeg"
               src={d.image}
               alt={d.name}
               // height={500}
+              sx={{objectFit:'cover'}}
             />
           </Carousel.Item>
         ))}
