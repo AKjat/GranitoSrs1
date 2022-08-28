@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
-import { Box, createTheme, ThemeProvider } from "@mui/material";
-// import Home from './pages/home/Home';
+import { createTheme, ThemeProvider } from "@mui/material";
 import Header from "./components/header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { orange, red } from "@mui/material/colors";
-// import ProductPage from './pages/product/ProductPage';
-// import Filterpage from './pages/home/filter/Filterpage';
-import HomeCateg from "./components/NavigationBar/HomeCateg";
+import { orange } from "@mui/material/colors";
 import Footer from "./components/main/Footer";
 import ScrollToTop from "./ScrollToTop";
 import { makeStyles } from "@mui/styles";
 import TransportEstimate from "./pages/TransportFee/screens/TransportEstimate";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { loginActions } from "./redux";
 import Cookies from "js-cookie";
 import Home from "./pages/home/Screens/Home";
 import SignIn from "./pages/login/Screens/SignIn";
@@ -66,9 +61,9 @@ function App(props) {
   const classes = useStyles();
 
   let csrftoken = Cookies.get("csrftoken");
-  // axios.defaults.baseURL = "https://stonebharat.in/api/";
+  axios.defaults.baseURL = "https://stonebharat.in/api/";
   // axios.defaults.baseURL = "http://192.168.1.23:8000/api/";
-  axios.defaults.baseURL = "http://192.168.43.117:8000/api/";
+  // axios.defaults.baseURL = "http://192.168.43.117:8000/api/";
 
   axios.defaults.headers.common["X-CSRFToken"] = csrftoken;
   axios.defaults.withCredentials = true;
@@ -96,7 +91,11 @@ function App(props) {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/blog" element={<Blog />} />
-          <Route exact path="/product_block_detail_page/:id" element={<ProductBlockDetailPage />} />
+          <Route
+            exact
+            path="/product_block_detail_page/:id"
+            element={<ProductBlockDetailPage />}
+          />
           <Route
             exact
             path="/product_block_page/:id"
