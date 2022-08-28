@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { makeStyles } from "@mui/styles";
-import { Box, Grid, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { productSearchActions } from "../../products/Reducers/productAkshitReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 import { getHomeSlider } from "../Reducers/HomeSliderReducer";
 

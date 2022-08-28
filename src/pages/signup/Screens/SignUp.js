@@ -1,9 +1,7 @@
-import { Autocomplete, Avatar, Box, Button, Container, TextField, Typography } from '@mui/material'
+import { Avatar, Box, Button, Container, TextField, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import {Country, State, City} from 'country-state-city'
 import { makeStyles, styled } from '@mui/styles';
-import InputMask from 'react-input-mask';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUp, signupActions } from '../Reducers/signupslice';
 import { loginActions } from '../../../redux';
@@ -54,7 +52,6 @@ const ValidationTextField = styled(TextField)({
   }))
 
 const SignUp = () => {
-  const classes = useStyles()
   const navigate = useNavigate()
     const signUpError = useSelector(state=>state.signup.error)
     const success = useSelector(state=> state.signup.success)

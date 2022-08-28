@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { makeStyles } from "@mui/styles";
-import { Box, Grid, Button, ImageList } from "@mui/material";
+import { ImageList } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getVideoURL } from "../Reducers/VideoURLReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";

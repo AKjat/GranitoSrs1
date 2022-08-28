@@ -1,8 +1,8 @@
-import { Box, Grid, Skeleton, Stack } from "@mui/material";
+import { Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 // import ReactImageMagnify from 'react-image-magnify';
 
 const useStyles = makeStyles((theme) => ({

@@ -1,28 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Routes, Route, Link, useParams } from "react-router-dom";
-import CloseIcon from "@mui/icons-material/Close";
+import React, {  } from "react";
+import { useParams } from "react-router-dom";
 import {
   Box,
   Grid,
-  Divider,
   Typography,
-  Button,
-  Collapse,
-  Alert,
-  IconButton,
-  Skeleton,
-  Container,
-  Table,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import ImagSelect from "../Components/ImagSelect";
-import SpecialReqDialog from "../Components/SpecialReqDialog";
-import Product from "../../../components/product/Product";
-import { cartActions } from "../../../redux";
 import { getProductBlockDetail } from "../Reducers/productBlockDetailReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 import ProductDetails from "../Components/ProductDetails";
@@ -64,10 +50,6 @@ const ProductBlockDetailPage = (props) => {
 
   const dispatch = useDispatch();
 
-  const costEstimate = useSelector((state) => state.transportEstimate.cost);
-
-  const classes = useStyles();
-  const [loading, setLoading] = useState(true);
   const productname = useSelector((state) => state.productBlock);
   const product = useSelector((state) => state.productBlockDetail);
   React.useEffect(() => {
@@ -81,14 +63,10 @@ const ProductBlockDetailPage = (props) => {
         <Box marginX={1} marginTop={2}>
           <Grid container marginTop={1}>
             <Grid item xs={12} lg={6} marginTop="10px">
-              <ImagSelect product={product} loading={loading} />
+              <ImagSelect product={product} />
             </Grid>
             <Grid item xs={12} lg={6} marginTop="10px">
-              <ProductDetails
-                product={productname}
-                block={product}
-                loading={loading}
-              />
+              <ProductDetails product={productname} block={product} />
             </Grid>
             <Grid item xs={12} lg={12} marginTop="10px">
               <Box sx={{ backgroundColor: "#bbbb", height: 50 }}>

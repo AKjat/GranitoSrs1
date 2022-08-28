@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Card,
   Container,
   Divider,
   Grid,
@@ -16,7 +15,6 @@ import ImgSlider from "../components/HomeImgSlider";
 
 import HomeImgCollections from "../components/HomeImgCollections";
 import VideoURL from "../components/VideoURL";
-// import homsestyle from "./Home.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,7 +1,6 @@
 import {
     Box,
     Button,
-    Chip,
     Container,
     Divider,
     Grid,
@@ -9,9 +8,6 @@ import {
     Typography,
     Tabs,
     Tab,
-    Pagination,
-    Stack,
-    PaginationItem,
     Alert
   } from "@mui/material";
   import { makeStyles } from "@mui/styles";
@@ -245,7 +241,7 @@ import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 
 
   import React, { useEffect, useState } from "react";
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import {
   Box,
@@ -256,7 +252,6 @@ import {
   Collapse,
   Alert,
   IconButton,
-  Skeleton,
   Container,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
@@ -268,7 +263,6 @@ import ImagSelect from "../Components/ImagSelect";
 import ProductDetails from "../Components/ProductDetails";
 import SpecialReqDialog from "../Components/SpecialReqDialog";
 import Product from "../../../components/product/Product";
-import { cartActions } from "../../../redux";
 import { getProductBlockDetail } from "../Reducers/productBlockDetailReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 

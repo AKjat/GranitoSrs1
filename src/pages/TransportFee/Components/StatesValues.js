@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {Country, State, City} from 'country-state-city'
+import React from 'react'
+import {State} from 'country-state-city'
     const states = State.getStatesOfCountry('IN')
 
     const AP = {...states?.find(d=> d.isoCode === 'AP'), 'value': 20, 'countryCode': 'IN' }

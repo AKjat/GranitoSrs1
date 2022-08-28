@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { makeStyles } from "@mui/styles";
 import {
@@ -75,13 +74,13 @@ const ProductBlockPage = () => {
                 />
                 <CardContent>
                   <Grid container>
-                    <Grid item xs={12} sm={12} lg={6} >
+                    <Grid item xs={12} sm={12} lg={6}>
                       <Typography variant="h6">
                         Block No. = <b>{block.block_number}</b>
                       </Typography>
                     </Grid>
-                    <Grid item xs={12} sm={12} lg={6} >
-                      <Typography variant="h6" >
+                    <Grid item xs={12} sm={12} lg={6}>
+                      <Typography variant="h6">
                         Slabs = <b>{block.slabs}</b>
                       </Typography>
                     </Grid>
@@ -122,27 +121,8 @@ const ProductBlockPage = () => {
           </Grid>
         ))}
       </Grid>
-
-      {/* <Carousel>
-        {product?.blocks?.map((block, index) => (
-          <Carousel.Item className={classes.imgB} key={index} interval={1000}>
-            <img
-              className="d-block w-100"
-              src={`https://easystone.in/api/whatsapp_media/${block.block_photos[0].media_id}/${block.block_photos[0].fileName}`}
-              // height={250}
-            />
-          </Carousel.Item>
-        ))}
-      </Carousel> */}
     </>
   );
 };
-// function titleCase(string) {
-//   var sentence = string.toLowerCase().split(" ");
-//   for(var i = 0; i< sentence.length; i++){
-//      sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
-//   }
-// document.write(sentence.join(" "));
-// return sentence;
-// }
+
 export default ProductBlockPage;

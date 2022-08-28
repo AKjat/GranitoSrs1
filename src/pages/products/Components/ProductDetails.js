@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {  } from "react";
 import {
   Box,
   Divider,
   Grid,
-  Skeleton,
   Typography,
   Button,
 } from "@mui/material";
@@ -13,7 +12,7 @@ import SquareFootIcon from "@mui/icons-material/SquareFoot";
 import CalendarViewWeekIcon from "@mui/icons-material/CalendarViewWeek";
 import { Link } from "react-router-dom";
 
-const ProductDetails = ({ product, loading, block }) => {
+const ProductDetails = ({ product, block }) => {
   return (
     <>
       <Box overflow="hidden" margin={1}>
