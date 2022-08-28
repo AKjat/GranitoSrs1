@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 import { getproduct } from "../Reducers/ProductReducer";
 import BlockPhotos from "./BlockPhotos";
+import { RWebShare } from "react-web-share";
+
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -42,21 +44,28 @@ const Product = () => {
             </CardActionArea>
             <Divider />
             <CardActions>
+            <RWebShare
+                  data={{
+                    text: "Visit to us Shree Ram Stone, walaaa Habibiii",
+                    url: "https://shreeramstone.co/product/",
+                    title: "Share",
+                  }}
+                  onClick={() => console.log("shared successfully!")}
+                >
+                  <Button
+                    size="small"
+                    color="primary"
+                    variant="outlined"
+                    sx={{ width: "60vw" }}
+                  >
+                    Share
+                  </Button>
+                </RWebShare>
               <Button
                 size="small"
                 color="primary"
                 component={Link}
-                to="/product/hye"
-                variant="outlined"
-                sx={{ width: "60vw" }}
-              >
-                Share
-              </Button>
-              <Button
-                size="small"
-                color="primary"
-                component={Link}
-                to="/product/hye"
+                to={`/product_block_page/${product.id}`}
                 variant="outlined"
                 sx={{ width: "60vw" }}
               >

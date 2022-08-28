@@ -71,17 +71,25 @@ const ProductBlockPage = () => {
                 <img
                   className="d-block w-100"
                   src={`https://easystone.in/api/whatsapp_media/${block.block_photos[0].media_id}/${block.block_photos[0].fileName}`}
-                  height={350}
+                  height={300}
                 />
                 <CardContent>
-                  <Typography variant="h6" component="div" align="center">
-                    Block No. = <b>{block.block_number}</b>
-                  </Typography>
+                  <Grid container>
+                    <Grid item xs={12} sm={12} lg={6} >
+                      <Typography variant="h6">
+                        Block No. = <b>{block.block_number}</b>
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={12} lg={6} >
+                      <Typography variant="h6" >
+                        Slabs = <b>{block.slabs}</b>
+                      </Typography>
+                    </Grid>
+                  </Grid>
                 </CardContent>
               </CardActionArea>
               <Divider />
               <CardActions>
-                
                 <RWebShare
                   data={{
                     text: "Visit to us Shree Ram Stone, walaaa Habibiii",
