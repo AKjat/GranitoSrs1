@@ -1,9 +1,12 @@
-import { Grid } from "@mui/material";
+import { Box, Grid, ImageList } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import VideoURL from "../../home/components/VideoURL";
 // import ReactImageMagnify from 'react-image-magnify';
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 const useStyles = makeStyles((theme) => ({
   boxImgSm: {
@@ -35,39 +38,47 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ImagSelect = ({ product}) => {
+const ImagSelect = ({ product }) => {
+  const images = product?.block_photos?.map((block, index) => {
+    // {block?.mimetype == "image/jpeg" ? ('g'):('a')}
+    return {
+      original: `https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`,
+      thumbnail: `https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`,
+    };
+  });
+
+  const renderItem = (item) => {
+    if (item.original.split(".").pop() == "mp4") {
+      return (
+        <video
+          controls
+          autoplay
+          style={{ objectFit: "fill", height: 300, width: 600 }}
+        >
+          <source
+            src={item.original}
+            type="video/mp4"
+          ></source>
+        </video>
+      );
+    } else {
+      return (
+        <img
+          src={item.original}
+          style={{ objectFit: "fill", height: 300, width: 600 }}
+        />
+      );
+    }
+  };
+
   const classes = useStyles();
+
   return (
     <Grid container direction="column" alignItems="center" spacing={1}>
+      
       <Grid item>
-        
-        <Carousel>
-        {product?.block_photos?.map((block, index) => (
-          <Carousel.Item className={classes.imgB} key={index} interval={1000}>
-            <img
-              className="d-block w-100"
-              src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
-              // height={250}
-              style={{ objectFit: "fill", height: 300, width: 500 }}
-            />
-          </Carousel.Item>
-        ))}
-      </Carousel>
+        <ImageGallery items={images} renderItem={renderItem} />
       </Grid>
-      {/* <Grid item>
-        <Grid container spacing={1}>
-          {product?.block_photos?.map((block, index) => (
-            <Grid item>
-              <img
-                // onMouseOver={() => imgClick()}
-                src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
-                style={{ objectFit: "cover", height: 300, width: 500 }}
-                // height={200}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </Grid> */}
     </Grid>
   );
 };

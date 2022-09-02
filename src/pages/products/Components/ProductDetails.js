@@ -122,7 +122,7 @@ const ProductDetails = ({ product, block }) => {
                 <Divider width="40px" light={true} />
               </Grid>
               <Grid item>
-                <Typography variant="body2">{block?.thickness} MM</Typography>
+                <Typography variant="body2">{block?.block_thickness} MM</Typography>
               </Grid>
             </Box>
           </Grid>
@@ -130,17 +130,17 @@ const ProductDetails = ({ product, block }) => {
         <Grid container alignItems="center" marginTop={2}>
           <Grid item xs={3}>
             <Typography sx={{ opacity: "0.7" }} variant="body1">
-              Slab Length :{" "}
+              Slab Size :{" "}
             </Typography>
           </Grid>
           <Grid item xs={9}>
             <Typography marginLeft={1} variant="body1">
-              {block?.slab_length}
+              {block?.slab_length} X {block?.slab_height}
             </Typography>
           </Grid>
         </Grid>
         <Divider />
-        <Grid container alignItems="center" marginTop={2}>
+        {/* <Grid container alignItems="center" marginTop={2}>
           <Grid item xs={3}>
             <Typography sx={{ opacity: "0.7" }} variant="body1">
               Slab Height :{" "}
@@ -151,7 +151,7 @@ const ProductDetails = ({ product, block }) => {
               {block?.slab_height}
             </Typography>
           </Grid>
-        </Grid>
+        </Grid> */}
         <Divider />
         <Grid container alignItems="center" marginTop={2}>
           <Grid item xs={3}>

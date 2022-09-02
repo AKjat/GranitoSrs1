@@ -5,14 +5,10 @@ const customerSlice = createSlice({
     name: "customer",
     initialState : {
         details: []
-        
     },
     reducers: {
-        onAddressChange(state, action){
-            
+        onAddressChange(state, action){  
         },
-        
-        
     }
 })
 export default customerSlice;

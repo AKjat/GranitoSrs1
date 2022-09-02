@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, Input, ThemeProvider, Typography } from "@mui/material";
 import Header from "./components/header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { orange } from "@mui/material/colors";
@@ -22,6 +22,15 @@ import ProductBlockPage from "./pages/products/Screens/ProductBlockPage";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import ProductBlockDetailPage from "./pages/products/Screens/ProductBlockDetailPage";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import HailIcon from "@mui/icons-material/Hail";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 const theme = createTheme({
   palette: {
@@ -78,6 +87,16 @@ function App(props) {
   //   .catch(err=> console.log("ERRRRRRRRR",err.response.data))
   // }, [])
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Router>
       {/* <Sidebar /> */}
@@ -85,8 +104,6 @@ function App(props) {
         <ScrollToTop />
         <Header />
         <Routes>
-          {/* <Route exact path="/login*" element={<SignInPage/>} /> */}
-
           <Route exact path="*" element={<Home />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
@@ -104,7 +121,6 @@ function App(props) {
           <Route exact path="/product/" element={<Product />} />
           <Route exact path="/login" element={<SignIn />} />
           <Route exact path="/signup" element={<SignUp />} />
-          {/* <Route exact path="/cart" element={isLoggedIn? <CartPage />:<SignIn/>} /> */}
           <Route exact path="/cart" element={<CartPage />} />
           <Route exact path="/addproduct" element={<NewProduct />} />
           <Route
@@ -112,20 +128,46 @@ function App(props) {
             path="/transportEstimate"
             element={<TransportEstimate />}
           />
-
-          {/* <Route exact path="/products/filter" element={<Filterpage />} /> */}
-          {/* <Route exact path="/products" element={<ProductPage />} />
-          <Route exact path="/products/productdetails" element={<ProductDetails />} /> */}
         </Routes>
         <Footer />
 
-        {/* <ScrollTop {...props}>
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop> */}
-
-        {/* <MobileAppbar /> */}
+        <a
+          href="https://wa.me/919119114151"
+          class="whatsapp_float"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <WhatsAppIcon sx={{ justifyItems: "center", color: "white" }} />
+        </a>
+        <a
+          class="form_float"
+          rel="noopener noreferrer"
+          onClick={handleClickOpen}
+        >
+          <HailIcon sx={{ justifyItems: "center", color: "white" }} />
+        </a>
+        <div>
+          <Dialog open={open} onClose={handleClose}>
+            <DialogTitle>UPDATES</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                For latest update please provide your number
+              </DialogContentText>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="name"
+                label="Phone Number"
+                type="number"
+                fullWidth
+                variant="standard"
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Save</Button>
+            </DialogActions>
+          </Dialog>
+        </div>
       </ThemeProvider>
     </Router>
   );

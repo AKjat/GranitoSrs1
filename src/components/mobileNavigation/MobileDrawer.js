@@ -106,7 +106,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
         <Button
             onClick={toggleDrawer(anchor, false)}
             component={Link}
-            to="/products"
+            to="/product"
             variant="outlined"
             sx={{ width: "60vw" }}
           >
@@ -167,7 +167,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
             variant="outlined"
             sx={{ width: "60vw" }}
             component={Link}
-            to="/"
+            to="/blog"
             onClick={toggleDrawer(anchor, false)}
           >
             Blog
@@ -177,7 +177,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
           <Button
             onClick={toggleDrawer(anchor, false)}
             component={Link}
-            to="/"
+            to="/contact"
             variant="outlined"
             sx={{ width: "60vw" }}
           >

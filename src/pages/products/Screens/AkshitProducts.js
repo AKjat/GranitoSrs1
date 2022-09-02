@@ -1,165 +1,185 @@
 import {
-    Box,
-    Button,
-    Container,
-    Divider,
-    Grid,
-    Paper,
-    Typography,
-    Tabs,
-    Tab,
-    Alert
-  } from "@mui/material";
-  import { makeStyles } from "@mui/styles";
-  import React, { useEffect, useState } from "react";
-  import { Link, useParams } from "react-router-dom";
-  import axios from "axios";
-  import { useDispatch, useSelector } from "react-redux";
+  Box,
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Paper,
+  Typography,
+  Tabs,
+  Tab,
+  Alert,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import MobileFilter from "../Components/MobileFilter";
-import SkeletonProduct from '../../../components/product/SkeletonProduct';
+import SkeletonProduct from "../../../components/product/SkeletonProduct";
 import Filter from "../Components/Filter";
 import Product from "../../../components/product/Product";
-import {  getProducts, productSearchActions } from "../Reducers/productAkshitReducer";
+import {
+  getProducts,
+  productSearchActions,
+} from "../Reducers/productAkshitReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
-  
-  const useStyles = makeStyles((theme) => ({
-    hideM: {
-      [theme.breakpoints.down("md")]: {
-        display: "none",
-      },
-      [theme.breakpoints.up("md")]: {
-        display: "block",
-      },
-    },
-    hideD: {
-      [theme.breakpoints.up("md")]: {
-        display: "none",
-      },
-      [theme.breakpoints.down("md")]: {
-        display: "block",
-      },
-    },
-  }));
-  
-  const AkshitProducts = () => {
-    const classes = useStyles();
-    const [items, setItems] = useState([]);
-    // const [loading, setLoading] = useState(true);
-    const [colors, setColors] = useState();
-    const [categories, setCategories] = useState();
-  
-    const dispatch = useDispatch();
-    const products = useSelector((state) => state.product);
-    const productsLink = useSelector((state) => state.productLinks);
-    const refreshing = useSelector((state) => state.refreshing);
-    const loading = useSelector((state)=> state.productSearch)
-    const filters = useSelector((state) => state.productSearch);
-    const category = categories?.find((d) => d.id === filters.category);
-  
-    useEffect(() => {
-      // getColors();
-      // getCategories();
-      dispatch(productSearchActions.setSearch({name: "ordering", value: "price"}))
-    }, []);
-  
-    useEffect(() => {
-      dispatch(refreshingActions.setRefreshing(true))
-      dispatch(getProducts())
-    }, []);
-    const handlePrev = () => {
-      dispatch(getProducts(null, true))
-    }
-    const handleNext = () => {
-      dispatch(getProducts(true))
-    }
-  
-    const handleDelete = (name) => (e, v) => {
-      // if (name?.name === "price") {
-      //   dispatch(filterActions.remSearch({ name: name.name + "_min" }));
-      //   dispatch(filterActions.remSearch({ name: name.name + "_max" }));
-      // } else {
-      //   dispatch(filterActions.remSearch({ name: name.name, value: name.value }));
-      // }
-    };
-  
-    const handleOrdering = (value)=> {
-      dispatch(productSearchActions.setSearch({name: "ordering", value: value}))
-    }
-  
-  
-    // const LogIn =() => {
-    //   if (isLoggedIn){
-    //     dispatch(login)
-    //   }
-    // }
-    const getAllProducts = () => {
-      axios.get(`products/`).then((response) => {
-        const allproducts = response.data.results;
-        setItems(allproducts);
-      });
-    };
-  
-    const Arr = [1, 2, 3, 4, 5, 6];
-  
-    const [tabValue, setTabValue] = React.useState(0);
-  
-    const handleTabChange = (event, newValue) => {
-      setTabValue(newValue);
-    };
-    return (
-      <>
-        <Box>
-          <Paper className="CategPaper">
-            {/* <Categ handleCateg={handleCateg} handleAll={handleAll} /> */}
-          </Paper>
-        </Box>
-        <Container>
-          <Grid container justifyContent="space-between" spacing={2}>
-            <Grid item xs={0} md={3} className={classes.hideM}>
-              <Filter
-                category={category}
-                handleDelete={handleDelete}
-                // colorFilters={colorFilters}
-                // colors={colors}
-                // categories={categories}
-              />
-            </Grid>
-  
-            <Grid item xs={12} md={9} lg={9} marginTop={1}>
 
-              <Box display="flex" gap={1} alignItems="center" marginTop={1} sx={{  bgcolor: "background.paper", borderBottom: 1, borderColor: 'divider' }}>
-                <Typography variant="body1">Sort By</Typography>
-                {/* <Chip  label="Price -- low to high" clickable={true} clickableColorPrimary  onClick={()=>console.log("clicked")}/>
+const useStyles = makeStyles((theme) => ({
+  hideM: {
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
+    [theme.breakpoints.up("md")]: {
+      display: "block",
+    },
+  },
+  hideD: {
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+    [theme.breakpoints.down("md")]: {
+      display: "block",
+    },
+  },
+}));
+
+const AkshitProducts = () => {
+  const classes = useStyles();
+  const [items, setItems] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  const [colors, setColors] = useState();
+  const [categories, setCategories] = useState();
+
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.product);
+  const productsLink = useSelector((state) => state.productLinks);
+  const refreshing = useSelector((state) => state.refreshing);
+  const loading = useSelector((state) => state.productSearch);
+  const filters = useSelector((state) => state.productSearch);
+  const category = categories?.find((d) => d.id === filters.category);
+
+  useEffect(() => {
+    // getColors();
+    // getCategories();
+    dispatch(
+      productSearchActions.setSearch({ name: "ordering", value: "price" })
+    );
+  }, []);
+
+  useEffect(() => {
+    dispatch(refreshingActions.setRefreshing(true));
+    dispatch(getProducts());
+  }, []);
+  const handlePrev = () => {
+    dispatch(getProducts(null, true));
+  };
+  const handleNext = () => {
+    dispatch(getProducts(true));
+  };
+
+  const handleDelete = (name) => (e, v) => {
+    // if (name?.name === "price") {
+    //   dispatch(filterActions.remSearch({ name: name.name + "_min" }));
+    //   dispatch(filterActions.remSearch({ name: name.name + "_max" }));
+    // } else {
+    //   dispatch(filterActions.remSearch({ name: name.name, value: name.value }));
+    // }
+  };
+
+  const handleOrdering = (value) => {
+    dispatch(
+      productSearchActions.setSearch({ name: "ordering", value: value })
+    );
+  };
+
+  // const LogIn =() => {
+  //   if (isLoggedIn){
+  //     dispatch(login)
+  //   }
+  // }
+  const getAllProducts = () => {
+    axios.get(`products/`).then((response) => {
+      const allproducts = response.data.results;
+      setItems(allproducts);
+    });
+  };
+
+  const Arr = [1, 2, 3, 4, 5, 6];
+
+  const [tabValue, setTabValue] = React.useState(0);
+
+  const handleTabChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
+  return (
+    <>
+      <Box>
+        <Paper className="CategPaper">
+          {/* <Categ handleCateg={handleCateg} handleAll={handleAll} /> */}
+        </Paper>
+      </Box>
+      <Container>
+        <Grid container justifyContent="space-between" spacing={2}>
+          <Grid item xs={0} md={3} className={classes.hideM}>
+            <Filter
+              category={category}
+              handleDelete={handleDelete}
+              // colorFilters={colorFilters}
+              // colors={colors}
+              // categories={categories}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={9} lg={9} marginTop={1}>
+            <Box
+              display="flex"
+              gap={1}
+              alignItems="center"
+              marginTop={1}
+              sx={{
+                bgcolor: "background.paper",
+                borderBottom: 1,
+                borderColor: "divider",
+              }}
+            >
+              <Typography variant="body1">Sort By</Typography>
+              {/* <Chip  label="Price -- low to high" clickable={true} clickableColorPrimary  onClick={()=>console.log("clicked")}/>
                   <Chip  label="Price -- low to high" onClick={()=>console.log("clicked")}/> */}
-                <Box >
-                  <Tabs value={tabValue} onChange={handleTabChange} centered>
-                    <Tab label="Price -- low to high" onClick={()=>handleOrdering("price")} />
-                    <Tab label="Price -- high to low" onClick={()=>handleOrdering("-price")}/>
-                    {/* <Tab label="Item Three" /> */}
-                  </Tabs>
-                </Box>
-              </Box>
-              <Box marginTop={1}>
-                <Button variant="outlined" component={Link} to="/addproduct">
-                  Add New Product
-                </Button>
-              </Box>
-              <Grid container justifyContent="space-between" marginTop={1}>
-                
-                <Box className={classes.hideD}>
-                  <MobileFilter className={classes.hideD} 
-                      handleDelete={handleDelete}
-                      // colorFilters={colorFilters}
-                      // colors={colors}
+              <Box>
+                <Tabs value={tabValue} onChange={handleTabChange} centered>
+                  <Tab
+                    label="Price -- low to high"
+                    onClick={() => handleOrdering("price")}
                   />
-                </Box>
-              </Grid>
-              Number Of Products = {products?.length}
-              <Grid container spacing={2} marginTop={0}>
-                
-                {/* {loading? } */}
-                {!refreshing? 
-                  products?.map((d, index) => (
+                  <Tab
+                    label="Price -- high to low"
+                    onClick={() => handleOrdering("-price")}
+                  />
+                  {/* <Tab label="Item Three" /> */}
+                </Tabs>
+              </Box>
+            </Box>
+            <Box marginTop={1}>
+              <Button variant="outlined" component={Link} to="/addproduct">
+                Add New Product
+              </Button>
+            </Box>
+            <Grid container justifyContent="space-between" marginTop={1}>
+              <Box className={classes.hideD}>
+                <MobileFilter
+                  className={classes.hideD}
+                  handleDelete={handleDelete}
+                  // colorFilters={colorFilters}
+                  // colors={colors}
+                />
+              </Box>
+            </Grid>
+            Number Of Products = {products?.length}
+            <Grid container spacing={2} marginTop={0}>
+              {/* {loading? } */}
+              {!refreshing
+                ? products?.map((d, index) => (
                     <Grid
                       item
                       key={index}
@@ -171,8 +191,8 @@ import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
                     >
                       <Product d={d} loading={loading} />
                     </Grid>
-                  )) :
-                    Arr.map((d, index) => (
+                  ))
+                : Arr.map((d, index) => (
                     <Grid
                       item
                       key={index}
@@ -186,9 +206,8 @@ import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
                       <SkeletonProduct />{" "}
                     </Grid>
                   ))}
-                  
-  
-                {/* {products.map((d, index) => (
+
+              {/* {products.map((d, index) => (
                   <Grid item key={index} xs={6} lg={4} sm={4} md={5} padding={0}>
                     <Product
                       d={d}
@@ -196,51 +215,31 @@ import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
                     />
                   </Grid>
                 ))} */}
+            </Grid>
+            <Grid container flexDirection={"row"} spacing={2} marginTop={2}>
+              <Grid item xs={2}>
+                <Button
+                  onClick={() => handlePrev()}
+                  disabled={productsLink.has}
+                >
+                  Previous
+                </Button>
               </Grid>
-              <Grid container  flexDirection={'row'} spacing={2} marginTop={2}>
-                <Grid item xs={2} >
-                  <Button onClick={()=>handlePrev()} disabled={productsLink.has}>Previous</Button>
-                </Grid>
-                <Grid item xs={7}>
-
-                </Grid>
-                <Grid item xs={2}>
-                  <Button onClick={()=>handleNext()}>Next</Button>
-                </Grid>
-
+              <Grid item xs={7}></Grid>
+              <Grid item xs={2}>
+                <Button onClick={() => handleNext()}>Next</Button>
               </Grid>
             </Grid>
           </Grid>
-          
-        </Container>
-      </>
-    );
-  };
-  
-  export default AkshitProducts;
+        </Grid>
+      </Container>
+    </>
+  );
+};
 
+export default AkshitProducts;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import {
@@ -389,8 +388,7 @@ const ProductBlockDetailPage = (props) => {
 
           <Grid container marginTop={1}>
             <Grid item xs={12} lg={6} marginTop="10px">
-              <ImagSelect product={product}  />
-
+              <ImagSelect product={product} />
             </Grid>
             <Divider
               className={classes.hideM}
@@ -399,8 +397,9 @@ const ProductBlockDetailPage = (props) => {
             />
             <Grid marginLeft={1} sx={{ marginTop: "10px" }} item xs={12} lg={5}>
               {/* <SuccessReq success={success} setSuccess={setSuccess} /> */}
-              <ProductDetails product={product} 
-              // loading={loading} 
+              <ProductDetails
+                product={product}
+                // loading={loading}
               />
 
               <Box marginTop={1}>
@@ -446,4 +445,125 @@ const ProductBlockDetailPage = (props) => {
 
 // export default ProductBlockDetailPage;
 
-  
+import { Box, Grid, Skeleton, Stack } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import React, { useState, useEffect } from "react";
+// import ReactImageMagnify from 'react-image-magnify';
+
+// const useStyles = makeStyles((theme)=>({
+//     boxImgSm:{
+//             [theme.breakpoints.down('md')]: {
+//                 height: '25vh !important',
+//               },
+//               [theme.breakpoints.up('md')]: {
+//                 height: '55vh !important',
+//               }
+//     },
+//     boxImgBig:{
+//         zIndex: '1000'
+//     },
+//     imgList: {
+//         "& img":{
+//             cursor: 'pointer',
+
+//             opacity: '0.6',
+//             [theme.breakpoints.down('md')]: {
+//                 height: 40,
+//               },
+//               [theme.breakpoints.up('md')]: {
+//                 height: 50,
+//               }
+//         },
+//         "& img:hover":{
+//             opacity: '1'
+//         }
+//     }
+// }))
+
+const ImagSelect = ({ product, loading }) => {
+  // const [src, setsrc] = useState("/img/product/AlaskaGold/1.jpg");
+
+  const images = product?.images;
+  const firstImage = images ? images[0]?.image : null;
+
+  const [src, setsrc] = useState("");
+  useEffect(() => {
+    setsrc(firstImage);
+  }, [firstImage]);
+
+  const imgClick = (url) => {
+    setsrc(url);
+  };
+
+  const classes = useStyles();
+  return (
+    <Grid container direction="column" alignItems="center" spacing={1}>
+      <Grid item>
+        {loading ? (
+          <Skeleton variant="rectangular" height={200}></Skeleton>
+        ) : (
+          <Box>
+            <img src={src} height={"100%"} width={"100%"} alt="" />
+          </Box>
+        )}
+      </Grid>
+      <Grid item>
+        <Grid container spacing={1} className={classes.imgList}>
+          {!loading && (
+            <Stack direction="row">
+              {" "}
+              <Skeleton height={50} variant="rectangular"></Skeleton>
+              <Skeleton variant="rectangular" height={50}></Skeleton>
+              <Skeleton variant="rectangular" height={50}></Skeleton>
+            </Stack>
+          )}
+          {images &&
+            images.map((d, index) => (
+              <Grid item key={index}>
+                <img
+                  onMouseOver={() => imgClick(d.image)}
+                  src={d?.image}
+                  alt=""
+                />
+              </Grid>
+            ))}
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+};
+
+// export default ImagSelect;
+
+{
+  /* <Grid item>
+        <Carousel>
+          {product?.block_photos?.map((block, index) => (
+            <Carousel.Item
+              className={classes.imgB}
+              key={index}
+              // interval={1000}
+            >
+              {block?.mimetype == "image/jpeg" ? (
+                <img
+                  className="d-block w-100"
+                  src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
+                  style={{ objectFit: "fill", height: 300, width: 500 }}
+                />
+              ) : (
+                <video
+                  controls
+                  autoplay
+                  style={{ objectFit: "fill", height: 300, width: 500 }}
+                >
+                  <source
+                    src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
+                    type="video/mp4"
+                  ></source>
+                </video>
+              )}
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </Grid> */
+}

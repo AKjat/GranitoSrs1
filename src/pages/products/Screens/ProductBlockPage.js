@@ -50,13 +50,13 @@ const ProductBlockPage = () => {
       <Box>
         <img
           className="d-block w-100"
-          src={product.image}
+          src={product?.image}
           // src="\img\SliderHome\alaskaWhite.jpg"
           sx={{ objectFit: "cover" }}
         />
       </Box>
       <Box margin={5}>
-        <Typography alignItems={"stretch"}>{product.description}</Typography>
+        <Typography alignItems={"stretch"}>{product?.description}</Typography>
       </Box>
       <Grid container>
         {product?.blocks?.map((block, index) => (
@@ -69,29 +69,30 @@ const ProductBlockPage = () => {
                 {/* <BlockPhotos product={product}/> */}
                 <img
                   className="d-block w-100"
-                  src={`https://easystone.in/api/whatsapp_media/${block.block_photos[0].media_id}/${block.block_photos[0].fileName}`}
+                  src={`https://easystone.in/api/whatsapp_media/${block?.block_photos[0]?.media_id}/${block?.block_photos[0]?.fileName}`}
                   height={300}
                 />
                 <CardContent>
                   <Grid container>
                     <Grid item xs={12} sm={12} lg={6}>
                       <Typography variant="h6">
-                        Block No. = <b>{block.block_number}</b>
+                        Block No. = <b>{block?.block_number}</b>
                       </Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} lg={6}>
                       <Typography variant="h6">
-                        Slabs = <b>{block.slabs}</b>
+                        Slabs = <b>{block?.slabs}</b>
                       </Typography>
                     </Grid>
                   </Grid>
                 </CardContent>
               </CardActionArea>
               <Divider />
+              
               <CardActions>
                 <RWebShare
                   data={{
-                    text: "Visit to us Shree Ram Stone, walaaa Habibiii",
+                    text: "Visit to Shree Ram Stone & Co. and Become our new Family",
                     url: "https://shreeramstone.co/product_block_page/",
                     title: "Share",
                   }}
