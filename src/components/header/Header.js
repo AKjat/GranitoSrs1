@@ -26,6 +26,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import { loginActions, logOut } from "../../pages/login/Reducers/loginSlice";
 import ProfileMenu from "./profileMenu/Menu";
 import HoverMenu from "../NavigationBar/HoverMenu";
+import MobileAppbarRight from "../mobileNavigation/MobileAppbarRight";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -100,11 +101,14 @@ const Header = (props) => {
           <Grid component={Link} to="/" item xs={3} sm={3} md={2} lg={3}>
             <Box className={classes.logoBox}>
               <img
-                style={{ height: "100%", width: "100%", objectFit: "contain" }}
+                style={{ height: "100%", width: "100%", objectFit: "contain" ,justifyContent:'center'}}
                 src="/img/logo/logo1.png"
                 alt=""
               />
             </Box>
+          </Grid>
+          <Grid item xs={2} className={classes.hideD}>
+            <MobileAppbarRight loggedUser={loggedUser} handleLogout={handleLogout} />
           </Grid>
           <Grid
             xs={9}
@@ -140,7 +144,7 @@ const Header = (props) => {
                 </Button>
               </Box>
             </Grid>
-            <Grid className={classes.hide} item xs={1} lg={1}>
+            {/* <Grid className={classes.hide} item xs={1} lg={1}>
               <Box>
                 <Button
                   id="about"
@@ -152,8 +156,8 @@ const Header = (props) => {
                   About
                 </Button>
               </Box>
-            </Grid>
-            <Grid className={classes.hide} item xs={1} lg={1}>
+            </Grid> */}
+            {/* <Grid className={classes.hide} item xs={1} lg={1}>
               <Box>
                 <Button
                   id="home"
@@ -165,7 +169,7 @@ const Header = (props) => {
                   Blog
                 </Button>
               </Box>
-            </Grid>
+            </Grid> */}
             <Grid className={classes.hide} item xs={1} lg={2}>
               <Box>
                 <Button
@@ -180,6 +184,7 @@ const Header = (props) => {
               </Box>
             </Grid>
           </Grid>
+          
         </Grid>
       </Toolbar>
     </AppBar>

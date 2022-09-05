@@ -9,6 +9,10 @@ export const productBlockDetailSlice = createSlice({
       state = payload;
       return state;
     },
+    clearProductBlockDetail(state, { payload, type }) {
+      state = [];
+      return state;
+    },
   },
 });
 export const productBlockDetailActions = productBlockDetailSlice.actions;

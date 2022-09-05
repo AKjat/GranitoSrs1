@@ -19,7 +19,7 @@ export const getproduct = (setRefreshing) => {
     axios
       .get(`${axios.defaults.baseURL}granito_products/`)
       .then((res) => {
-        dispatch(productActions.setProduct(res.data.results));
+        dispatch(productActions.setProduct(res.data.results,res.data.count));
         if (setRefreshing) {
           setRefreshing(false);
         }

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import {
   Checkbox,
@@ -10,13 +10,13 @@ import {
   Grid,
   Typography,
   Autocomplete,
-  TextField
+  TextField,
 } from "@mui/material";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import RangeSlider from "./FilterComponents/PriceSlider";
 import PublicIcon from "@mui/icons-material/Public";
 import FormatPaintIcon from "@mui/icons-material/FormatPaint";
-import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import { Country } from "country-state-city";
@@ -24,17 +24,17 @@ import { productSearchActions } from "../Reducers/productAkshitReducer";
 
 const useStyles = makeStyles((theme) => ({
   checkForm: {
-      "& .MuiFormControlLabel-root": {
-        fontSize: "14px",
-        "& .MuiTypography-root": {
-          fontSize: "inherit"
-        }
-      }
-  }
+    "& .MuiFormControlLabel-root": {
+      fontSize: "14px",
+      "& .MuiTypography-root": {
+        fontSize: "inherit",
+      },
+    },
+  },
 }));
 
-export default function MobileFilter({handleDelete, colorFilters, colors}) {
-  const classes = useStyles()
+export default function MobileFilter({ handleDelete, colorFilters, colors }) {
+  const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -57,27 +57,32 @@ export default function MobileFilter({handleDelete, colorFilters, colors}) {
     setState({ ...state, [anchor]: open });
   };
 
-  const dispatch = useDispatch()
-  const filters = useSelector(state=>state.productSearch)
+  const dispatch = useDispatch();
+  const filters = useSelector((state) => state.productSearch);
   const handleColorCheck = (id) => (event, value) => {
-    value? dispatch(productSearchActions.setSearch({name: "color", value: id}) ) :
-            dispatch(productSearchActions.removeSearch({name: "color", value: id}))
+    value
+      ? dispatch(productSearchActions.setSearch({ name: "color", value: id }))
+      : dispatch(
+          productSearchActions.removeSearch({ name: "color", value: id })
+        );
   };
 
-  
-  const [countryVal, setCountryVal] = React.useState(null)
-  const countries = Country.getAllCountries()
+  const [countryVal, setCountryVal] = React.useState(null);
+  const countries = Country.getAllCountries();
   // React.useEffect(() => {
   //   if(filters.hasOwnProperty('origin') == false){
   //     setCountryVal(null)
-  //   } 
+  //   }
   // }, [!filters.hasOwnProperty('origin')]);
 
-  const handleCountryChange = (event, value)=>{
-    value? dispatch(productSearchActions.setSearch({name: "origin", value: value?.name})):
-            dispatch(productSearchActions.removeSearch({name: "origin"}))
-          setCountryVal(value)
-  }
+  const handleCountryChange = (event, value) => {
+    value
+      ? dispatch(
+          productSearchActions.setSearch({ name: "origin", value: value?.name })
+        )
+      : dispatch(productSearchActions.removeSearch({ name: "origin" }));
+    setCountryVal(value);
+  };
 
   const list = (anchor) => (
     <Box
@@ -105,35 +110,36 @@ export default function MobileFilter({handleDelete, colorFilters, colors}) {
       <Divider></Divider>
 
       <Box marginTop={1}>
-      <Autocomplete
-                             options={countries}
-                             value={countryVal}
-                             onChange={handleCountryChange}
-                             autoHighlight
-                             getOptionLabel={(option) => option.name}
-                             renderOption={(props, option) => (
-                               <Box component="li" sx={{ mr: 2, flexShrink: 0  }} {...props}>
-                                    {option.flag}    {option.name}  
-                               </Box>
-                             )}
-                          renderInput={(params) => (
-                               <TextField
-                               {...params}
-                               label="Choose a country"
-                                   inputProps={{
-                                     ...params.inputProps,
-                                     autoComplete: 'new-password', 
-                                   }}
-                                     />
-                                    )}
-                                 />
+        <Autocomplete
+          options={countries}
+          value={countryVal}
+          onChange={handleCountryChange}
+          autoHighlight
+          getOptionLabel={(option) => option.name}
+          renderOption={(props, option) => (
+            <Box component="li" sx={{ mr: 2, flexShrink: 0 }} {...props}>
+              {option.flag} {option.name}
+            </Box>
+          )}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Choose a country"
+              inputProps={{
+                ...params.inputProps,
+                autoComplete: "new-password",
+              }}
+            />
+          )}
+        />
       </Box>
 
-
-
-
-
-      <Grid container marginTop={2} alignItems="center" justifyContent="space-between">
+      <Grid
+        container
+        marginTop={2}
+        alignItems="center"
+        justifyContent="space-between"
+      >
         <Grid item>
           <Typography variant="h6" component="h5" align="left">
             Price
@@ -175,28 +181,38 @@ export default function MobileFilter({handleDelete, colorFilters, colors}) {
       </Grid>
       <Divider></Divider>
       <FormGroup>
-      <Grid container>
-            {colors?.map((d) => {
-              // console.log(filters.color?filters?.color?.includes(d.id):false,'sjfkjs',d.id)
-              return(
+        <Grid container>
+          {colors?.map((d) => {
+            // console.log(filters.color?filters?.color?.includes(d.id):false,'sjfkjs',d.id)
+            return (
               <Grid key={d.id} item xs={6}>
-                <FormGroup className={classes.checkForm} >
+                <FormGroup className={classes.checkForm}>
                   <FormControlLabel
-                    control={<Checkbox checked={filters.color?filters?.color?.includes(d.id):false}  size="small" id={`color${d.id}`} onChange={handleColorCheck(d.id)} />}
+                    control={
+                      <Checkbox
+                        checked={
+                          filters.color ? filters?.color?.includes(d.id) : false
+                        }
+                        size="small"
+                        id={`color${d.id}`}
+                        onChange={handleColorCheck(d.id)}
+                      />
+                    }
                     label={d.name}
-                    sx={{fontSize: "5px"}}
-                    />
+                    sx={{ fontSize: "5px" }}
+                  />
                 </FormGroup>
               </Grid>
-            )})}
-              
-            {/* <Grid item xs={6}>
+            );
+          })}
+
+          {/* <Grid item xs={6}>
               <CheckButton title={"Yellow"} />
               <CheckButton title={"Green"} />
               <CheckButton title={"Grey"} />
               <CheckButton title={"Exotic"} />
             </Grid> */}
-          </Grid>
+        </Grid>
       </FormGroup>
     </Box>
   );
@@ -205,7 +221,12 @@ export default function MobileFilter({handleDelete, colorFilters, colors}) {
     <div>
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)} variant="contained" size="small" endIcon={<FilterAltOutlinedIcon/>}>
+          <Button
+            onClick={toggleDrawer(anchor, true)}
+            variant="contained"
+            size="small"
+            endIcon={<FilterAltOutlinedIcon />}
+          >
             Filter
           </Button>
           <SwipeableDrawer

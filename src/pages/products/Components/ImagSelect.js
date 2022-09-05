@@ -36,11 +36,11 @@ const useStyles = makeStyles((theme) => ({
       opacity: "1",
     },
   },
+  
 }));
 
 const ImagSelect = ({ product }) => {
   const images = product?.block_photos?.map((block, index) => {
-    // {block?.mimetype == "image/jpeg" ? ('g'):('a')}
     return {
       original: `https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`,
       thumbnail: `https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`,
@@ -53,12 +53,9 @@ const ImagSelect = ({ product }) => {
         <video
           controls
           autoplay
-          style={{ objectFit: "fill", height: 300, width: 600 }}
+          style={{ objectFit: "cover", height: 300, width: 600 }}
         >
-          <source
-            src={item.original}
-            type="video/mp4"
-          ></source>
+          <source src={item.original} type="video/mp4"></source>
         </video>
       );
     } else {
@@ -71,13 +68,72 @@ const ImagSelect = ({ product }) => {
     }
   };
 
+  const renderThumbInner = (item) => {
+    if (item.thumbnail.split(".").pop() == "mp4") {
+      return (
+        <video
+          controls
+          autoplay
+          style={{ objectFit: "fill", height: 60, width: 90 }}
+        >
+          <source src={item.thumbnail} type="video/mp4"></source>
+        </video>
+      );
+    } else {
+      return (
+        <img
+          src={item.thumbnail}
+          style={{ objectFit: "fill", height: 60, width: 90 }}
+        />
+      );
+    }
+  };
+
   const classes = useStyles();
 
   return (
     <Grid container direction="column" alignItems="center" spacing={1}>
-      
+      <Grid item xs={12} md={12} lg={6}>
       <Grid item>
-        <ImageGallery items={images} renderItem={renderItem} />
+        <Carousel>
+          {product?.block_photos?.map((block, index) => (
+            <Carousel.Item
+              className={classes.imgB}
+              key={index}
+              // interval={1000}
+            >
+              {block?.mimetype == "image/jpeg" ? (
+                <img
+                  className="d-block w-100"
+                  src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
+                  style={{ objectFit: "contain", height: 300}}
+                />
+              ) : (
+                <video
+                  controls
+                  autoplay
+                  style={{ objectFit: "contain", height: 300,width:350 }}
+                >
+                  <source
+                    src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
+                    type="video/mp4"
+                    style={{ objectFit: "contain", height: 300 }}
+                  ></source>
+                </video>
+              )}
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </Grid>
+        {/* <ImageGallery
+          items={images}
+          renderItem={renderItem}
+          renderThumbInner={renderThumbInner}
+          useBrowserFullscreen={true}
+          showBullets={true}
+          // useTranslate3D={true}
+          
+        /> */}
       </Grid>
     </Grid>
   );

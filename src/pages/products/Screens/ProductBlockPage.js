@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { makeStyles } from "@mui/styles";
 import {
@@ -15,8 +15,12 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
-import { getProductBlock } from "../Reducers/productBlockReducer";
+import {
+  getProductBlock,
+  productBlockActions,
+} from "../Reducers/productBlockReducer";
 import { RWebShare } from "react-web-share";
+import ShareIcon from "@mui/icons-material/Share";
 
 const useStyles = makeStyles((theme) => ({
   imgB: {
@@ -41,10 +45,12 @@ const ProductBlockPage = () => {
 
   const product = useSelector((state) => state.productBlock);
   React.useEffect(() => {
+    dispatch(productBlockActions.clearProductBlock());
     dispatch(refreshingActions.setRefreshing(true));
     dispatch(getProductBlock(id));
   }, [id]);
 
+  const location = useLocation();
   return (
     <>
       <Box>
@@ -52,16 +58,17 @@ const ProductBlockPage = () => {
           className="d-block w-100"
           src={product?.image}
           // src="\img\SliderHome\alaskaWhite.jpg"
-          sx={{ objectFit: "cover" }}
+          sx={{ objectFit: "contain" }}
         />
       </Box>
-      <Box margin={5}>
+      <Box margin={2}>
         <Typography alignItems={"stretch"}>{product?.description}</Typography>
       </Box>
+      {/* <Divider/> */}
       <Grid container>
         {product?.blocks?.map((block, index) => (
-          <Grid item padding={5} xs={12} sm={12} lg={6}>
-            <Card>
+          <Grid item padding={2} xs={12} sm={12} lg={4}>
+            <Card >
               <CardActionArea
                 component={Link}
                 to={`/product_block_detail_page/${block.id}`}
@@ -70,54 +77,45 @@ const ProductBlockPage = () => {
                 <img
                   className="d-block w-100"
                   src={`https://easystone.in/api/whatsapp_media/${block?.block_photos[0]?.media_id}/${block?.block_photos[0]?.fileName}`}
-                  height={300}
+                  // height={300}
+                  style={{ objectFit: "contain", height: 300 }}
                 />
-                <CardContent>
-                  <Grid container>
-                    <Grid item xs={12} sm={12} lg={6}>
-                      <Typography variant="h6">
-                        Block No. = <b>{block?.block_number}</b>
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12} sm={12} lg={6}>
-                      <Typography variant="h6">
-                        Slabs = <b>{block?.slabs}</b>
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </CardContent>
               </CardActionArea>
-              <Divider />
-              
-              <CardActions>
-                <RWebShare
-                  data={{
-                    text: "Visit to Shree Ram Stone & Co. and Become our new Family",
-                    url: "https://shreeramstone.co/product_block_page/",
-                    title: "Share",
-                  }}
-                  onClick={() => console.log("shared successfully!")}
-                >
-                  <Button
-                    size="small"
-                    color="primary"
-                    variant="outlined"
-                    sx={{ width: "60vw" }}
-                  >
-                    Share
-                  </Button>
-                </RWebShare>
-                <Button
-                  size="small"
-                  color="primary"
-                  component={Link}
-                  to="/product_block_detail_page/hye"
-                  variant="outlined"
-                  sx={{ width: "60vw" }}
-                >
-                  Details
-                </Button>
-              </CardActions>
+              <Divider/>
+              <CardContent sx={{padding:'1px !important',paddingBottom:"1px !important"}}>
+                <Grid container>
+                  <Grid item xs={9} md={9} lg={9}>
+                    <Typography variant="button">
+                      Block No. = <b>{block?.block_number}</b>
+                    </Typography>
+                    <br />
+                    <Typography variant="button">
+                      Slabs = <b>{block?.slabs}</b>
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={3} md={3} lg={3}>
+                    <RWebShare
+                      data={{
+                        text: "Visit to us Shree Ram Stone, walaaa Habibiii",
+                        // url: "https://shreeramstone.co/product_block_page/",
+                        // url: (
+                        //   <script>
+                        //     document.getElementById("demo").innerHTML =
+                        //     window.location.href;
+                        //   </script>
+                        // ),
+                        url:{location}, 
+                        title: "Share",
+                      }}
+                      onClick={() => console.log("shared successfully!")}
+                    >
+                      <Button size="small" color="primary" variant="contained">
+                        <ShareIcon />
+                      </Button>
+                    </RWebShare>
+                  </Grid>
+                </Grid>
+              </CardContent>
             </Card>
           </Grid>
         ))}

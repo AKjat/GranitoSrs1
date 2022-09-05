@@ -6,10 +6,10 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-
+import ShareIcon from "@mui/icons-material/Share";
 import { useDispatch, useSelector } from "react-redux";
 import ImagSelect from "../Components/ImagSelect";
-import { getProductBlockDetail } from "../Reducers/productBlockDetailReducer";
+import { getProductBlockDetail, productBlockDetailActions } from "../Reducers/productBlockDetailReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 import ProductDetails from "../Components/ProductDetails";
 import HomeImgCollections from "../../home/components/HomeImgCollections";
@@ -53,6 +53,7 @@ const ProductBlockDetailPage = (props) => {
   const productname = useSelector((state) => state.productBlock);
   const product = useSelector((state) => state.productBlockDetail);
   React.useEffect(() => {
+    dispatch(productBlockDetailActions.clearProductBlockDetail())
     dispatch(refreshingActions.setRefreshing(true));
     dispatch(getProductBlockDetail(id));
   }, [id]);

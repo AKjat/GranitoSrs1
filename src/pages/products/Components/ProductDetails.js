@@ -70,7 +70,7 @@ const ProductDetails = ({ product, block }) => {
                 <CalendarViewWeekIcon />
               </Grid>
               <Grid item>
-                <Typography variant="body1">Available pieces</Typography>
+                <Typography variant="body1">No. of Slabs</Typography>
               </Grid>
               <Grid item>
                 <Divider width="60px" light={true} />

@@ -87,7 +87,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
         container
         marginTop={1}
         // direction="column"
-        spacing={8}
+        spacing={1}
         alignItems="center"
         justifyContent="space-between"
       >
@@ -151,7 +151,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
           </Collapse> */}
         </Grid>
 
-        <Grid item>
+        {/* <Grid item>
           <Button
             onClick={toggleDrawer(anchor, false)}
             component={Link}
@@ -161,8 +161,8 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
           >
             About
           </Button>
-        </Grid>
-        <Grid item>
+        </Grid> */}
+        {/* <Grid item>
           <Button
             variant="outlined"
             sx={{ width: "60vw" }}
@@ -172,7 +172,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
           >
             Blog
           </Button>
-        </Grid>
+        </Grid> */}
         <Grid item>
           <Button
             onClick={toggleDrawer(anchor, false)}

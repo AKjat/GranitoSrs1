@@ -567,3 +567,35 @@ const ImagSelect = ({ product, loading }) => {
         </Carousel>
       </Grid> */
 }
+
+
+{/* <CardActions>
+               <RWebShare
+                data={{
+                  text: "Visit to us Shree Ram Stone, walaaa Habibiii",
+                  url: "https://shreeramstone.co/product/",
+                  title: "Share",
+                }}
+                onClick={() => console.log("shared successfully!")}
+              >
+                 <Button
+                    size="small"
+                    color="primary"
+                    variant="outlined"
+                    sx={{ width: "60vw" }}
+                  >
+                    Share
+                  </Button> 
+                <ShareIcon />
+              </RWebShare>
+               <Button
+                size="small"
+                color="primary"
+                component={Link}
+                to={`/product_block_page/${product.id}`}
+                variant="outlined"
+                sx={{ width: "60vw" }}
+              >
+                Details
+              </Button> 
+            </CardActions> */}
