@@ -5,8 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import VideoURL from "../../home/components/VideoURL";
 // import ReactImageMagnify from 'react-image-magnify';
-import ImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
 
 const useStyles = makeStyles((theme) => ({
   boxImgSm: {

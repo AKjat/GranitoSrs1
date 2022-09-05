@@ -70,8 +70,8 @@ function App(props) {
   const classes = useStyles();
 
   let csrftoken = Cookies.get("csrftoken");
-  axios.defaults.baseURL = "https://stonebharat.in/api/";
-  // axios.defaults.baseURL = "http://192.168.1.23:8000/api/";
+  // axios.defaults.baseURL = "https://stonebharat.in/api/";
+  axios.defaults.baseURL = "http://192.168.1.13:8000/api/";
   // axios.defaults.baseURL = "http://192.168.43.117:8000/api/";
 
   axios.defaults.headers.common["X-CSRFToken"] = csrftoken;

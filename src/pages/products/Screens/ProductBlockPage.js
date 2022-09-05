@@ -50,7 +50,10 @@ const ProductBlockPage = () => {
     dispatch(getProductBlock(id));
   }, [id]);
 
-  const location = useLocation();
+  // const location = useLocation();
+  // var parameter = "?cat="+optionVal;
+  const loc = window.location.href
+  console.log(loc,'loacvgxvasha')
   return (
     <>
       <Box>
@@ -96,7 +99,7 @@ const ProductBlockPage = () => {
                   <Grid item xs={3} md={3} lg={3}>
                     <RWebShare
                       data={{
-                        text: "Visit to us Shree Ram Stone, walaaa Habibiii",
+                        text: "Visit to Shree Ram Stone & Co.",
                         // url: "https://shreeramstone.co/product_block_page/",
                         // url: (
                         //   <script>
@@ -104,7 +107,7 @@ const ProductBlockPage = () => {
                         //     window.location.href;
                         //   </script>
                         // ),
-                        url:{location}, 
+                        url:loc, 
                         title: "Share",
                       }}
                       onClick={() => console.log("shared successfully!")}
