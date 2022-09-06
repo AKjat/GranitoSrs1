@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import { useSelector } from "react-redux";
+import ProductCounter from "./productCounter";
 import "./productHeader.css";
 const useStyles = makeStyles((theme) => ({}));
 
@@ -28,61 +29,28 @@ const ProductHeader = () => {
   });
   return (
     <Grid container justifyContent={"center"}>
-      <Grid item margin={1} xs={12} md={12} lg={3}>
-        <div
-         style={{
-            // backgroundColor: "grey",
-            display: "flex",
-            justifyContent: "center",
-            // alignSelf: "center",
-            boxShadow: "2px 5px 15px red",
-            borderRadius: "10px",
-            // backdropFilter: "blur",
-          }}
-        >
+      <Grid item margin={1} xs={3} md={3} lg={3}>
+        <div class="Box-ui">
           <div class="item">
-            <h5> Available Products</h5>
-            <h1 class="counter" data-speed="1000">
-              {productCount.Product}
-            </h1>
+            <h6 class="Box-header"> Available Products</h6>
+
+            <ProductCounter count={productCount.Product} />
           </div>
         </div>
       </Grid>
-      <Grid item margin={1} xs={12} md={12} lg={3}>
-        <div
-          style={{
-            // backgroundColor: "grey",
-            display: "flex",
-            justifyContent: "center",
-            // alignSelf: "center",
-            boxShadow: "2px 5px 15px red",
-            borderRadius: "10px",
-            // backdropFilter: "blur",
-          }}
-        >
+      <Grid item margin={1} xs={3} md={3} lg={3}>
+        <div class="Box-ui">
           <div class="item">
-            <h5> Available Blocks</h5>
-            <h1 class="counter" data-speed="1000">
-              {productCount.ProductBlock}
-            </h1>
+            <h6 class="Box-header"> Available Blocks</h6>
+            <ProductCounter count={productCount.ProductBlock} />
           </div>
         </div>
       </Grid>
-      <Grid item margin={1} xs={12} md={12} lg={4}>
-        <div
-          style={{
-            // backgroundColor: "grey",
-            display: "flex",
-            justifyContent: "center",
-            // alignSelf: "center",
-            boxShadow: "2px 5px 15px red",
-            borderRadius: "10px",
-            // backdropFilter: "blur",
-          }}
-        >
+      <Grid item margin={1} xs={3} md={3} lg={4}>
+        <div class="Box-ui">
           <div class="item">
-            <h5> Available Square Feet</h5>
-            <h1>{productCount.ProductSquarefeet}</h1>
+            <h6 class="Box-header"> Available Square Feet</h6>
+            <ProductCounter count={productCount.ProductSquarefeet} />
           </div>
         </div>
       </Grid>

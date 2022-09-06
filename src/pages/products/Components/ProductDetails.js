@@ -11,13 +11,14 @@ import LineWeightIcon from "@mui/icons-material/LineWeight";
 import SquareFootIcon from "@mui/icons-material/SquareFoot";
 import CalendarViewWeekIcon from "@mui/icons-material/CalendarViewWeek";
 import { Link } from "react-router-dom";
+import "./productHeader.css";
 
 const ProductDetails = ({ product, block }) => {
   return (
     <>
       <Box overflow="hidden" margin={1}>
         <Box>
-          <Typography variant="h5" gutterBottom>
+          <Typography variant="h5"  className="Product-detail">
             {product.product_name} ({block?.block_number})
           </Typography>
         </Box>
@@ -160,7 +161,7 @@ const ProductDetails = ({ product, block }) => {
             </Typography>
           </Grid>
           <Grid item xs={9}>
-            <Typography marginLeft={1} variant="body1">
+            <Typography marginLeft={1} variant="body1" className="product-paragraph">
               Counter/Vanity Top, Flooring, Cladding, Marble Handicrafts,
               Swimming Pool Areas, Bathroom Walls & Floors, Fireplace Walls,
               External & Internal Aids In Construction

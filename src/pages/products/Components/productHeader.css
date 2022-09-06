@@ -1,109 +1,50 @@
-/* * {
-    padding: 5;
-    margin: 10;
-}
-
-/* body {
-    background:
-               url(https://images.pexels.com/photos/1095601/pexels-photo-1095601.jpeg?cs=srgb&dl=pexels-jordan-benton-1095601.jpg&fm=jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top center;
-    padding: 0 150px;
-} 
-.box{
-    display: flex;
-    justify-content: space-between;
-    height: 30vh;
-}
-.box .item {
-    width: 23%;
-    height: 25vh;
-    background-color: rgba(212, 201, 201, 0.3);
+.Box-ui {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 3px 3px 9px #feb74d;
+    border: 0.25px solid #484848;
+    border-radius: 10px;
+    opacity: 1;
     display: flex;
     justify-content: center;
-    align-self: center;
-    box-shadow: 2px 5px 15px rgb(67, 65, 65);
-    border-radius: 10px;
-    backdrop-filter: blur(2px);
-}
-.box .item .counter {
-    align-self: center;
-    font-size: 50px;
-    color: rgb(15, 1, 1);
-    font-family: 'Josefin Sans', sans-serif;
-} */
-
-
-/* 
-* {
-  box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.column {
-  float: left;
-  width: 25%;
-  padding: 0 5px;
-}
-
-.row {margin: 0 -5px;}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 10px;
-  }
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #444;
-  color: white;
-}
-
-.fa {font-size:50px;} */
-
-/* .material-symbols-rounded {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 700,
-    'GRAD' -25,
-    'opsz' 48
-  }
-  * {
-      box-sizing: border-box;
-  }
-  .row {
-    margin: 0 5px;
+.Box-header {
     text-align: center;
-  }
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  .counter-box {
-    width: 20%;
-    padding: 0 5px;
-    display: inline-block;
-  }
-  .counter {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
+    font: normal normal 600 16px/24px Montserrat;
+    letter-spacing: 0px;
+    color: #FF9800;
+    opacity: 1;
+}
+
+.Box-body {
     text-align: center;
-    background-color: rgba(0, 153, 153, 1);
-    color: white;
-  } */
+    font: normal normal 600 22px/40px Montserrat;
+    letter-spacing: 0px;
+    color: #484848;
+    opacity: 1;
+}
+
+.Product-header {
+    text-align: left;
+    font: normal normal normal 10px/13px Muli;
+    letter-spacing: 0.12px;
+    color: #FF9800;
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+.Product-detail {
+    text-align: left;
+    font: normal normal 600 28px/35px Montserrat;
+    letter-spacing: 2.8px;
+    color: #1B2437;
+    opacity: 1;
+    text-transform: uppercase;
+}
+
+.product-paragraph {
+    text-align: left;
+    letter-spacing: 0.16px;
+    text-transform: lowercase;
+    opacity: 1;
+}

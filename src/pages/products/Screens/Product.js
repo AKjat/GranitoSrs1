@@ -18,6 +18,7 @@ import { RWebShare } from "react-web-share";
 import ShareIcon from "@mui/icons-material/Share";
 import ProductHeader from "../Components/ProductHeader";
 import { getProductCount } from "../Reducers/ProductCount";
+import "../Components/productHeader.css";
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -31,12 +32,11 @@ const Product = () => {
     dispatch(refreshingActions.setRefreshing(true));
     dispatch(getProductCount());
     dispatch(getproduct());
-    
   }, []);
-  console.log(productCount,'jshdsdgysgdysggggggggggdg')
+  console.log(productCount, "jshdsdgysgdysggggggggggdg");
   return (
     <>
-    <ProductHeader/>
+      <ProductHeader />
       <Grid container>
         {product?.map((product, index) => (
           <Grid item padding={1} xs={12} sm={12} lg={4}>
@@ -47,11 +47,33 @@ const Product = () => {
               >
                 <BlockPhotos product={product} />
               </CardActionArea>
-              <CardContent>
+              <CardContent
+                sx={{
+                  padding: "5px !important",
+                  paddingBottom: "5px !important",
+                }}
+              >
                 <Grid container>
                   <Grid item xs={9} md={9} lg={9}>
-                    <Typography variant="h6" component="div">
+                    <Typography
+                      variant="h6"
+                      component="div"
+                      className="Product-header"
+                      sx={{
+                        textAlign: "left !important",
+                      }}
+                    >
                       <b>{product.product_name}</b>
+                    </Typography>
+                    <Typography
+                      // variant="h6"
+                      component="div"
+                      className="Box-body"
+                      sx={{
+                        textAlign: "left !important",
+                      }}
+                    >
+                      Slabs | Block
                     </Typography>
                   </Grid>
                   <Grid item xs={3} md={3} lg={3}>

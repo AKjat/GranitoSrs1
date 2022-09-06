@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import BlockPhotos from "../../products/Screens/BlockPhotos";
 import { getproduct } from "../../products/Reducers/ProductReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
-
+import "../../products/Components/productHeader.css"
 const HomeImgCollections = () => {
   const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ const HomeImgCollections = () => {
             <Link to={`/product_block_page/${product.id}`}>
               <BlockPhotos product={product} />
             </Link>
-            <Typography align="center">
+            <Typography align="center" className="Product-detail">
               <b> {product.product_name} </b>
             </Typography>
           </Grid>

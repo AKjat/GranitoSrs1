@@ -97,7 +97,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
             LinkComponent={Link}
             to="/"
             onClick={toggleDrawer(anchor, false)}
-            sx={{ width: "60vw" }}
+            sx={{ width: "60vw" ,font:"normal normal 600 20px/30px Montserrat"}}
           >
             Home
           </Button>
@@ -108,7 +108,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
             component={Link}
             to="/product"
             variant="outlined"
-            sx={{ width: "60vw" }}
+            sx={{ width: "60vw",font:"normal normal 600 20px/30px Montserrat" }}
           >
             Products
           </Button>
@@ -179,7 +179,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
             component={Link}
             to="/contact"
             variant="outlined"
-            sx={{ width: "60vw" }}
+            sx={{ width: "60vw",font:"normal normal 600 20px/30px Montserrat" }}
           >
             Contact Us
           </Button>

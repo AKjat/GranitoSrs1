@@ -21,6 +21,7 @@ import {
 } from "../Reducers/productBlockReducer";
 import { RWebShare } from "react-web-share";
 import ShareIcon from "@mui/icons-material/Share";
+import "../Components/productHeader.css";
 
 const useStyles = makeStyles((theme) => ({
   imgB: {
@@ -50,8 +51,6 @@ const ProductBlockPage = () => {
     dispatch(getProductBlock(id));
   }, [id]);
 
-  // const location = useLocation();
-  // var parameter = "?cat="+optionVal;
   const loc = window.location.href
   console.log(loc,'loacvgxvasha')
   return (
@@ -88,11 +87,11 @@ const ProductBlockPage = () => {
               <CardContent sx={{padding:'1px !important',paddingBottom:"1px !important"}}>
                 <Grid container>
                   <Grid item xs={9} md={9} lg={9}>
-                    <Typography variant="button">
+                    <Typography variant="button" className="Product-detail">
                       Block No. = <b>{block?.block_number}</b>
                     </Typography>
                     <br />
-                    <Typography variant="button">
+                    <Typography variant="button" className="Product-detail">
                       Slabs = <b>{block?.slabs}</b>
                     </Typography>
                   </Grid>

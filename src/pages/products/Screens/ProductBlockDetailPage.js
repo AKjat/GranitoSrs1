@@ -71,7 +71,7 @@ const ProductBlockDetailPage = (props) => {
             </Grid>
             <Grid item xs={12} lg={12} marginTop="10px">
               <Box sx={{ backgroundColor: "#bbbb", height: 50 }}>
-                <Typography padding={1}>
+                <Typography padding={1} className="Product-detail">
                   <h3>Related Products</h3>
                 </Typography>
               </Box>
