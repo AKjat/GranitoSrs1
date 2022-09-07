@@ -55,20 +55,7 @@ const theme = createTheme({
   },
 });
 
-const useStyles = makeStyles((theme) => ({
-  mobileView: {
-    // [theme.breakpoints.down('md')]: {
-    //     display: 'block'
-    //   },
-    //   [theme.breakpoints.up('md')]: {
-    //     display: 'none'
-    //   }
-  },
-}));
-
 function App(props) {
-  const classes = useStyles();
-
   let csrftoken = Cookies.get("csrftoken");
   axios.defaults.baseURL = "https://stonebharat.in/api/";
   // axios.defaults.baseURL = "http://192.168.1.5:8000/api/";
@@ -97,30 +84,28 @@ function App(props) {
     setOpen(false);
   };
 
-  // loader
-  const [isLoading, setLoading] = useState(true);
+  // loadingSpinner
+  const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  function fakeRequest() {
-    return new Promise((resolve) => setTimeout(() => resolve(), 2500));
-  }
-
-  useEffect(() => {
-    fakeRequest().then(() => {
-      const el = document.querySelector(".loader-container");
-      if (el) {
-        el.remove();
-        setLoading(!isLoading);
-      }
-    });
-  }, []);
-
-  // if (isLoading) {
-  //   return null;
-  // }
+  const handleFetch = () => {
+    setIsLoading(true);
+    fetch("https://reqres.in/api/users?page=0")
+      .then((respose) => respose.json())
+      .then((respose) => {
+         setUsers(respose.data)
+         setIsLoading(false)
+         
+      })
+      .catch(() => {
+         setErrorMessage("Unable to fetch user list");
+         setIsLoading(false);
+      });
+  };
 
   return (
     <Router>
-      {/* <Sidebar /> */}
       <ThemeProvider theme={theme}>
         <ScrollToTop />
         <Header />
