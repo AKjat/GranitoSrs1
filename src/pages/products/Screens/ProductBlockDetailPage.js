@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import ShareIcon from "@mui/icons-material/Share";
 import { useDispatch, useSelector } from "react-redux";
-import ImagSelect from "../Components/ImagSelect";
+import ProductBlockDetailPages from "../Components/ProductBlockDetailPage";
 import {
   getProductBlockDetail,
   productBlockDetailActions,
@@ -13,7 +13,6 @@ import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 import ProductDetails from "../Components/ProductDetails";
 import HomeImgCollections from "../../home/components/HomeImgCollections";
 import LoadingSpinner from "../../Loader/LoadingSpinner";
-
 
 const useStyles = makeStyles((theme) => ({
   hideM: {
@@ -54,41 +53,43 @@ const ProductBlockDetailPage = (props) => {
   const productname = useSelector((state) => state.productBlock);
   const product = useSelector((state) => state.productBlockDetail);
   const refresing = useSelector((state) => state.refreshing);
-  console.log(refresing,'hye')
+  console.log(refresing, "hye");
   React.useEffect(() => {
     dispatch(productBlockDetailActions.clearProductBlockDetail());
     dispatch(refreshingActions.setRefreshing(true));
     dispatch(getProductBlockDetail(id));
-    console.log('skhdjshdj')
+    console.log("skhdjshdj");
   }, [id]);
 
   return (
     <>
-        {refresing == true ? (
+      {refresing == true ? (
         <LoadingSpinner />
       ) : (
-      
-        <Box sx={{ marginLeft: "10px", marginRight: "10px" }}>
-          <Box marginX={1} marginTop={2}>
-            <Grid container marginTop={1}>
-              <Grid item xs={12} lg={6} marginTop="10px">
-                <ImagSelect product={product} />
-              </Grid>
-              <Grid item xs={12} lg={6} marginTop="10px">
-                <ProductDetails product={productname} block={product} />
-              </Grid>
-              <Grid item xs={12} lg={12} marginTop="10px">
-                <Box sx={{ backgroundColor: "#bbbb", height: 50 }}>
-                  <Typography padding={1} className="Product-detail">
-                    <h3>Related Products</h3>
-                  </Typography>
-                </Box>
-              </Grid>
-              <HomeImgCollections />
-            </Grid>
-          </Box>
+        <Box>
+          <ProductBlockDetailPages product={product} />
         </Box>
-            )}
+        // <Box sx={{ marginLeft: "10px", marginRight: "10px" }}>
+        //   <Box marginX={1} marginTop={2}>
+        //     <Grid container marginTop={1}>
+        //       <Grid item xs={12} lg={6} marginTop="10px">
+        //         <ImagSelect product={product} />
+        //       </Grid>
+        //       <Grid item xs={12} lg={6} marginTop="10px">
+        //         <ProductDetails product={productname} block={product} />
+        //       </Grid>
+        //       <Grid item xs={12} lg={12} marginTop="10px">
+        //         <Box sx={{ backgroundColor: "#bbbb", height: 50 }}>
+        //           <Typography padding={1} className="Product-detail">
+        //             <h3>Related Products</h3>
+        //           </Typography>
+        //         </Box>
+        //       </Grid>
+        //       <HomeImgCollections />
+        //     </Grid>
+        //   </Box>
+        // </Box>
+      )}
     </>
   );
 };

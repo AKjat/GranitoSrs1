@@ -15,6 +15,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import MenuIcon from "@mui/icons-material/Menu";
 import ProfileMenu from "../header/profileMenu/Menu";
 import { filterActions } from "../../pages/products/Reducers/filterSlice";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const useStyles = makeStyles({
 });
@@ -202,7 +203,7 @@ export default function MobileDrawer({ loggedUser, handleLogout }) {
               <Button
                 startIcon={
                   <Badge color="primary">
-                    <MenuIcon fontSize="medium" />
+                    <ArrowBackIcon fontSize="medium" />
                   </Badge>
                 }
                 onClick={toggleDrawer("left", true)}

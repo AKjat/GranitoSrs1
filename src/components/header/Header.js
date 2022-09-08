@@ -96,7 +96,7 @@ const Header = (props) => {
           alignItems="center"
         >
           <Grid item xs={2} className={classes.hideD}>
-            <MobileAppbar loggedUser={loggedUser} handleLogout={handleLogout} />
+            <MobileAppbar  handleLogout={handleLogout} />
           </Grid>
           <Grid component={Link} to="/" item xs={3} sm={3} md={2} lg={3}>
             <Box className={classes.logoBox}>
@@ -108,7 +108,7 @@ const Header = (props) => {
             </Box>
           </Grid>
           <Grid item xs={2} className={classes.hideD}>
-            <MobileAppbarRight loggedUser={loggedUser} handleLogout={handleLogout} />
+            <MobileAppbarRight  handleLogout={handleLogout} />
           </Grid>
           <Grid
             xs={9}

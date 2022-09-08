@@ -66,9 +66,9 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
   let csrftoken = Cookies.get("csrftoken");
-  axios.defaults.baseURL = "https://stonebharat.in/api/";
+  // axios.defaults.baseURL = "https://stonebharat.in/api/";
   // axios.defaults.baseURL = "http://192.168.1.5:8000/api/";
-  // axios.defaults.baseURL = "http://192.168.43.117:8000/api/";
+  axios.defaults.baseURL = "http://192.168.43.117:8000/api/";
 
   axios.defaults.headers.common["X-CSRFToken"] = csrftoken;
   axios.defaults.withCredentials = true;

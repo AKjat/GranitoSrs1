@@ -52,7 +52,8 @@ const ImagSelect = ({ product }) => {
                 {block?.mimetype == "image/jpeg" ? (
                   <img
                     className="d-block w-100"
-                    src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
+                    // src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
+                    src={block?.website_media}
                     style={{ objectFit: "contain", height: 300 }}
                   />
                 ) : (
@@ -62,7 +63,8 @@ const ImagSelect = ({ product }) => {
                     style={{ objectFit: "contain", height: 300, width: 350 }}
                   >
                     <source
-                      src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
+                      // src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
+                      src={block?.website_media}
                       type="video/mp4"
                       style={{ objectFit: "contain", height: 300 }}
                     ></source>

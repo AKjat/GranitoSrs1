@@ -1,7 +1,6 @@
-import { AppBar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
-import MobileDrawer from "./MobileDrawer";
+import MobileBack from "./MobileBack";
 import SimpleBottomNavigation from "./mobileNavigation";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +17,7 @@ const MobileAppbar = ({ loggedUser, handleLogout }) => {
   const classes = useStyles();
   return (
     <div className={classes.mobileView}>
-      {/* <MobileDrawer loggedUser={loggedUser} handleLogout={handleLogout}/> */}
+      <MobileBack/>
       <SimpleBottomNavigation />
     </div>
   );
