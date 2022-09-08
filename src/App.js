@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
-import { createTheme, Input, ThemeProvider, Typography } from "@mui/material";
+import { createTheme, Divider, ThemeProvider } from "@mui/material";
 import Header from "./components/header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { orange } from "@mui/material/colors";
-import Footer from "./components/main/Footer";
 import ScrollToTop from "./ScrollToTop";
-import { makeStyles } from "@mui/styles";
 import TransportEstimate from "./pages/TransportFee/screens/TransportEstimate";
 import axios from "axios";
-import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import Home from "./pages/home/Screens/Home";
 import SignIn from "./pages/login/Screens/SignIn";
@@ -31,6 +28,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { makeStyles } from "@mui/styles";
 
 const theme = createTheme({
   palette: {
@@ -55,6 +53,17 @@ const theme = createTheme({
   },
 });
 
+const useStyles = makeStyles((theme) => ({
+  mobileView: {
+    [theme.breakpoints.down("md")]: {
+      display: "block",
+    },
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+  },
+}));
+
 function App(props) {
   let csrftoken = Cookies.get("csrftoken");
   axios.defaults.baseURL = "https://stonebharat.in/api/";
@@ -63,16 +72,6 @@ function App(props) {
 
   axios.defaults.headers.common["X-CSRFToken"] = csrftoken;
   axios.defaults.withCredentials = true;
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  //   axios.get('user/')
-  //   .then((res)=>{
-  //       dispatch(loginActions.setUser(res.data))
-  //       dispatch(loginActions.setLogin())
-  //       console.log(res.data,"looogogoog")
-  //   })
-  //   .catch(err=> console.log("ERRRRRRRRR",err.response.data))
-  // }, [])
 
   const [open, setOpen] = React.useState(false);
 
@@ -84,25 +83,7 @@ function App(props) {
     setOpen(false);
   };
 
-  // loadingSpinner
-  const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const handleFetch = () => {
-    setIsLoading(true);
-    fetch("https://reqres.in/api/users?page=0")
-      .then((respose) => respose.json())
-      .then((respose) => {
-         setUsers(respose.data)
-         setIsLoading(false)
-         
-      })
-      .catch(() => {
-         setErrorMessage("Unable to fetch user list");
-         setIsLoading(false);
-      });
-  };
+  // const classes = useStyles();
 
   return (
     <Router>
@@ -135,7 +116,8 @@ function App(props) {
             element={<TransportEstimate />}
           />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
+        <div><Divider sx={{margin:3}}/></div>
 
         <a
           href="https://wa.me/919119114151"

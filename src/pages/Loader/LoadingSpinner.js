@@ -1,10 +1,11 @@
 import React from "react";
-import "./spinner.css";
+import "./LoadingSpinner.css";
 
 export default function LoadingSpinner() {
   return (
     <div className="spinner-container">
       <div className="loading-spinner"></div>
+      {/* <div class="div-height"></div> */}
     </div>
   );
 }

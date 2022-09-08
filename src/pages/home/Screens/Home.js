@@ -15,6 +15,8 @@ import ImgSlider from "../components/HomeImgSlider";
 
 import HomeImgCollections from "../components/HomeImgCollections";
 import VideoURL from "../components/VideoURL";
+import { useSelector } from "react-redux";
+import LoadingSpinner from "../../Loader/LoadingSpinner";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
- 
+
     "& .tag_heading": {
       display: "flex",
       justifyContent: "space-between",
@@ -48,175 +50,167 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home(props) {
-  const [mostDemanding, setMostDemanding] = React.useState([]);
-  const [newArrival, setNewArrival] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  const getProducts = () => {
-    axios.get(`products/`).then((response) => {
-      const allproducts = response.data.results;
-      console.log(allproducts);
-      setMostDemanding(
-        allproducts.filter((d) => d.tag.name === "Most Demanding")
-      );
-      setNewArrival(allproducts.filter((d) => d.tag.name === "Newly Arrival"));
-      setLoading(false);
-    });
-  };
-  const classes = useStyles();
+function Home(props) {  
+  const refreshing = useSelector((state) => state.refreshing);
 
   return (
-    <Box marginTop={0.05}>
-      <ImgSlider />
-      <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
-        <Button
-          component={Link}
-          to="/product"
-          variant="outlined"
-          sx={{ width: "60vw" }}
-        >
-          <Typography> View Our Collections</Typography>
-        </Button>
-      </Stack>
-      <Grid padding={3}>
-        <div>
-          <h1>
-            <u>Latest Stone Collections</u>
-          </h1>
-        </div>
-      </Grid>
-      <Container>
-        <HomeImgCollections />
-      </Container>
-      <Box sx={{ backgroundColor: "#E9EBEA" }}>
-        <Grid container paddingLeft={3} paddingTop={3}>
-          <Box>
-            <h1 style={{ fontsize: "1000" }}>
-              High Quality Stones Perfect for Elegant Interiors
-            </h1>
+    <>
+      
+        <Box marginTop={0.05}>
+          <ImgSlider />
+          <Stack
+            sx={{ pt: 4 }}
+            direction="row"
+            spacing={2}
+            justifyContent="center"
+          >
+            <Button
+              component={Link}
+              to="/product"
+              variant="outlined"
+              sx={{ width: "60vw" }}
+            >
+              <Typography> View Our Collections</Typography>
+            </Button>
+          </Stack>
+          <Grid padding={3}>
+            <div>
+              <h1>
+                <u>Latest Stone Collections</u>
+              </h1>
+            </div>
+          </Grid>
+          <Container>
+            <HomeImgCollections />
+          </Container>
+          <Box sx={{ backgroundColor: "#E9EBEA" }}>
+            <Grid container paddingLeft={3} paddingTop={3}>
+              <Box>
+                <h1 style={{ fontsize: "1000" }}>
+                  High Quality Stones Perfect for Elegant Interiors
+                </h1>
+              </Box>
+            </Grid>
+            <Divider />
+            <Box>
+              <Grid container spacing={3} padding={4}>
+                <Grid item xs={12} sm={12} lg={3}>
+                  <Typography align="center">
+                    <h5>
+                      <u>
+                        <b>Our Infrastructure</b>
+                      </u>
+                    </h5>
+                  </Typography>
+                  <Typography>
+                    <h6>
+                      Since the commencement of our corporation, we have strong
+                      and well-equipped infrastructure unit. This infrastructure
+                      unit is fully supported by our skilled and experienced
+                      professionals.
+                    </h6>
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} lg={3}>
+                  <Typography align="center">
+                    <h5>
+                      <u>
+                        <b>Product Portfolio</b>
+                      </u>
+                    </h5>
+                  </Typography>
+                  <Typography>
+                    <h6>
+                      We are a renowned exporter and wholesaler of Natural
+                      stones. Our range includes Marble, Granite, Sandstone and
+                      Marble Handicrafts. These products are procured from
+                      reliable vendors, which design these in compliance.
+                    </h6>
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} lg={3}>
+                  <Typography align="center">
+                    <h5>
+                      <u>
+                        <b>Our Team</b>
+                      </u>
+                    </h5>
+                  </Typography>
+                  <Typography>
+                    <h6>
+                      We are supported by dedicated and talented professionals,
+                      which have the vast knowledge of this domain. These are
+                      employed by our senior managers after testing them on
+                      their qualification and experience.
+                    </h6>
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} lg={3}>
+                  <Typography align="center">
+                    <h5>
+                      <u>
+                        {" "}
+                        <b>Quality Standards</b>
+                      </u>
+                    </h5>
+                  </Typography>
+                  <Typography>
+                    <h6>
+                      Keeping all quality industrial recommended quality
+                      parameters and standards as our prime focus, we
+                      manufacture our entire range of products. For quality
+                      approved delivery of products.
+                    </h6>
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Box>
           </Box>
-        </Grid>
-        <Divider />
-        <Box>
-          <Grid container spacing={3} padding={4}>
-            <Grid item xs={12} sm={12} lg={3}>
-              <Typography align="center">
-                <h5>
-                  <u>
-                    <b>Our Infrastructure</b>
-                  </u>
-                </h5>
-              </Typography>
-              <Typography>
-                <h6>
-                  Since the commencement of our corporation, we have strong and
-                  well-equipped infrastructure unit. This infrastructure unit is
-                  fully supported by our skilled and experienced professionals.
-                </h6>
-              </Typography>
+          <Box marginTop={2}>
+            <Typography align="center">
+              <h2>Watch Videos</h2>
+            </Typography>
+            <VideoURL />
+          </Box>
+          <Grid container>
+            <Grid item xs={12} sm={12} lg={12}>
+              <img
+                className="d-block w-100"
+                src="img\SliderHome\home.jpg"
+                // width={700}
+                //   src={d.image}
+                //   alt={d.name}
+              />
             </Grid>
-            <Grid item xs={12} sm={12} lg={3}>
-              <Typography align="center">
-                <h5>
-                  <u>
-                    <b>Product Portfolio</b>
-                  </u>
-                </h5>
-              </Typography>
-              <Typography>
-                <h6>
-                  We are a renowned exporter and wholesaler of Natural stones.
-                  Our range includes Marble, Granite, Sandstone and Marble
-                  Handicrafts. These products are procured from reliable
-                  vendors, which design these in compliance.
-                </h6>
-              </Typography>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={12} lg={6}>
+              <img className="d-block w-100" src="img\SliderHome\world.png" />
             </Grid>
-            <Grid item xs={12} sm={12} lg={3}>
-              <Typography align="center">
+            <Grid item xs={12} sm={12} lg={6}>
+              <Typography marginTop={2} align="center">
+                <h1>
+                  Our Marbles are exported over 150+ Countries all over the
+                  world
+                </h1>
+              </Typography>
+              <Typography align="justify">
                 <h5>
-                  <u>
-                    <b>Our Team</b>
-                  </u>
+                  List of 150+ Countries includes Russia, Iran, Saudi Arabia,
+                  Taiwan, Peru, UAE, China, USA, France, Italy, Philippines,
+                  Malaysia, Singapore, Pakistan, Ethiopia, Tanzania, South
+                  Africa, Egypt, Algeria, Morocco, Spain, Poland, Turkey,
+                  Argentina, Brazil, Guatemala, Mexico, etc.
                 </h5>
               </Typography>
-              <Typography>
-                <h6>
-                  We are supported by dedicated and talented professionals,
-                  which have the vast knowledge of this domain. These are
-                  employed by our senior managers after testing them on their
-                  qualification and experience.
-                </h6>
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={12} lg={3}>
-              <Typography align="center">
-                <h5>
-                  <u>
-                    {" "}
-                    <b>Quality Standards</b>
-                  </u>
-                </h5>
-              </Typography>
-              <Typography>
-                <h6>
-                  Keeping all quality industrial recommended quality parameters
-                  and standards as our prime focus, we manufacture our entire
-                  range of products. For quality approved delivery of products.
-                </h6>
-              </Typography>
+              <img
+                className="d-block w-100"
+                src="img\SliderHome\multistone.jpg"
+              />
             </Grid>
           </Grid>
         </Box>
-      </Box>
-      <Box marginTop={2}>
-        <Typography align="center">
-          <h2>Watch Videos</h2>
-        </Typography>
-        <VideoURL />
-      </Box>
-      <Grid container>
-        <Grid item xs={12} sm={12} lg={12}>
-          <img
-            className="d-block w-100"
-            src="img\SliderHome\home.jpg"
-            // width={700}
-            //   src={d.image}
-            //   alt={d.name}
-          />
-        </Grid>
-      </Grid>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={12} lg={6}>
-          <img
-            className="d-block w-100"
-            src="img\SliderHome\world.png"
-           
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} lg={6}>
-          <Typography marginTop={2} align="center">
-            <h1>
-              Our Marbles are exported over 150+ Countries all over the world
-            </h1>
-          </Typography>
-          <Typography align="justify">
-            <h5>
-              List of 150+ Countries includes Russia, Iran, Saudi Arabia,
-              Taiwan, Peru, UAE, China, USA, France, Italy, Philippines,
-              Malaysia, Singapore, Pakistan, Ethiopia, Tanzania, South Africa,
-              Egypt, Algeria, Morocco, Spain, Poland, Turkey, Argentina, Brazil,
-              Guatemala, Mexico, etc.
-            </h5>
-          </Typography>
-          <img className="d-block w-100" src="img\SliderHome\multistone.jpg" />
-        </Grid>
-      </Grid>
-    </Box>
+    </>
   );
 }
 

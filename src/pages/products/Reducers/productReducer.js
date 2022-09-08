@@ -1,6 +1,6 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 
 export const productSlice = createSlice({
   name: "products",
@@ -31,17 +31,15 @@ export const productLinksSlice = createSlice({
 export const productLinksActions = productLinksSlice.actions;
 export const productActions = productSlice.actions;
 
-export const getproduct = (setRefreshing,next) => {
-  return function (dispatch,getState) {
+export const getproduct = (next) => {
+  return function (dispatch, getState) {
     const { productLinks } = getState();
     let link;
     if (next) {
       if (productLinks.next) {
         link = productLinks.next;
       } else {
-        if (setRefreshing) {
-          setRefreshing(false);
-        }
+        dispatch(refreshingActions.setRefreshing(false));
         return;
       }
     } else {
@@ -61,15 +59,10 @@ export const getproduct = (setRefreshing,next) => {
             count: res.data.count,
           })
         );
-        // dispatch(productActions.setProduct(res.data.results));
-        if (setRefreshing) {
-          setRefreshing(false);
-        }
+        dispatch(refreshingActions.setRefreshing(false));
       })
       .catch((e) => {
         console.log(e);
       });
   };
 };
-
-

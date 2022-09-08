@@ -1,21 +1,23 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import {
-  Grid,
-} from "@mui/material";
+import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import BlockPhotos from "../../products/Screens/BlockPhotos";
 import { getproduct } from "../../products/Reducers/ProductReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
-import "../../products/Components/productHeader.css"
+import "../../products/Components/productHeader.css";
 const HomeImgCollections = () => {
   const dispatch = useDispatch();
 
   const product = useSelector((state) => state.products);
   React.useEffect(() => {
-    dispatch(refreshingActions.setRefreshing(true));
+    // dispatch(refreshingActions.setRefreshing(true));
     dispatch(getproduct());
+    console.log("hyegdgtysd");
+    // return () => {
+    //   dispatch(refreshingActions.setRefreshing(false));
+    // };
   }, []);
 
   return (

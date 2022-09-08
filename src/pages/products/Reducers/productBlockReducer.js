@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 
 export const productBlockSlice = createSlice({
   name: "products_block",
@@ -25,6 +26,7 @@ export const getProductBlock = (id) => {
 
       .then((res) => {
         dispatch(productBlockActions.setProductBlock(res.data));
+        dispatch(refreshingActions.setRefreshing(false));
       })
       .catch((e) => {
         console.log(e);

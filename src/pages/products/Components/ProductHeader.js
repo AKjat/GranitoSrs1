@@ -29,7 +29,7 @@ const ProductHeader = () => {
   });
   return (
     <Grid container justifyContent={"center"}>
-      <Grid item margin={1} xs={3} md={3} lg={3}>
+      {/* <Grid item margin={1} xs={3} md={3} lg={3}>
         <div class="Box-ui">
           <div class="item">
             <h6 class="Box-header"> Available Products</h6>
@@ -37,8 +37,8 @@ const ProductHeader = () => {
             <ProductCounter count={productCount.Product} />
           </div>
         </div>
-      </Grid>
-      <Grid item margin={1} xs={3} md={3} lg={3}>
+      </Grid> */}
+      <Grid item margin={1} xs={5} md={5} lg={5}>
         <div class="Box-ui">
           <div class="item">
             <h6 class="Box-header"> Available Blocks</h6>
@@ -46,7 +46,7 @@ const ProductHeader = () => {
           </div>
         </div>
       </Grid>
-      <Grid item margin={1} xs={3} md={3} lg={4}>
+      <Grid item margin={1} xs={5} md={5} lg={5}>
         <div class="Box-ui">
           <div class="item">
             <h6 class="Box-header"> Available Square Feet</h6>
