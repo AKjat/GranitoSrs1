@@ -29,7 +29,6 @@ const Product = () => {
   const productCount = useSelector((state) => state.productCount);
   const block = useSelector((state) => state.productBlock);
   const refresing = useSelector((state) => state.refreshing);
-  console.log(refresing,'hye')
 
   React.useEffect(() => {
     dispatch(refreshingActions.setRefreshing(true));
@@ -46,7 +45,7 @@ const loc = window.location.href;
         <Grid container>
           {product?.map((product, index) => (
             <Grid item padding={1} xs={12} sm={12} lg={4}>
-              <Card>
+              <Card style={{boxShadow:" 3px 3px 5px #feb74d"}}>
                 <CardActionArea
                   component={Link}
                   to={`/product_block_page/${product.id}`}

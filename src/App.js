@@ -66,9 +66,9 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
   let csrftoken = Cookies.get("csrftoken");
-  // axios.defaults.baseURL = "https://stonebharat.in/api/";
+  axios.defaults.baseURL = "https://stonebharat.in/api/";
   // axios.defaults.baseURL = "http://192.168.1.5:8000/api/";
-  axios.defaults.baseURL = "http://192.168.43.117:8000/api/";
+  // axios.defaults.baseURL = "http://192.168.43.117:8000/api/";
 
   axios.defaults.headers.common["X-CSRFToken"] = csrftoken;
   axios.defaults.withCredentials = true;
@@ -91,7 +91,7 @@ function App(props) {
         <ScrollToTop />
         <Header />
         <Routes>
-          <Route exact path="*" element={<Home />} />
+          <Route exact path="*" element={<Product />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/blog" element={<Blog />} />
@@ -105,6 +105,8 @@ function App(props) {
             path="/product_block_page/:id"
             element={<ProductBlockPage />}
           />
+          <Route exact path="/home" element={<Home />} />
+
           <Route exact path="/product/" element={<Product />} />
           <Route exact path="/login" element={<SignIn />} />
           <Route exact path="/signup" element={<SignUp />} />
@@ -117,7 +119,9 @@ function App(props) {
           />
         </Routes>
         {/* <Footer /> */}
-        <div><Divider sx={{margin:3}}/></div>
+        <div>
+          <Divider sx={{ margin: 3 }} />
+        </div>
 
         <a
           href="https://wa.me/919119114151"

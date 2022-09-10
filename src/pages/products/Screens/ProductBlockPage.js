@@ -23,10 +23,14 @@ import { RWebShare } from "react-web-share";
 import ShareIcon from "@mui/icons-material/Share";
 import "../Components/productHeader.css";
 import LoadingSpinner from "../../Loader/LoadingSpinner";
-
+import ProductBlockDetailPages from "../Components/ProductBlockDetailPage";
 import LineWeightIcon from "@mui/icons-material/LineWeight";
 import SquareFootIcon from "@mui/icons-material/SquareFoot";
 import CalendarViewWeekIcon from "@mui/icons-material/CalendarViewWeek";
+import {
+  getProductBlockDetail,
+  productBlockDetailActions,
+} from "../Reducers/productBlockDetailReducer";
 
 const useStyles = makeStyles((theme) => ({
   imgB: {
@@ -53,12 +57,17 @@ const ProductBlockPage = () => {
   const refresing = useSelector((state) => state.refreshing);
   const thickness = useSelector((state) => state.productBlockDetail);
 
-
   React.useEffect(() => {
     dispatch(productBlockActions.clearProductBlock());
     dispatch(refreshingActions.setRefreshing(true));
     dispatch(getProductBlock(id));
   }, [id]);
+
+  // React.useEffect(() => {
+  //   dispatch(productBlockDetailActions.clearProductBlockDetail());
+  //   dispatch(refreshingActions.setRefreshing(true));
+  //   dispatch(getProductBlockDetail(id));
+  // }, [id]);
 
   const loc = window.location.href;
   return (
@@ -79,19 +88,36 @@ const ProductBlockPage = () => {
         <Grid container>
           {product?.blocks?.map((block, index) => (
             <Grid item padding={2} xs={12} sm={12} lg={4}>
-              <Card>
+              <Card style={{ boxShadow: " 3px 3px 5px #feb74d" }}>
                 <CardActionArea
                   component={Link}
                   to={`/product_block_detail_page/${block.id}`}
                 >
-                  {/* <BlockPhotos product={product}/> */}
-                  <img
-                    className="d-block w-100"
-                    // src={`https://easystone.in/api/whatsapp_media/${block?.block_photos[0]?.media_id}/${block?.block_photos[0]?.fileName}`}
-                    // height={300}
-                    src={block?.block_photos[0]?.website_media}
-                    style={{ objectFit: "contain", height: 300 }}
-                  />
+                  <div style={{ height: "300px" }}>
+                    <div
+                      class="image-box"
+                      style={{
+                        backgroundImage: `url(${block?.block_photos[0]?.website_media})`,
+                        zIndex: -1,
+                      }}
+                    >
+                      {" "}
+                    </div>
+                    <div>
+                      <img
+                        className="d-block w-100"
+                        src={block?.block_photos[0]?.website_media}
+                        style={{
+                          objectFit: "contain",
+                          top: 0,
+                          left: 0,
+                          position: "absolute",
+                        }}
+                        height={300}
+                      />
+                    </div>
+                  </div>
+                  
                 </CardActionArea>
                 <Divider />
                 <CardContent
@@ -105,7 +131,7 @@ const ProductBlockPage = () => {
                       <Typography variant="button" className="Product-detail">
                         Block No. = <b>{block?.block_number}</b>
                       </Typography>
-                      
+
                       {/* <Typography variant="button" className="Product-detail">
                         Slabs = <b>{block?.slabs}</b>
                       </Typography> */}
@@ -220,6 +246,9 @@ const ProductBlockPage = () => {
           ))}
         </Grid>
       )}
+      {/* <Box>
+        <ProductBlockDetailPages product={thickness} />
+      </Box> */}
     </>
   );
 };

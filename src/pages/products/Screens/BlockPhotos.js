@@ -1,9 +1,9 @@
-import React, {  } from "react";
+import React from "react";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/material";
-
+import "./BlockPhotos.css";
 
 const useStyles = makeStyles((theme) => ({
   imgB: {
@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "20px 20px 0 0",
     padding: theme.spacing(1),
   },
+  // backgroundImage:{
+  //   backgroundImage:
+  // }
 }));
 
 const BlockPhotos = ({ product }) => {
@@ -30,12 +33,30 @@ const BlockPhotos = ({ product }) => {
       <Carousel>
         {product?.blocks?.map((block, index) => (
           <Carousel.Item className={classes.imgB} key={index} interval={1000}>
-            <img
-              className="d-block w-100"
-              // src={`https://easystone.in/api/whatsapp_media/${block?.block_photos[0]?.media_id}/${block?.block_photos[0]?.fileName}`}
-              src={block?.block_photos[0]?.website_media}
-              height={250}
-            />
+            <div style={{ height: "300px" }}>
+              <div
+                class="image-box"
+                style={{
+                  backgroundImage: `url(${block?.block_photos[0]?.website_media})`,
+                  zIndex: -1,
+                }}
+              >
+                {" "}
+              </div>
+              <div>
+                <img
+                  className="d-block w-100"
+                  src={block?.block_photos[0]?.website_media}
+                  style={{
+                    objectFit: "contain",
+                    top: 0,
+                    left: 0,
+                    position: "absolute",
+                  }}
+                  height={300}
+                />
+              </div>
+            </div>
           </Carousel.Item>
         ))}
       </Carousel>
