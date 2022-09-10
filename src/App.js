@@ -13,7 +13,7 @@ import SignIn from "./pages/login/Screens/SignIn";
 import SignUp from "./pages/signup/Screens/SignUp";
 import NewProduct from "./pages/addNewProduct/Screens/NewProduct";
 import CartPage from "./pages/cart/Screens/CartPage";
-import About from "./pages/About";
+// import About from "./pages/About";
 import Product from "./pages/products/Screens/Product";
 import ProductBlockPage from "./pages/products/Screens/ProductBlockPage";
 import Contact from "./pages/Contact";
@@ -92,7 +92,7 @@ function App(props) {
         <Header />
         <Routes>
           <Route exact path="*" element={<Product />} />
-          <Route exact path="/about" element={<About />} />
+          {/* <Route exact path="/about" element={<About />} /> */}
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/blog" element={<Blog />} />
           <Route
@@ -120,7 +120,7 @@ function App(props) {
         </Routes>
         {/* <Footer /> */}
         <div>
-          <Divider sx={{ margin: 3 }} />
+          <Divider  />
         </div>
 
         <a

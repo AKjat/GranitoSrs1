@@ -5,27 +5,15 @@ import {
   Toolbar,
   Grid,
   Button,
-  Tooltip,
-  IconButton,
-  Badge,
-  ThemeProvider,
   Box,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import PersonIcon from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 import MobileAppbar from "../mobileNavigation/MobileAppbar";
 
-import NewSearch from "./search/NewSearch";
 
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { useDispatch, useSelector } from "react-redux";
-import PhoneIcon from "@mui/icons-material/Phone";
-import { loginActions, logOut } from "../../pages/login/Reducers/loginSlice";
-import ProfileMenu from "./profileMenu/Menu";
-import HoverMenu from "../NavigationBar/HoverMenu";
+import { logOut } from "../../pages/login/Reducers/loginSlice";
 import MobileAppbarRight from "../mobileNavigation/MobileAppbarRight";
 
 const useStyles = makeStyles((theme) => ({
@@ -118,7 +106,7 @@ const Header = (props) => {
             alignItems="center"
             item
           >
-            <Grid className={classes.hide} item xs={1} lg={1}>
+            {/* <Grid className={classes.hide} item xs={1} lg={1}>
               <Box>
                 <Button
                   id="home"
@@ -130,7 +118,7 @@ const Header = (props) => {
                   Home
                 </Button>
               </Box>
-            </Grid>
+            </Grid> */}
             <Grid className={classes.hide} item xs={1} lg={1}>
               <Box color='primary'>
                 {/* <HoverMenu filterItem={filterItem} filterIte={filterIte} /> */}

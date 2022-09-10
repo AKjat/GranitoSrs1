@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import MobileBack from "./MobileBack";
-import SimpleBottomNavigation from "./mobileNavigation";
+// import SimpleBottomNavigation from "./mobileNavigation";
 
 const useStyles = makeStyles((theme) => ({
   mobileView: {
@@ -18,7 +18,7 @@ const MobileAppbar = ({ loggedUser, handleLogout }) => {
   return (
     <div className={classes.mobileView}>
       <MobileBack/>
-      <SimpleBottomNavigation />
+      {/* <SimpleBottomNavigation /> */}
     </div>
   );
 };

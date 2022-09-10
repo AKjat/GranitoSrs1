@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   mobileView: {
-    position: "absolute",
+    // position: "absolute",
 
     [theme.breakpoints.down("md")]: {
       display: "block",
