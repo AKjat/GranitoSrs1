@@ -8,7 +8,7 @@ import ScrollToTop from "./ScrollToTop";
 import TransportEstimate from "./pages/TransportFee/screens/TransportEstimate";
 import axios from "axios";
 import Cookies from "js-cookie";
-import Home from "./pages/home/Screens/Home";
+// import Home from "./pages/home/Screens/Home";
 import SignIn from "./pages/login/Screens/SignIn";
 import SignUp from "./pages/signup/Screens/SignUp";
 import NewProduct from "./pages/addNewProduct/Screens/NewProduct";
@@ -17,7 +17,7 @@ import CartPage from "./pages/cart/Screens/CartPage";
 import Product from "./pages/products/Screens/Product";
 import ProductBlockPage from "./pages/products/Screens/ProductBlockPage";
 import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
+// import Blog from "./pages/Blog";
 import ProductBlockDetailPage from "./pages/products/Screens/ProductBlockDetailPage";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import HailIcon from "@mui/icons-material/Hail";
@@ -92,9 +92,7 @@ function App(props) {
         <Header />
         <Routes>
           <Route exact path="*" element={<Product />} />
-          {/* <Route exact path="/about" element={<About />} /> */}
           <Route exact path="/contact" element={<Contact />} />
-          <Route exact path="/blog" element={<Blog />} />
           <Route
             exact
             path="/product_block_detail_page/:id"
@@ -105,7 +103,6 @@ function App(props) {
             path="/product_block_page/:id"
             element={<ProductBlockPage />}
           />
-          <Route exact path="/home" element={<Home />} />
 
           <Route exact path="/product/" element={<Product />} />
           <Route exact path="/login" element={<SignIn />} />

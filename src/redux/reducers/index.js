@@ -8,11 +8,11 @@ import customerSlice from "./customerSlice";
 import uploadSlice from "../../pages/addNewProduct/Reducer/uploadSlice";
 import signupSlice from "../../pages/signup/Reducers/signupslice";
 import { productReducers } from "../../pages/products/Reducers";
-import { homeSliderReducers } from "../../pages/home/Reducers";
+// import { homeSliderReducers } from "../../pages/home/Reducers";
 
 export const reducers = combineReducers({
     refreshing:refreshingSlice.reducer,
-    ...productReducers,...homeSliderReducers,
+    ...productReducers,
 
     cart: cartSlice.reducer,
     customer: customerSlice.reducer,
