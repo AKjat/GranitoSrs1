@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-const MobileAppbar = ({ loggedUser, handleLogout }) => {
+const MobileAppbar = () => {
   const classes = useStyles();
   return (
     <div className={classes.mobileView}>
