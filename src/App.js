@@ -8,16 +8,10 @@ import ScrollToTop from "./ScrollToTop";
 import TransportEstimate from "./pages/TransportFee/screens/TransportEstimate";
 import axios from "axios";
 import Cookies from "js-cookie";
-// import Home from "./pages/home/Screens/Home";
-import SignIn from "./pages/login/Screens/SignIn";
-import SignUp from "./pages/signup/Screens/SignUp";
-import NewProduct from "./pages/addNewProduct/Screens/NewProduct";
 import CartPage from "./pages/cart/Screens/CartPage";
-// import About from "./pages/About";
 import Product from "./pages/products/Screens/Product";
 import ProductBlockPage from "./pages/products/Screens/ProductBlockPage";
 import Contact from "./pages/Contact";
-// import Blog from "./pages/Blog";
 import ProductBlockDetailPage from "./pages/products/Screens/ProductBlockDetailPage";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import HailIcon from "@mui/icons-material/Hail";
@@ -105,17 +99,13 @@ function App(props) {
           />
 
           <Route exact path="/product/" element={<Product />} />
-          <Route exact path="/login" element={<SignIn />} />
-          <Route exact path="/signup" element={<SignUp />} />
           <Route exact path="/cart" element={<CartPage />} />
-          <Route exact path="/addproduct" element={<NewProduct />} />
           <Route
             exact
             path="/transportEstimate"
             element={<TransportEstimate />}
           />
         </Routes>
-        {/* <Footer /> */}
         <div>
           <Divider  />
         </div>
