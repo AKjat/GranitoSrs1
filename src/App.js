@@ -8,7 +8,6 @@ import ScrollToTop from "./ScrollToTop";
 import TransportEstimate from "./pages/TransportFee/screens/TransportEstimate";
 import axios from "axios";
 import Cookies from "js-cookie";
-import CartPage from "./pages/cart/Screens/CartPage";
 import Product from "./pages/products/Screens/Product";
 import ProductBlockPage from "./pages/products/Screens/ProductBlockPage";
 import Contact from "./pages/Contact";
@@ -99,7 +98,6 @@ function App(props) {
           />
 
           <Route exact path="/product/" element={<Product />} />
-          <Route exact path="/cart" element={<CartPage />} />
           <Route
             exact
             path="/transportEstimate"

@@ -4,7 +4,6 @@ import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom";
 import MobileAppbar from "../mobileNavigation/MobileAppbar";
 
-import { useDispatch, useSelector } from "react-redux";
 import MobileAppbarRight from "../mobileNavigation/MobileAppbarRight";
 
 const useStyles = makeStyles((theme) => ({
