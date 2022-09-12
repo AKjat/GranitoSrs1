@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { createTheme, Divider, ThemeProvider } from "@mui/material";
 import Header from "./components/header/Header";
@@ -22,6 +22,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { makeStyles } from "@mui/styles";
+import  ReactGA from "react-ga";
 
 const theme = createTheme({
   palette: {
@@ -76,7 +77,13 @@ function App(props) {
     setOpen(false);
   };
 
-  // const classes = useStyles();
+// google analytics 
+useEffect(() => {
+  ReactGA.initialize('G-MGDPGDKYYR')
+  ReactGA.pageview(window.location.pathname + window.location.search);
+ 
+}, [])
+
 
   return (
     <Router>

@@ -1,4 +1,3 @@
-import { AppBar, Button, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import CallIcon from "@mui/icons-material/Call";
@@ -21,7 +20,7 @@ const MobileAppbarRight = () => {
   const classes = useStyles();
   return (
     <div className={classes.mobileView}>
-      <a href="tel:+91-95715 10000" aria-setsize={1}>
+      <a href="/contact">
         <CallIcon color="primary" fontSize="medium" />
       </a>
     </div>
