@@ -22,7 +22,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { makeStyles } from "@mui/styles";
-import  ReactGA from "react-ga";
+import ReactGA from "react-ga";
+import Modal from "./components/Modal/popupModal";
 
 const theme = createTheme({
   palette: {
@@ -77,13 +78,12 @@ function App(props) {
     setOpen(false);
   };
 
-// google analytics 
-useEffect(() => {
-  ReactGA.initialize('G-MGDPGDKYYR')
-  ReactGA.pageview(window.location.pathname + window.location.search);
- 
-}, [])
+  // google analytics
+  // useEffect(() => {
+  //   ReactGA.initialize('331570999')
+  //   ReactGA.pageview(window.location.pathname + window.location.search);
 
+  // }, [])
 
   return (
     <Router>
@@ -112,9 +112,10 @@ useEffect(() => {
           />
         </Routes>
         <div>
-          <Divider  />
+          <Divider />
         </div>
-
+        <Modal/>
+        
         <a
           href="https://wa.me/919119114151"
           class="whatsapp_float"

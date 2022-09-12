@@ -31,6 +31,7 @@ import {
   getProductBlockDetail,
   productBlockDetailActions,
 } from "../Reducers/productBlockDetailReducer";
+import ProductCounter from "../Components/productCounter";
 
 const useStyles = makeStyles((theme) => ({
   imgB: {
@@ -82,10 +83,21 @@ const ProductBlockPage = () => {
       <Box margin={2}>
         <Typography alignItems={"stretch"}>{product?.description}</Typography>
       </Box>
+      
       {refresing == true ? (
         <LoadingSpinner />
       ) : (
         <Grid container>
+          <Grid container justifyContent={"center"}>
+            <Grid item margin={1} xs={10} md={10} lg={10}>
+              <div class="Box-ui">
+                <div class="item">
+                  <h6 class="Box-header">Total Available Blocks</h6>
+                  <ProductCounter count={product?.blocks?.length} />
+                </div>
+              </div>
+            </Grid>
+          </Grid>{" "}
           {product?.blocks?.map((block, index) => (
             <Grid item padding={2} xs={12} sm={12} lg={4}>
               <Card style={{ boxShadow: " 3px 3px 5px #feb74d" }}>
@@ -117,7 +129,6 @@ const ProductBlockPage = () => {
                       />
                     </div>
                   </div>
-                  
                 </CardActionArea>
                 <Divider />
                 <CardContent

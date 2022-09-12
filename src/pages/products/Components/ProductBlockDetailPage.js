@@ -3,6 +3,7 @@ import React from "react";
 import { makeStyles } from "@mui/styles";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./productHeader.css";
 
 const useStyles = makeStyles((theme) => ({
   boxImgSm: {
@@ -44,12 +45,12 @@ const ProductBlockDetailPage = ({ product }) => {
           <Grid item xs={12} md={12} lg={4}>
             {block?.website_media?.split(".").pop() == "mp4" ? (
               <div>
-                <video controls autoplay className="d-block w-100">
+                <video autoplay="true" loop="true"  controls="true"  className="d-block w-100">
                   <source src={block?.website_media} type="video/mp4"></source>
                 </video>
               </div>
             ) : (
-              <div>
+              <div >
                 <img
                   className="d-block w-100"
                   // src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
