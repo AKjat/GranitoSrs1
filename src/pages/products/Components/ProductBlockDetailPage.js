@@ -45,19 +45,24 @@ const ProductBlockDetailPage = ({ product }) => {
           <Grid item xs={12} md={12} lg={4}>
             {block?.website_media?.split(".").pop() == "mp4" ? (
               <div>
-                <video autoplay="true" loop="true"  controls="true"  className="d-block w-100">
+                <video playsInline="true" autoplay="true" loop="true"  controls="true"  className="d-block w-100">
                   <source src={block?.website_media} type="video/mp4"></source>
                 </video>
               </div>
             ) : (
               <div >
                 <img
-                  className="d-block w-100"
-                  // src={`https://easystone.in/api/whatsapp_media/${block?.media_id}/${block?.fileName}`}
+                  className="d-block w-100 myImg"
+                  
                   src={block?.website_media}
                   style={{ objectFit: "contain" }}
                 />
               </div>
+            //  <div className="myModal modal">
+            //   <span className="close">&times;</span>
+            //   <img className="modal-content img01">
+            //   <div className="caption"></div>
+            // </div>
             )}
           </Grid>
         ))}

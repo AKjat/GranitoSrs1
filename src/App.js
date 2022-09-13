@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { createTheme, Divider, ThemeProvider } from "@mui/material";
 import Header from "./components/header/Header";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import { orange } from "@mui/material/colors";
 import ScrollToTop from "./ScrollToTop";
 import TransportEstimate from "./pages/TransportFee/screens/TransportEstimate";
@@ -22,6 +27,10 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { makeStyles } from "@mui/styles";
+import { CustomPhoneInput } from "./components/CustomPhoneInput";
+import { useDispatch, useSelector } from "react-redux";
+import { WebsiteFormActions } from "./redux/reducers/WebsiteDataReducer";
+import { saveWebsiteForm } from "./redux/reducers/WebsiteDataSave";
 
 const theme = createTheme({
   palette: {
@@ -59,8 +68,8 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
   let csrftoken = Cookies.get("csrftoken");
-  axios.defaults.baseURL = "https://stonebharat.in/api/";
-  // axios.defaults.baseURL = "http://192.168.1.5:8000/api/";
+  // axios.defaults.baseURL = "https://stonebharat.in/api/";
+  axios.defaults.baseURL = "http://192.168.1.5:8000/api/";
   // axios.defaults.baseURL = "http://192.168.43.117:8000/api/";
 
   axios.defaults.headers.common["X-CSRFToken"] = csrftoken;
@@ -82,6 +91,19 @@ function App(props) {
   //   ReactGA.pageview(window.location.pathname + window.location.search);
 
   // }, [])
+  const dispatch = useDispatch();
+  const websiteForm = useSelector((state) => state.websiteForm);
+  const websiteError = useSelector((state) => state.websiteError);
+
+  const handleChange = (key, value) => {
+    dispatch(WebsiteFormActions.setWebsite({ name: key, value: value }));
+    console.log(key, value, "bhwdghwyd");
+  };
+  // const navigate = useNavigate();
+  // const _goBack = () => {
+  //   navigate(-1);
+  //   dispatch(WebsiteFormActions.clearForm());
+  // };
 
   return (
     <Router>
@@ -113,7 +135,7 @@ function App(props) {
           <Divider />
         </div>
         {/* <Modal/> */}
-        
+
         <a
           href="https://wa.me/919119114151"
           class="whatsapp_float"
@@ -134,20 +156,21 @@ function App(props) {
             <DialogTitle>UPDATES</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                For latest update please provide your number
+                For latest update please provide your Whatsapp Number
               </DialogContentText>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="name"
-                label="Phone Number"
-                type="number"
-                fullWidth
-                variant="standard"
+
+              <CustomPhoneInput
+                name="whatsapp_number"
+                value={websiteForm?.whatsapp_number}
+                onChange={(key, value) => {
+                  handleChange(key, value);
+                }}
+                error={websiteError?.whatsapp_number?.[0]}
+                required={true}
               />
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose}>Save</Button>
+              <Button onClick={() => dispatch(saveWebsiteForm())}>Save</Button>
             </DialogActions>
           </Dialog>
         </div>
