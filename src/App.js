@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import { createTheme, Divider, ThemeProvider } from "@mui/material";
+import { createTheme, Divider, Input, ThemeProvider } from "@mui/material";
 import Header from "./components/header/Header";
 import {
   BrowserRouter as Router,
@@ -30,7 +30,10 @@ import { makeStyles } from "@mui/styles";
 import { CustomPhoneInput } from "./components/CustomPhoneInput";
 import { useDispatch, useSelector } from "react-redux";
 import { WebsiteFormActions } from "./redux/reducers/WebsiteDataReducer";
-import { saveWebsiteForm } from "./redux/reducers/WebsiteDataSave";
+import {
+  checkWebsiteNumber,
+  saveWebsiteForm,
+} from "./redux/reducers/WebsiteDataSave";
 
 const theme = createTheme({
   palette: {
@@ -105,6 +108,43 @@ function App(props) {
   //   dispatch(WebsiteFormActions.clearForm());
   // };
 
+  const savingForm = (key, value) => {
+    const array = window.location.href.split("/");
+    const product = array[array.length - 2];
+    const name = product == "product_block_page" ? "product" : "block";
+    console.log(product, "popipaspa");
+    dispatch(WebsiteFormActions.setWebsite({ name: name, value: array.pop() }));
+    dispatch(saveWebsiteForm());
+  };
+
+  const [globalTimeOut, setGlobalTimeOut] = useState(null);
+  const [checkingNumber, setCheckingNumber] = useState(false);
+  const [inValidNumber, setInValidNumber] = useState(false);
+
+  const onNumberChange = (name, value) => {
+    setCheckingNumber(true);
+    if (globalTimeOut != null) {
+      clearTimeout(globalTimeOut);
+    }
+    let newGlobalTimeOut = setTimeout(() => checkNumber(name, value), 500);
+    setGlobalTimeOut(newGlobalTimeOut);
+  };
+  const checkNumber = (name, value) => {
+    dispatch(checkWebsiteNumber(name, value, setCheckingNumber));
+  };
+
+  useEffect(() => {
+    let whatsapp_number_error = websiteError?.whatsapp_number?.[0]
+      ? true
+      : false;
+    let number_error = websiteError?.number?.[0] ? true : false;
+    if (number_error || whatsapp_number_error) {
+      setInValidNumber(true);
+    } else {
+      setInValidNumber(false);
+    }
+  }, [websiteError]);
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -164,13 +204,16 @@ function App(props) {
                 value={websiteForm?.whatsapp_number}
                 onChange={(key, value) => {
                   handleChange(key, value);
+                  onNumberChange(key, value);
                 }}
                 error={websiteError?.whatsapp_number?.[0]}
-                required={true}
+                // required={true}
               />
             </DialogContent>
             <DialogActions>
-              <Button onClick={() => dispatch(saveWebsiteForm())}>Save</Button>
+              <Button onClick={savingForm} disabled={checkingNumber || inValidNumber}>
+                Save
+              </Button>
             </DialogActions>
           </Dialog>
         </div>

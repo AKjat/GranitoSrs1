@@ -21,9 +21,10 @@ export const WebsiteFormSlice = createSlice({
   name: "website_form",
   initialState: {
     whatsapp_number: null,
-    product: null,
+    product:null,
     block: null,
-    link: null,
+    // date: new Date(Date.now("yyyy/mm/dd")),
+    link: window.location.href,
     token: "PlAax0gKxE05qaSPYSN9ksLv8q4lPszu",
   },
   reducers: {
@@ -33,6 +34,8 @@ export const WebsiteFormSlice = createSlice({
       return state;
     },
     setWebsiteForm(state, { payload, type }) {
+      console.log(state, "date");
+
       state = payload;
       return state;
     },
@@ -45,7 +48,6 @@ export const WebsiteFormSlice = createSlice({
       };
       return state;
     },
-    
   },
 });
 
