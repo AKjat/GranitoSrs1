@@ -21,7 +21,7 @@ export const WebsiteFormSlice = createSlice({
   name: "website_form",
   initialState: {
     whatsapp_number: null,
-    product:null,
+    product: null,
     block: null,
     // date: new Date(Date.now("yyyy/mm/dd")),
     link: window.location.href,
@@ -41,10 +41,10 @@ export const WebsiteFormSlice = createSlice({
     },
     clearForm(state, { payload, type }) {
       state = {
-        whatsapp_number: null,
+        //  whatsapp_number: null,
         product: null,
         block: null,
-        link: null,
+        ...state,
       };
       return state;
     },

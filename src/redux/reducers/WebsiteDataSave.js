@@ -9,7 +9,7 @@ import {
 export const saveWebsiteForm = (_goBack, id) => {
   return function (dispatch, getState) {
     const { websiteForm } = getState();
-
+    console.log('asas',websiteForm)
     dispatch(savingActions.setSaving(true));
     axios({
       method: id ? "patch" : "post",

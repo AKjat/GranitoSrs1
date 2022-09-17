@@ -7,6 +7,7 @@ import {
   Routes,
   Route,
   useNavigate,
+  useLocation,
 } from "react-router-dom";
 import { orange } from "@mui/material/colors";
 import ScrollToTop from "./ScrollToTop";
@@ -88,33 +89,22 @@ function App(props) {
     setOpen(false);
   };
 
-  // google analytics
-  // useEffect(() => {
-  //   ReactGA.initialize('331570999')
-  //   ReactGA.pageview(window.location.pathname + window.location.search);
-
-  // }, [])
   const dispatch = useDispatch();
   const websiteForm = useSelector((state) => state.websiteForm);
   const websiteError = useSelector((state) => state.websiteError);
 
   const handleChange = (key, value) => {
     dispatch(WebsiteFormActions.setWebsite({ name: key, value: value }));
-    console.log(key, value, "bhwdghwyd");
   };
-  // const navigate = useNavigate();
-  // const _goBack = () => {
-  //   navigate(-1);
-  //   dispatch(WebsiteFormActions.clearForm());
-  // };
 
   const savingForm = (key, value) => {
     const array = window.location.href.split("/");
     const product = array[array.length - 2];
     const name = product == "product_block_page" ? "product" : "block";
-    console.log(product, "popipaspa");
     dispatch(WebsiteFormActions.setWebsite({ name: name, value: array.pop() }));
     dispatch(saveWebsiteForm());
+    // handleSubmit();
+    handleClose();
   };
 
   const [globalTimeOut, setGlobalTimeOut] = useState(null);
@@ -144,6 +134,35 @@ function App(props) {
       setInValidNumber(false);
     }
   }, [websiteError]);
+
+  useEffect(() => {
+    const array = window.location.href.split("/");
+    const product = array[array.length - 2];
+    const name = product == "product_block_page" ? "product" : "block";
+    dispatch(WebsiteFormActions.setWebsite({ name: name, value: array.pop() }));
+    dispatch(saveWebsiteForm());
+  }, []);
+
+  // local storage setItem and getItem
+
+  const setItem = (key, item) => {
+    localStorage.setItem(key, item);
+  };
+
+  const getItem = (key) => {
+    const item = localStorage.getItem(key);
+
+    return JSON.parse(item);
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const { text } = e.target.elements;
+    const splitted = text.value.split(",").map((str) => str.trim());
+    const stringyfied = JSON.stringify(splitted);
+
+    setItem("data", stringyfied);
+  }
 
   return (
     <Router>
@@ -211,9 +230,14 @@ function App(props) {
               />
             </DialogContent>
             <DialogActions>
-              <Button onClick={savingForm} disabled={checkingNumber || inValidNumber}>
+              <Button
+                onClick={savingForm}
+                disabled={checkingNumber || inValidNumber}
+              >
                 Save
+                {/* <div>{getItem("data")}</div> */}
               </Button>
+
             </DialogActions>
           </Dialog>
         </div>

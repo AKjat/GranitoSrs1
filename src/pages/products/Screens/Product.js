@@ -21,6 +21,8 @@ import { getProductCount } from "../Reducers/ProductCount";
 import "../Components/productHeader.css";
 import LoadingSpinner from "../../Loader/LoadingSpinner";
 import { WindowSharp } from "@mui/icons-material";
+import { saveWebsiteForm } from "../../../redux/reducers/WebsiteDataSave";
+import { WebsiteFormActions } from "../../../redux/reducers/WebsiteDataReducer";
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -34,8 +36,14 @@ const Product = () => {
     dispatch(refreshingActions.setRefreshing(true));
     dispatch(getProductCount());
     dispatch(getproduct());
+    const array = window.location.href.split("/");
+    const product = array[array.length - 2];
+    const name = product == "product_block_page" ? "product" : "block";
+    dispatch(WebsiteFormActions.setWebsite({ name: name, value: array.pop() }));
+    dispatch(saveWebsiteForm());
   }, []);
-const loc = window.location.href;
+  const loc = window.location.href;
+
   return (
     <>
       <ProductHeader />
@@ -45,10 +53,11 @@ const loc = window.location.href;
         <Grid container>
           {product?.map((product, index) => (
             <Grid item padding={1} xs={12} sm={12} lg={4}>
-              <Card style={{boxShadow:" 3px 3px 5px #feb74d"}}>
+              <Card style={{ boxShadow: " 3px 3px 5px #feb74d" }}>
                 <CardActionArea
                   component={Link}
                   to={`/product_block_page/${product.id}`}
+                  className="products"
                 >
                   <BlockPhotos product={product} />
                 </CardActionArea>

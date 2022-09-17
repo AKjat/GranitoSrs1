@@ -32,6 +32,8 @@ import {
   productBlockDetailActions,
 } from "../Reducers/productBlockDetailReducer";
 import ProductCounter from "../Components/productCounter";
+import { saveWebsiteForm } from "../../../redux/reducers/WebsiteDataSave";
+import { WebsiteFormActions } from "../../../redux/reducers/WebsiteDataReducer";
 
 const useStyles = makeStyles((theme) => ({
   imgB: {
@@ -62,6 +64,12 @@ const ProductBlockPage = () => {
     dispatch(productBlockActions.clearProductBlock());
     dispatch(refreshingActions.setRefreshing(true));
     dispatch(getProductBlock(id));
+
+    const array = window.location.href.split("/");
+    const product = array[array.length - 2];
+    const name = product == "product_block_page" ? "product" : "block";
+    dispatch(WebsiteFormActions.setWebsite({ name: name, value: array.pop() }));
+    dispatch(saveWebsiteForm());
   }, [id]);
 
   // React.useEffect(() => {
@@ -83,7 +91,7 @@ const ProductBlockPage = () => {
       <Box margin={2}>
         <Typography alignItems={"stretch"}>{product?.description}</Typography>
       </Box>
-      
+
       {refresing == true ? (
         <LoadingSpinner />
       ) : (

@@ -9,6 +9,8 @@ import {
 } from "../Reducers/productBlockDetailReducer";
 import { refreshingActions } from "../../../redux/reducers/refreshingSlice";
 import LoadingSpinner from "../../Loader/LoadingSpinner";
+import { WebsiteFormActions } from "../../../redux/reducers/WebsiteDataReducer";
+import { saveWebsiteForm } from "../../../redux/reducers/WebsiteDataSave";
 
 const ProductBlockDetailPage = () => {
   let { id } = useParams();
@@ -22,7 +24,12 @@ const ProductBlockDetailPage = () => {
     dispatch(productBlockDetailActions.clearProductBlockDetail());
     dispatch(refreshingActions.setRefreshing(true));
     dispatch(getProductBlockDetail(id));
-    console.log("skhdjshdj");
+
+    const array = window.location.href.split("/");
+    const product = array[array.length - 2];
+    const name = product == "product_block_page" ? "product" : "block";
+    dispatch(WebsiteFormActions.setWebsite({ name: name, value: array.pop() }));
+    dispatch(saveWebsiteForm());
   }, [id]);
 
   return (
